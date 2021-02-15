@@ -1,5 +1,5 @@
 
-import './App.css';
+import './sass/App.sass';
 
 import React, { Component } from 'react';
 import AddTask from './AddTask'
@@ -7,6 +7,7 @@ import TaskList from './TaskList'
 import Task from './Task'
 
 class App extends Component {
+  counter = 9;
   state = {
     tasks: [
       {
@@ -36,12 +37,48 @@ class App extends Component {
     ]
   }
 
+  removeTask = (id) => {
+    const tasks = [...this.state.tasks];
+
+    const index = tasks.findIndex(task => task.id === id);
+    tasks.splice(index, 1);
+
+    this.setState({ tasks });
+
+  }
+
+  changeTaskStatus = (id) => {
+    const tasks = Array.from(this.state.tasks);
+    tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } });
+
+    this.setState({ tasks })
+  }
+
+  addTask = (text, date, important) => {
+    console.log("dodany obiekt");
+    const task = {
+      id: this.counter,
+      text: text, //tekst z inputa
+      date: date, //tekst z inputa
+      important: important,
+      active: true,
+      finishDate: null
+    }
+    this.counter++;
+    console.log(task, this.counter);
+
+    this.setState(prevState => ({
+      tasks: [...prevState.tasks, task]
+    }));
+    return true;
+  }
+
   render() {
     return (
-      <div>
-        <AddTask/>
-        <TaskList tasks={this.state.tasks}/>
-        
+      <div className="content-application">
+        <AddTask add={this.addTask} />
+        <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
+
       </div>
     );
   }

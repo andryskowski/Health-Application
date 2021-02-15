@@ -1,0 +1,51 @@
+@import 'variables'
+@import 'mixins'
+
+*, 
+*::after, 
+*::before 
+    margin: 0 
+    padding: 0 
+    box-sizing: inherit 
+
+
+
+.content-application
+    background-color: $bg-color
+    color: $font-main-color
+    @include box-flex(column, center, center)
+    
+.x-button
+    // reset button
+    position: relative
+    border: none
+    margin: 0
+    padding: 0
+    width: auto
+    overflow: visible
+    background: transparent
+    color: inherit
+    font: inherit
+    line-height: normal
+    -webkit-font-smoothing: inherit
+    -moz-osx-font-smoothing: inherit
+    -webkit-appearance: none
+
+    height: 100px
+    width: 100px
+    background-color: #FA6900
+    border-radius: 5px
+    
+
+
+.x-button:after 
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    content: "\274c"
+    font-size: 50px
+    color: #FFF
+    line-height: 100px
+    text-align: center
