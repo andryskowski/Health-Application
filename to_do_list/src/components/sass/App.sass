@@ -1,5 +1,8 @@
 @import 'variables'
 @import 'mixins'
+@import 'input'
+@import 'checkbox'
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 *, 
 *::after, 
@@ -16,36 +19,16 @@
     @include box-flex(column, center, center)
     
 .x-button
-    // reset button
-    position: relative
-    border: none
-    margin: 0
-    padding: 0
-    width: auto
-    overflow: visible
-    background: transparent
-    color: inherit
-    font: inherit
-    line-height: normal
-    -webkit-font-smoothing: inherit
-    -moz-osx-font-smoothing: inherit
-    -webkit-appearance: none
+    background-color: inherit
+    @include button-reset
+    font-size: $font-size*0.75
+    color: darken(#FF4136, 20) 
 
-    height: 100px
-    width: 100px
-    background-color: #FA6900
-    border-radius: 5px
-    
+.checked-button
+    font-size: $font-size*0.75
+    @include button-reset
+    color: mix(#2ECC40, #01FF70, 0.5)
 
-
-.x-button:after 
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    content: "\274c"
-    font-size: 50px
-    color: #FFF
-    line-height: 100px
-    text-align: center
+*
+    margin: 5px
+    font-family: 'Roboto', sans-serif

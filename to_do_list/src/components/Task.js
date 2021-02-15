@@ -8,8 +8,8 @@ const Task = props => {
                 {props.task.text}
                 {props.task.date}
                 
-                <button onClick={() => props.remove(id)}>X</button>
-                <button onClick={() => props.change(id)}>Done</button>
+                <button className="x-button" onClick={() => props.remove(id)}>X</button>
+                <button className="checked-button"onClick={() => props.change(id)}>&#10003;</button>
             </p>
         </div>
     );
