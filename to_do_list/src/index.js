@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/BMICalculator/App';
+import App from './components/BMRCalculator/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
