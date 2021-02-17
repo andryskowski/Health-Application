@@ -15,19 +15,16 @@ class App extends Component {
 
   removeTask = (id) => {
     const tasks = [...this.state.tasks];
-
     const index = tasks.findIndex(task => task.id === id);
     tasks.splice(index, 1);
-
     this.setState({ tasks });
-
+    window.localStorage.setItem('Tasks', JSON.stringify(tasks));
 
   }
 
   changeTaskStatus = (id) => {
     const tasks = Array.from(this.state.tasks);
-    tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } });
- 
+    tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } }); 
     this.setState({ tasks })
   }
 
@@ -35,9 +32,7 @@ class App extends Component {
     const ActualBMR = this.state.ActualBMR - calories;
     this.setState({ ActualBMR })
   }
-
   
-
   // addTaskToLocalStorage = (task) => {
   //   // const TASKS = JSON.parse(localStorage.getItem('Tasks'));
   //   const tasks2 =  [...JSON.parse(localStorage.getItem('Tasks')), task];

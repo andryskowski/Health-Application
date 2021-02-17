@@ -7,7 +7,7 @@ const Task = props => {
             <p>
                 {props.task.text} / 
                 {props.task.date} / 
-                {props.task.calories}
+                {props.task.calories} {'calories'}
                 
                 <button className="x-button" onClick={() => props.remove(id)}>X</button>
                 <button className="checked-button"onClick={() => props.change(id)}>&#10003;</button>
