@@ -33,7 +33,7 @@ const TaskList = props => {
 
             <div className="done">
                 <h2>Done tasks <em>({done.length})</em></h2>
-                <span>Wyświetlone jest jedynie 5 ostatnich elementów</span>
+                
                 {doneTasks}
             </div>
         </>

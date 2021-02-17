@@ -81,7 +81,7 @@ class AddTask extends Component {
                 <label htmlFor="c1" htmlFor="important">Priorytet</label>
                 <label htmlFor="date">Do kiedy zrobić</label>
                 <input type="date" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
-                <button  onClick={this.handleClick}>Dodaj</button>
+                <button  onClick={this.handleClick} className="btn btn-outline-secondary  ml-2">Dodaj</button>
             </div>
         );
     }
