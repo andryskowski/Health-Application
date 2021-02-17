@@ -34,7 +34,8 @@ class App extends Component {
         active: true,
         finishDate: null
       },
-    ]
+    ],
+    ActualBMR: localStorage.getItem('BMR')
   }
 
   removeTask = (id) => {
@@ -78,6 +79,7 @@ class App extends Component {
       <div className="content-application">
         <AddTask add={this.addTask} />
         <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
+        <h2>Your actual BMR is = {this.state.ActualBMR}</h2>
 
       </div>
     );

@@ -6,12 +6,20 @@ class AddTask extends Component {
     state = {
         text: '',
         checked: false,
-        date: this.minDate
+        date: this.minDate,
+        calories: 0
     }
 
     handleText = (e) => {
         this.setState({
             text: e.target.value
+        })
+    }
+
+    
+    handleCalories = (e) => {
+        this.setState({
+            calories: e.target.value
         })
     }
 
@@ -28,14 +36,15 @@ class AddTask extends Component {
     }
 
     handleClick = (e) => {
-        const { text, checked, date } = this.state;
+        const { text, checked, date, calories } = this.state;
         if (text.length) {
-            const add = this.props.add(text, date, checked);
+            const add = this.props.add(text, date, checked, calories);
             if (add) {
                 this.setState({
                     text: '',
                     checked: false,
-                    date: this.minDate
+                    date: this.minDate,
+                    calories: ''
                 })
             }
         } else {
@@ -51,8 +60,11 @@ class AddTask extends Component {
         return (
             <div className="form form__group field">
                 <input type="text" placeholder="dodaj zadanie" value={this.state.text} className="form__field" id='name' required onChange={this.handleText} />
-                <label for="name" class="form__label">Name</label>
+                <label for="name" class="form__label">zadanie</label>
                 
+                <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onChange={this.handleCalories} />
+                <label for="name2" class="form__label">Name</label>
+
                 <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} />
                 <label for="c1" htmlFor="important">Priorytet</label>
                 <label htmlFor="date">Do kiedy zrobić</label>
