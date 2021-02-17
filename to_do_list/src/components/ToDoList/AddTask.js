@@ -60,10 +60,10 @@ class AddTask extends Component {
         return (
             <div className="form form__group field">
                 <input type="text" placeholder="dodaj zadanie" value={this.state.text} className="form__field" id='name' required onChange={this.handleText} />
-                <label for="name" class="form__label">zadanie</label>
+                <label for="name" class="form__label"></label>
                 
                 <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onChange={this.handleCalories} />
-                <label for="name2" class="form__label">Name</label>
+                <label for="name2" class="form__label">Activity</label>
 
                 <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} />
                 <label for="c1" htmlFor="important">Priorytet</label>

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
+import './sass/App.sass';
 
 
 const App = () => {
-    const [food, setFood] = useState(0);
+    const [food, setFood] = useState('your product');
     const [calories, setCalories] = useState(0);
 
     const APP_ID = "d91664c7"
@@ -42,14 +43,19 @@ const App = () => {
 
 
 
-    return(<>
-    <h1 onClick={getData}>elo</h1>
-    <input type="text" placeholder="Search food" autoComplete="off" onChange={handleText}/>
-    <input type="submit" value="search" onClick={getData}/>
+    return(<div className="App">
+    <h1 onClick={getData}>It's the place where you can find caloric value of your food.</h1>
+    <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
+    <div class="form-inline">
+    <div >
+    <input type="text" placeholder="Search food" autoComplete="off" className="form-control  " onChange={handleText}/>
+    <input type="submit" value="search" className="btn btn-outline-secondary  ml-2" onClick={getData}/>
+    </div>
+    </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
-    <h2>{food}</h2>
-    <h3>{calories}</h3>
-    </>
+    <h2 className="display-4 text-secondary">{food}</h2>
+    <h3>{calories} cal/100g</h3>
+    </div>
     );
 };
 
