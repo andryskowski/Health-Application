@@ -22,7 +22,7 @@ useEffect(() => {
 }, [height, weight]);
 
 return (
-    <div className="App">
+    <div className="App" >
         <h1>BMI Calculator</h1>
         <p>Height</p><input type="number" onChange={handleHeight}></input>
         <p>weight</p><input type="number" onChange={handleWeight}></input>
