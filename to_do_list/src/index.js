@@ -13,9 +13,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Nav/>
+    
     <Router>
     <div>
+    <Nav/>
     {/* <Route path="/" component={Home}></Route> */}
     <Route path="/BMICalculator" component={BMICalculator}></Route>
     <Route path="/BMRCalculator" component={BMRCalculator}></Route>
