@@ -1,9 +1,11 @@
 import react from 'react';
 import './sass/App.sass';
 import {Link} from 'react-router-dom';
+import { AnimatePresence } from "framer-motion"
 const App = () => {
 
   return (
+    
     <nav class="navbar navbar-dark bg-dark position-absolute vh-100 vw-20">
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -22,7 +24,9 @@ const App = () => {
             <Link to="/Food" class="nav-link" href="#">FoodCalculator</Link>
         </li>
     </ul>
-</nav>);
+</nav>
+
+);
 };
 
 export default App;

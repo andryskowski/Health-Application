@@ -47,11 +47,11 @@ function App() {
         return (
             <div className="App form-group">
                 <h1>Calories calculator</h1>
-                height <input onChange={setHeightOn} className="form-control"></input>
-                weight <input onChange={setWeightOn} className="form-control"></input>
-                age <input onChange={setAgeOn} className="form-control"></input>
+                height <input onChange={setHeightOn} className="form-control w-75"></input>
+                weight <input onChange={setWeightOn} className="form-control w-75"></input>
+                age <input onChange={setAgeOn} className="form-control w-75"></input>
                 male <input type="radio" onChange={setGenderOn} className="form-check-label"></input>
-                burned today <input onChange={setBonusOn} className="form-control"></input>
+                burned today <input onChange={setBonusOn} className="form-control w-75"></input>
                 <h1>Your BMR is = {cal}</h1>
             </div>
         );

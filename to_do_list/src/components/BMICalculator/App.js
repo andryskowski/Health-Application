@@ -26,8 +26,8 @@ return (
     <div className="App" >
         <h1>BMI Calculator</h1>
         <div class="form-group">
-        <label>Your height</label><input type="number" className="form-control w-25" onChange={handleHeight} ></input>
-        <label>Your weight</label><input type="number" className="form-control w-25" onChange={handleWeight} ></input>
+        <label>Your height</label><input type="number" className="form-control w-75" onChange={handleHeight} ></input>
+        <label>Your weight</label><input type="number" className="form-control w-75" onChange={handleWeight} ></input>
         <h2 className="mt-2">Your BMI is = {bmi}</h2>
         </div>
         

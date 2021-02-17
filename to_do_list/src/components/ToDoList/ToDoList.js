@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import AddTask from './AddTask'
 import TaskList from './TaskList'
 import Task from './Task'
+import { motion } from 'framer-motion';
 
 class App extends Component {
   counter = 9;
@@ -84,12 +85,16 @@ class App extends Component {
 
   render() {
     return (
+      <motion.div initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}>
       <div className="content-application">
         <AddTask add={this.addTask} />
         <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
         <h2>Your actual BMR is = {this.state.ActualBMR}</h2>
 
       </div>
+      </motion.div>
     );
   }
 }
