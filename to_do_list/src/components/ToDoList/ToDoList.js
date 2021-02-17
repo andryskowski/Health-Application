@@ -55,7 +55,7 @@ class App extends Component {
     this.setState({ tasks })
   }
 
-  addTask = (text, date, important) => {
+  addTask = (text, date, important, calories) => {
     console.log("dodany obiekt");
     const task = {
       id: this.counter,
@@ -63,7 +63,8 @@ class App extends Component {
       date: date, //tekst z inputa
       important: important,
       active: true,
-      finishDate: null
+      finishDate: null,
+      calories: calories
     }
     this.counter++;
     console.log(task, this.counter);

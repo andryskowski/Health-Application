@@ -44,7 +44,7 @@ class AddTask extends Component {
                     text: '',
                     checked: false,
                     date: this.minDate,
-                    calories: ''
+                    calories: 0
                 })
             }
         } else {
