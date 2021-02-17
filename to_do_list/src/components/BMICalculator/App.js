@@ -2,8 +2,8 @@ import {useEffect, useState} from 'react';
 import './sass/App.sass';
 
 function App() {
-    const [height, setHeight] = useState(0);
-    const [weight, setWeight] = useState(0);
+    const [height, setHeight] = useState();
+    const [weight, setWeight] = useState();
     const [bmi, setBMI]=useState(0);
 
 
@@ -25,9 +25,12 @@ useEffect(() => {
 return (
     <div className="App" >
         <h1>BMI Calculator</h1>
-        <p>Height</p><input type="number" onChange={handleHeight}></input>
-        <p>weight</p><input type="number" onChange={handleWeight}></input>
-        <h2>BMI: {bmi}</h2>
+        <div class="form-group">
+        <label>Your height</label><input type="number" className="form-control w-25" onChange={handleHeight} ></input>
+        <label>Your weight</label><input type="number" className="form-control w-25" onChange={handleWeight} ></input>
+        <h2 className="mt-2">Your BMI is = {bmi}</h2>
+        </div>
+        
     </div>
 );
 
