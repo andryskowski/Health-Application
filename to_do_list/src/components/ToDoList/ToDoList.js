@@ -51,12 +51,16 @@ class App extends Component {
   changeTaskStatus = (id) => {
     const tasks = Array.from(this.state.tasks);
     tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } });
-
+ 
     this.setState({ tasks })
   }
 
+  changeActualBMR = (calories) => {
+    const ActualBMR = this.state.ActualBMR - calories;
+    this.setState({ ActualBMR })
+  }
+
   addTask = (text, date, important, calories) => {
-    console.log("dodany obiekt");
     const task = {
       id: this.counter,
       text: text, //tekst z inputa
@@ -72,6 +76,9 @@ class App extends Component {
     this.setState(prevState => ({
       tasks: [...prevState.tasks, task]
     }));
+
+    this.changeActualBMR(calories);
+
     return true;
   }
 
