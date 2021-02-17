@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "framer-motion": "^3.3.0",
+    "json-parser": "^3.1.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

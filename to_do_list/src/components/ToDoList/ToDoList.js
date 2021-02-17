@@ -1,6 +1,4 @@
-
 import './sass/App.sass';
-
 import React, { Component } from 'react';
 import AddTask from './AddTask'
 import TaskList from './TaskList'
@@ -8,36 +6,12 @@ import Task from './Task'
 import { motion } from 'framer-motion';
 
 class App extends Component {
-  counter = 9;
+  counter = 0;
   state = {
-    tasks: [
-      {
-        id: 0,
-        text: 'kupic bulki',
-        date: '2020-02-20',
-        important: true,
-        active: true,
-        finishDate: null
-      },
-      {
-        id: 1,
-        text: 'umyc okna',
-        date: '2020-03-20',
-        important: true,
-        active: true,
-        finishDate: null
-      },
-      {
-        id: 3,
-        text: 'kupic klawiature',
-        date: '2020-02-21',
-        important: true,
-        active: true,
-        finishDate: null
-      },
-    ],
-    ActualBMR: localStorage.getItem('BMR')
+    tasks: window.localStorage.getItem('Tasks') ? JSON.parse(window.localStorage.getItem('Tasks')) : [],
+    ActualBMR: localStorage.getItem('BMR'),
   }
+
 
   removeTask = (id) => {
     const tasks = [...this.state.tasks];
@@ -46,6 +20,7 @@ class App extends Component {
     tasks.splice(index, 1);
 
     this.setState({ tasks });
+
 
   }
 
@@ -61,9 +36,18 @@ class App extends Component {
     this.setState({ ActualBMR })
   }
 
+  
+
+  // addTaskToLocalStorage = (task) => {
+  //   // const TASKS = JSON.parse(localStorage.getItem('Tasks'));
+  //   const tasks2 =  [...JSON.parse(localStorage.getItem('Tasks')), task];
+    
+  //   localStorage.setItem('Tasks', JSON.stringify(tasks2));
+  // }
+
   addTask = (text, date, important, calories) => {
     const task = {
-      id: this.counter,
+      id: this.state.tasks.length,
       text: text, //tekst z inputa
       date: date, //tekst z inputa
       important: important,
@@ -74,11 +58,16 @@ class App extends Component {
     this.counter++;
     console.log(task, this.counter);
 
+    const updatedTasks = [...this.state.tasks, task];
+    window.localStorage.setItem('Tasks', JSON.stringify(updatedTasks));
+    
     this.setState(prevState => ({
       tasks: [...prevState.tasks, task]
     }));
 
     this.changeActualBMR(calories);
+    
+    // this.addTaskToLocalStorage(task);
 
     return true;
   }
