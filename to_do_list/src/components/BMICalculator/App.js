@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import './sass/App.sass';
 
 function App() {
     const [height, setHeight] = useState(0);

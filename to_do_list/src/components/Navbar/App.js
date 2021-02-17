@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const App = () => {
 
   return (
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-dark position-absolute vh-100 vw-20">
     <ul class="navbar-nav">
         <li class="nav-item">
             <Link  to="/" class="nav-link active" href="#">Home</Link>
