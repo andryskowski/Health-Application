@@ -18,22 +18,22 @@ function App() {
         setWeight(w);
     }
 
-    function changeResult(bmi1) {
-        if (bmi1 > 30) {
+    function changeResult(bmiNumber) {
+        if (bmiNumber > 30) {
             setResult(`Obese`);
             setResultColor('red');       
         }
-        else if (bmi1 >= 25.0 && bmi1 <= 29.9)
+        else if (bmiNumber >= 25.0 && bmiNumber <= 29.9)
         {
             setResult(`Overweight`);
             setResultColor('orange');       
         }    
-        else if (bmi1 >= 18.5 && bmi1 <= 24.9)
+        else if (bmiNumber >= 18.5 && bmiNumber <= 24.9)
         {
             setResult(`Healthy Weight`);
             setResultColor('green');       
         }
-        else if (bmi1 <= 18.5)
+        else if (bmiNumber <= 18.5)
         {
             setResult(`Underweight`);
             setResultColor('blue');                 
@@ -42,9 +42,9 @@ function App() {
 
     useEffect(() => {
         if (weight != 0 && height != 0) {
-            let bmi1 = (Number(weight) / (Number(height) * 2)) * 100;
-            setBMI(bmi1.toFixed(1));
-            changeResult(bmi1);
+            let bmiNumber = (Number(weight) / (Number(height) * 2)) * 100;
+            setBMI(bmiNumber.toFixed(1));
+            changeResult(bmiNumber);
             
             console.log(typeof bmi);
             
