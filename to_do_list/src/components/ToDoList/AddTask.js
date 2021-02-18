@@ -36,8 +36,10 @@ class AddTask extends Component {
     }
 
     handleCheckbox = (e) => {
+        console.log(e);
         this.setState({
             checked: e.target.checked
+            
         })
     }
 
@@ -77,8 +79,8 @@ class AddTask extends Component {
                 <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
                 <label htmlFor="name2" className="form__label"></label>
 
-                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} />
-                <label htmlFor="c1" htmlFor="important">Food = 0, Sport = 1</label>
+                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="check"/>
+                <label htmlFor="c1" htmlFor="important" className="checkLabel" >{!this.state.checked ? `Food` : `Sport`}</label>
                 <label htmlFor="date">Do kiedy zrobić</label>
                 <input type="date" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
                 <button  onClick={this.handleClick} className="btn btn-outline-secondary  ml-2">Dodaj</button>
