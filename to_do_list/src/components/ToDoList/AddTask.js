@@ -78,7 +78,7 @@ class AddTask extends Component {
                 <label htmlFor="name2" className="form__label"></label>
 
                 <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} />
-                <label htmlFor="c1" htmlFor="important">Priorytet</label>
+                <label htmlFor="c1" htmlFor="important">Food = 0, Sport = 1</label>
                 <label htmlFor="date">Do kiedy zrobić</label>
                 <input type="date" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
                 <button  onClick={this.handleClick} className="btn btn-outline-secondary  ml-2">Dodaj</button>

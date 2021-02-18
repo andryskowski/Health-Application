@@ -9,7 +9,7 @@ class App extends Component {
   counter = 0;
   state = {
     tasks: window.localStorage.getItem('Tasks') ? JSON.parse(window.localStorage.getItem('Tasks')) : [],
-    ActualBMR: localStorage.getItem('BMR'),
+    ActualBMR: window.localStorage.getItem('BMRActual') ? JSON.parse(window.localStorage.getItem('BMRActual')) : JSON.parse(window.localStorage.getItem('BMR'))
   }
 
 
@@ -20,32 +20,55 @@ class App extends Component {
     this.setState({ tasks });
     window.localStorage.setItem('Tasks', JSON.stringify(tasks));
 
+    //changing actualBMR
+    const isFoodOrSport = this.state.tasks[index].isFoodOrSport;
+    const calories = this.state.tasks[index].calories;
+    const IS_ADD_OR_REMOVE = false;
+    this.changeActualBMR(calories, isFoodOrSport, IS_ADD_OR_REMOVE);
+
   }
 
   changeTaskStatus = (id) => {
     const tasks = Array.from(this.state.tasks);
-    tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } }); 
+    tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } });
     this.setState({ tasks })
   }
 
-  changeActualBMR = (calories) => {
-    const ActualBMR = this.state.ActualBMR - calories;
-    this.setState({ ActualBMR })
+  changeActualBMR = (calories, isFoodOrSport, IS_ADD_OR_REMOVE) => {
+    if (IS_ADD_OR_REMOVE == true) {
+      //if isFoodOrSport = true <- sport, it means that you should subtract "-" calories, if false add "+" calories to ActualBMR 
+      if (isFoodOrSport) {
+        const ActualBMR = Number(this.state.ActualBMR) + Number(calories);
+        this.setState({ ActualBMR });
+        window.localStorage.setItem('BMRActual', JSON.stringify(ActualBMR));
+      }
+      else {
+        const ActualBMR = Number(this.state.ActualBMR) - Number(calories);
+        this.setState({ ActualBMR });
+        window.localStorage.setItem('BMRActual', JSON.stringify(ActualBMR));
+      }
+    }
+    else {
+      if (isFoodOrSport) {
+        const ActualBMR = Number(this.state.ActualBMR) - Number(calories);
+        this.setState({ ActualBMR });
+        window.localStorage.setItem('BMRActual', JSON.stringify(ActualBMR));
+      }
+      else {
+        const ActualBMR = Number(this.state.ActualBMR) + Number(calories);
+        this.setState({ ActualBMR });
+        window.localStorage.setItem('BMRActual', JSON.stringify(ActualBMR));
+      }
+    }
   }
 
-  // addTaskToLocalStorage = (task) => {
-  //   // const TASKS = JSON.parse(localStorage.getItem('Tasks'));
-  //   const tasks2 =  [...JSON.parse(localStorage.getItem('Tasks')), task];
-    
-  //   localStorage.setItem('Tasks', JSON.stringify(tasks2));
-  // }
 
-  addTask = (text, date, important, calories) => {
+  addTask = (text, date, isFoodOrSport, calories) => {
     const task = {
       id: this.state.tasks.length,
       text: text, //tekst z inputa
       date: date, //tekst z inputa
-      important: important,
+      isFoodOrSport: isFoodOrSport,
       active: true,
       finishDate: null,
       calories: calories
@@ -55,29 +78,27 @@ class App extends Component {
 
     const updatedTasks = [...this.state.tasks, task];
     window.localStorage.setItem('Tasks', JSON.stringify(updatedTasks));
-    
+
     this.setState(prevState => ({
       tasks: [...prevState.tasks, task]
     }));
 
-    this.changeActualBMR(calories);
-    
-    // this.addTaskToLocalStorage(task);
+    const IS_ADD_OR_REMOVE = true;
+    this.changeActualBMR(calories, isFoodOrSport, IS_ADD_OR_REMOVE);
 
     return true;
   }
 
   render() {
     return (
-      <motion.div initial={{opacity: 0}}
-      animate={{opacity: 1}}
-      exit={{opacity: 0}}>
-      <div className="content-application">
-        <AddTask add={this.addTask} />
-        <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
-        <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
-
-      </div>
+      <motion.div initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}>
+        <div className="content-application">
+          <AddTask add={this.addTask} />
+          <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
+          <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
+        </div>
       </motion.div>
     );
   }
