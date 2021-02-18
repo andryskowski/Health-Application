@@ -32,7 +32,7 @@ class App extends Component {
     const ActualBMR = this.state.ActualBMR - calories;
     this.setState({ ActualBMR })
   }
-  
+
   // addTaskToLocalStorage = (task) => {
   //   // const TASKS = JSON.parse(localStorage.getItem('Tasks'));
   //   const tasks2 =  [...JSON.parse(localStorage.getItem('Tasks')), task];
@@ -75,7 +75,7 @@ class App extends Component {
       <div className="content-application">
         <AddTask add={this.addTask} />
         <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
-        <h2>Your actual BMR is = {this.state.ActualBMR}</h2>
+        <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
 
       </div>
       </motion.div>
