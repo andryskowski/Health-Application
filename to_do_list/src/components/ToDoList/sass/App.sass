@@ -18,18 +18,17 @@
     color: $font-main-color
     @include box-flex(column, center, center)
     width: 50%
-    
-    margin-left: 25vw
+    margin-left: 30vw
 .x-button
     background-color: inherit
     @include button-reset
     font-size: $font-size*0.75
     color: darken(#FF4136, 20) 
 
-
-// .check:active + .checkLabel
-//     color: blue
-//     content: "elo"
+.checked-button
+    font-size: $font-size*0.75
+    @include button-reset
+    color: mix(#2ECC40, #01FF70, 0.5)
 
 *
     margin: 5px

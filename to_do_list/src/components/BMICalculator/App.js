@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './sass/App.sass';
+import { motion } from 'framer-motion';
 
 function App() {
     const [height, setHeight] = useState(0);
@@ -55,7 +56,10 @@ function App() {
     }, [height, weight]);
 
     return (
-        <div className="App" >
+        <motion.div initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}>
+        <div className="App form-group" >
             <h1>BMI Calculator</h1>
             <div class="form-group">
                 <label>Your height</label><input type="number" className="form-control w-75" onChange={handleHeight} ></input>
@@ -66,6 +70,7 @@ function App() {
             </div>
 
         </div>
+        </motion.div>
     );
 
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AddTask.css'
+import './AddTask.css';
 
 class AddTask extends Component {
     minDate = new Date().toISOString().slice(0, 10);
@@ -39,7 +39,6 @@ class AddTask extends Component {
         console.log(e);
         this.setState({
             checked: e.target.checked
-            
         })
     }
 
@@ -72,18 +71,20 @@ class AddTask extends Component {
         console.log(maxDate);
         maxDate = maxDate + "-12-32" //2020-12-31
         return (
-            <div className="form form__group field">
+            <div className="form form__group form-inline row justify-content-center">
                 <input type="text" placeholder="dodaj zadanie" value={this.state.text} className="form__field" id='name' required onClick={this.onClickText} onChange={this.handleText} />
                 <label htmlFor="name" className="form__label"></label>
                 
                 <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
                 <label htmlFor="name2" className="form__label"></label>
 
-                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="check"/>
+                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="check "/>
                 <label htmlFor="c1" htmlFor="important" className="checkLabel" >{!this.state.checked ? `Food` : `Sport`}</label>
-                <label htmlFor="date">Do kiedy zrobić</label>
-                <input type="date" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
-                <button  onClick={this.handleClick} className="btn btn-outline-secondary  ml-2">Dodaj</button>
+
+                <label id="date" htmlFor="date"className="form-label">Date</label>
+                <input type="date" className="form-control m-2" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
+
+                <button  onClick={this.handleClick} className="btn btn-outline-secondary  ">Dodaj</button>
             </div>
         );
     }

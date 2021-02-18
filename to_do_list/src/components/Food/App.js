@@ -50,7 +50,7 @@ const App = () => {
     exit={{opacity: 0}}>
 
   <div className="App">
-    <h1 onClick={getData}>It's the place where you can find caloric value of your food.</h1>
+    <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
     <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
     <div class="form-inline">
       <div >
