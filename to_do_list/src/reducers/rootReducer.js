@@ -5,6 +5,6 @@ import { appReducer } from './appReducer';
 export const rootReducer = combineReducers(
     {
         routes: appReducer,
-        users: usersReducer
+        // users: usersReducer
     }
 );
