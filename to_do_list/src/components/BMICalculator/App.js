@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './sass/App.sass';
+// import './sass/App.sass';
 import { motion } from 'framer-motion';
 
 function App() {

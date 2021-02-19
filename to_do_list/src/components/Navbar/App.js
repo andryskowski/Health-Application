@@ -7,7 +7,7 @@ const App = () => {
     <nav class="navbar navbar-dark bg-dark position-absolute vh-100 vw-20">
     <ul class="navbar-nav">
         <li class="nav-item">
-            <Link  to="/" class="nav-link active" href="#">Home</Link>
+            <Link  to="/Home" class="nav-link active" href="#">Home</Link>
         </li>
         <li class="nav-item">
             <Link to="/BMICalculator" class="nav-link" href="#">BMICalculator</Link>
