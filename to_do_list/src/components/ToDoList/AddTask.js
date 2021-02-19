@@ -63,7 +63,6 @@ class AddTask extends Component {
         } else {
             alert("text is too short");
         }
-
     }
 
     render() {

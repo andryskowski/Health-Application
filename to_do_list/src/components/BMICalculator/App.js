@@ -47,8 +47,6 @@ function App() {
             setBMI(bmiNumber.toFixed(1));
             changeResult(bmiNumber);
             
-            console.log(typeof bmi);
-            
         }
         else {
             setBMI(0);

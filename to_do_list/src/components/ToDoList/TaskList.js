@@ -4,7 +4,6 @@ import Task from './Task'
 
 const TaskList = props => {
     // const tasks = props.tasks.map(task => <Task key={task.id} task={task} remove={props.remove} change={props.change}/>)
-
     const active = props.tasks.filter(task => task.active);
     const done = props.tasks.filter(task => !task.active);
 
@@ -19,9 +18,6 @@ const TaskList = props => {
     const doneTasks = done.map(task => <Task key={task.id} task={task}
         remove={props.remove} change={props.change} />);
     console.log(active, done);
-
-
-
 
     return (
         <>

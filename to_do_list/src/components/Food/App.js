@@ -9,10 +9,7 @@ const App = () => {
   const [calories, setCalories] = useState(0);
 
   const APP_ID = "d91664c7"
-
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
-
-
 
   const getData = async () => {
     let apiRes = null;
@@ -41,8 +38,6 @@ const App = () => {
     let h = e.target.value;
     setFood(h);
   };
-
-
 
   return (
     <motion.div initial={{opacity: 0}}

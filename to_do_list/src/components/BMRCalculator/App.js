@@ -40,7 +40,6 @@ function App() {
                 localStorage.setItem('BMR', BMR);
             }
         } 
-
     });
 
     console.log(gender);

@@ -12,7 +12,6 @@ class App extends Component {
     ActualBMR: window.localStorage.getItem('BMRActual') ? JSON.parse(window.localStorage.getItem('BMRActual')) : JSON.parse(window.localStorage.getItem('BMR'))
   }
 
-
   removeTask = (id) => {
     const tasks = [...this.state.tasks];
     const index = tasks.findIndex(task => task.id === id);
@@ -25,7 +24,6 @@ class App extends Component {
     const calories = this.state.tasks[index].calories;
     const IS_ADD_OR_REMOVE = false;
     this.changeActualBMR(calories, isFoodOrSport, IS_ADD_OR_REMOVE);
-
   }
 
   changeTaskStatus = (id) => {
@@ -62,12 +60,11 @@ class App extends Component {
     }
   }
 
-
   addTask = (text, date, isFoodOrSport, calories) => {
     const task = {
       id: this.state.tasks.length,
-      text: text, //tekst z inputa
-      date: date, //tekst z inputa
+      text: text, //text from input
+      date: date, //text from input
       isFoodOrSport: isFoodOrSport,
       active: true,
       finishDate: null,

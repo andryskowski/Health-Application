@@ -4,7 +4,6 @@ const Task = props => {
     const { text, date, id, calories} = props.task;
     return (
         <div>
-         
             {props.task.isFoodOrSport ?
 
                 <p style={{ color: "blue" }} > {props.task.text} /
@@ -23,7 +22,6 @@ const Task = props => {
                  
             }
 
-            
             {/* {props.task.text} / 
                  {props.task.date} / 
                  {props.task.calories} {'calories'} */}
