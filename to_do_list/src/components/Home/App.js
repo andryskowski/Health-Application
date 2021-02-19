@@ -1,9 +1,12 @@
 import React from 'react';
+import './sass/App.sass';
 
 const App = () => {
     return (
-        <div>
+        <div className="content">
+            <div className="elementsFlex">
             <p>elo</p>
+            </div>
         </div>
     );
 };
