@@ -3,14 +3,15 @@ import './sass/App.sass';
 import { useSelector } from 'react-redux';
 
 const App = () => {
-    const BMRInformations = useSelector(store => store.BMRInformations);
-    const bmrbmr = JSON.stringify(BMRInformations);
+    // const BMRInformations = useSelector(store => store.BMRInformations);
+    // // BMRInformations.filter(info => info.height);
+    // const bmrbmr = JSON.stringify(BMRInformations);
 
     return (
         
         <div className="content">
             <div className="elementsFlex">
-            <div>{bmrbmr}</div>
+            {/* <div>{bmrbmr}</div> */}
             </div>
         </div>
         
