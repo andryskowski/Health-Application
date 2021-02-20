@@ -19,6 +19,8 @@ function App() {
 
     const [BMRInfo, setBMRInfo] = useState(0);
     const BMRInformations = useSelector(store => store.BMRInformations);
+    const bmrbmr = JSON.stringify(BMRInformations);
+    
 
     const BMRObject = {
         height: 10,
@@ -77,12 +79,11 @@ function App() {
 
     dispatch(addBMRInformation(BMRObject));
     
+    // setBMRInfo(JSON.stringify(BMRInformations));
     console.log(BMRInformations);
-    
-    setBMRInfo(JSON.stringify(BMRInformations));
   }
 
-
+  
 
     return (
         // <Provider store={store}>
@@ -105,7 +106,7 @@ function App() {
 
             <h1>Your BMR is = {cal}</h1>
             <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button>
-            <div>{BMRInfo}</div>
+            <div>{bmrbmr}</div>
             
         </motion.div>
         // {/* </Provider> */}

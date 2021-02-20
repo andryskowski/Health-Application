@@ -4,15 +4,13 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
-    const BMRInformationsElements = BMRInformations.map(info => (
-      {info}
-    ));
+    const bmrbmr = JSON.stringify(BMRInformations);
 
     return (
         
         <div className="content">
             <div className="elementsFlex">
-            {BMRInformationsElements}
+            <div>{bmrbmr}</div>
             </div>
         </div>
         
