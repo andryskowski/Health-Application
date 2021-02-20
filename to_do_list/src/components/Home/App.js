@@ -1,15 +1,18 @@
 import React from 'react';
 import './sass/App.sass';
-import {Provider} from 'react-redux';
-
-// import store from '../../store/store'
+import { useSelector } from 'react-redux';
 
 const App = () => {
+    const BMRInformations = useSelector(store => store.BMRInformations);
+    const BMRInformationsElements = BMRInformations.map(info => (
+      {info}
+    ));
+
     return (
         
         <div className="content">
             <div className="elementsFlex">
-            <p>Hello</p>
+            {BMRInformationsElements}
             </div>
         </div>
         

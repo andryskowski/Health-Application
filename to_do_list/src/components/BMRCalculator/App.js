@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import {addBMRInformation} from '../../actions/appActions';
 
 import store from '../../store/store';
+import { useSelector } from 'react-redux';
 
 function App() {
     const [height, setHeight] = useState(0);
@@ -15,6 +16,9 @@ function App() {
     const [age, setAge] = useState(0);
     const [gender, setGender] = useState(false);
     const [cal, setCal] = useState(0);
+
+    const [BMRInfo, setBMRInfo] = useState(0);
+    const BMRInformations = useSelector(store => store.BMRInformations);
 
     const BMRObject = {
         height: 10,
@@ -73,7 +77,9 @@ function App() {
 
     dispatch(addBMRInformation(BMRObject));
     
-    console.log(store.getState());
+    console.log(BMRInformations);
+    
+    setBMRInfo(JSON.stringify(BMRInformations));
   }
 
 
@@ -99,6 +105,8 @@ function App() {
 
             <h1>Your BMR is = {cal}</h1>
             <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button>
+            <div>{BMRInfo}</div>
+            
         </motion.div>
         // {/* </Provider> */}
     );
