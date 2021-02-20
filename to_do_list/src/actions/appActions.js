@@ -2,30 +2,29 @@ export const ADD = 'ADD';
 export const DELETE = 'DELETE';
 export const EDIT = 'EDIT';
 
-
-export const addBMRInfromations = ({height, weight, BMR}) => ({
-    type: ADD,
-    payload: {
-        height,
-        weight,
-        BMR
-    }
+export const addRate = ({author, comment, rate}) => ({
+  type: ADD,
+  payload: {
+    author,
+    comment,
+    id: Math.floor(Math.random() * 1234),
+    rate,
+  }
 });
 
-const deleteBMRInfromations = ({height, weight, BMR}) => ({
-    type: DELETE,
-    payload: {
-        height,
-        weight,
-        BMR
-    }
+export const deleteRate = id => ({
+  type: DELETE,
+  payload: {
+    id,
+  }
 });
 
-const editBMRInfromations = ({height, weight, BMR}) => ({
-    type: EDIT,
-    payload: {
-        height,
-        weight,
-        BMR
-    }
+export const editRate = ({author, comment, id, rate}) => ({
+  type: EDIT,
+  payload: {
+    author,
+    comment,
+    id,
+    rate,
+  }
 });

@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 
 import { useDispatch } from 'react-redux';
 
-import {addBMRInfromations} from '../../actions/appActions';
+import {addRate} from '../../actions/appActions';
 
-function App({height = '1', weight= '1', BMR = '1'}) {
+import store from '../../store/store';
+
+function App() {
     const [heightt, setHeight] = useState(0);
     const [weightt, setWeight] = useState(0);
     const [bonus, setBonus] = useState(0);
@@ -20,8 +22,8 @@ function App({height = '1', weight= '1', BMR = '1'}) {
         weight: 12,
         BMR: 13
     }
-    const dispatch = useDispatch();
-    dispatch(addBMRInfromations(BMRObject));
+    // const dispatch = useDispatch();
+    // dispatch(addBMRInfromations(BMRObject));
 
     function setHeightOn(e) {
         setHeight(e.target.value);
@@ -57,6 +59,23 @@ function App({height = '1', weight= '1', BMR = '1'}) {
         } 
     });
 
+    const dispatch = useDispatch();
+    
+  const handleOnSubmit = event => {
+
+
+    const BMRObject = {
+        author: 'e',
+        comment: 'e',
+        id: 'e',
+        rate: 'e'
+    };
+
+    dispatch(addRate(BMRObject));
+    console.log('funkcja handleOnSubmit');
+    console.log(store.getState());
+  }
+
 
 
     return (
@@ -79,6 +98,7 @@ function App({height = '1', weight= '1', BMR = '1'}) {
                 </div>
 
             <h1>Your BMR is = {cal}</h1>
+            <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button>
         </motion.div>
         // {/* </Provider> */}
     );
