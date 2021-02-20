@@ -1,3 +1,4 @@
+import { findRenderedComponentWithType } from 'react-dom/test-utils';
 import { combineReducers } from 'redux';
 
 import { appReducer } from './appReducer';

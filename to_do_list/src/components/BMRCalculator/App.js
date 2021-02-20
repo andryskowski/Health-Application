@@ -1,13 +1,28 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+// import {Provider} from 'react-redux';
 
-function App() {
-    const [height, setHeight] = useState(0);
-    const [weight, setWeight] = useState(0);
+import { useDispatch } from 'react-redux';
+
+import {addBMRInfromations} from '../../actions/appActions';
+
+function App({height = '1', weight= '1', BMR = '1'}) {
+    const [heightt, setHeight] = useState(0);
+    const [weightt, setWeight] = useState(0);
     const [bonus, setBonus] = useState(0);
     const [age, setAge] = useState(0);
     const [gender, setGender] = useState(false);
     const [cal, setCal] = useState(0);
+    const [BMRD, setBRM] = useState(0);
+
+    const BMRObject = {
+        height: 10,
+        weight: 12,
+        BMR: 13
+    }
+    const dispatch = useDispatch();
+    dispatch(addBMRInfromations(BMRObject));
+
     function setHeightOn(e) {
         setHeight(e.target.value);
     }
@@ -26,25 +41,26 @@ function App() {
     }
 
     useEffect(() => {
-        if (height !== 0) {
+        if (heightt !== 0) {
             //male
-            console.log(weight, height, age, bonus);
+            console.log(weightt, heightt, age, bonus);
             if (gender) {
-                const BMR = (10 * weight + 6.25 * height - 5 * age - (-bonus + -5));
+                const BMR = (10 * weightt + 6.25 * heightt - 5 * age - (-bonus + -5));
                 setCal(BMR);
                 localStorage.setItem('BMR', BMR);
             }//female
             else {
-                const BMR = (10 * weight + 6.25 * height - 5 * age - (161 - bonus));
+                const BMR = (10 * weightt + 6.25 * heightt - 5 * age - (161 - bonus));
                 setCal(BMR);
                 localStorage.setItem('BMR', BMR);
             }
         } 
     });
 
-    console.log(gender);
+
 
     return (
+        // <Provider store={store}>
         <motion.div initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -64,6 +80,7 @@ function App() {
 
             <h1>Your BMR is = {cal}</h1>
         </motion.div>
+        // {/* </Provider> */}
     );
 }
 

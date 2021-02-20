@@ -1,7 +1,9 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import { validate } from '../middleware/validate';
 
 import { rootReducer } from '../reducers/rootReducer';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer,
+    applyMiddleware(validate));
 
 export default store;

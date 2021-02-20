@@ -3,7 +3,7 @@ export const DELETE = 'DELETE';
 export const EDIT = 'EDIT';
 
 
-const addBMRInfromations = ({height, weight, BMR}) => ({
+export const addBMRInfromations = ({height, weight, BMR}) => ({
     type: ADD,
     payload: {
         height,
