@@ -4,18 +4,17 @@ import { motion } from 'framer-motion';
 
 import { useDispatch } from 'react-redux';
 
-import {addRate} from '../../actions/appActions';
+import {addBMRInformation} from '../../actions/appActions';
 
 import store from '../../store/store';
 
 function App() {
-    const [heightt, setHeight] = useState(0);
-    const [weightt, setWeight] = useState(0);
+    const [height, setHeight] = useState(0);
+    const [weight, setWeight] = useState(0);
     const [bonus, setBonus] = useState(0);
     const [age, setAge] = useState(0);
     const [gender, setGender] = useState(false);
     const [cal, setCal] = useState(0);
-    const [BMRD, setBRM] = useState(0);
 
     const BMRObject = {
         height: 10,
@@ -43,16 +42,16 @@ function App() {
     }
 
     useEffect(() => {
-        if (heightt !== 0) {
+        if (height !== 0) {
             //male
-            console.log(weightt, heightt, age, bonus);
+            console.log(weight, height, age, bonus);
             if (gender) {
-                const BMR = (10 * weightt + 6.25 * heightt - 5 * age - (-bonus + -5));
+                const BMR = (10 * weight + 6.25 * height - 5 * age - (-bonus + -5));
                 setCal(BMR);
                 localStorage.setItem('BMR', BMR);
             }//female
             else {
-                const BMR = (10 * weightt + 6.25 * heightt - 5 * age - (161 - bonus));
+                const BMR = (10 * weight + 6.25 * height - 5 * age - (161 - bonus));
                 setCal(BMR);
                 localStorage.setItem('BMR', BMR);
             }
@@ -62,17 +61,18 @@ function App() {
     const dispatch = useDispatch();
     
   const handleOnSubmit = event => {
-
+    const actualHeight = Number(height);
+    const actualWeight = Number(weight);
+    const actualBMR = cal;
 
     const BMRObject = {
-        author: 'e',
-        comment: 'e',
-        id: 'e',
-        rate: 'e'
+        height: actualHeight,
+        weight: actualWeight,
+        BMR: actualBMR
     };
 
-    dispatch(addRate(BMRObject));
-    console.log('funkcja handleOnSubmit');
+    dispatch(addBMRInformation(BMRObject));
+    
     console.log(store.getState());
   }
 
