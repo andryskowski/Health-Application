@@ -6,6 +6,7 @@ import BMRCalculator from './components/BMRCalculator/App';
 import ToDoList from './components/ToDoList/ToDoList';
 import FoodCalculator from './components/Food/App';
 import Nav from './components/Navbar/App';
+import Nav2 from './components/NavbarSmaller/App';
 import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home/App';
 
@@ -23,6 +24,7 @@ const App = () => {
       
       <AnimatePresence exit={{opacity: 0}}>
       <Nav />
+      <Nav2 />
         <Switch>
           <Route path="/BMICalculator" component={BMICalculator}></Route>
           <Route path="/BMRCalculator" component={BMRCalculator}></Route>

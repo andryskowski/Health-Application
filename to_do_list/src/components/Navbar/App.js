@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion"
 const App = () => {
     return (
-            <nav className="navbar navbar-dark bg-dark position-absolute vh-100  d-none d-lg-flex">
+            <nav className="navbar navbar-light bg-light position-absolute vh-100 d-none d-lg-flex">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <Link to="/Home" className="nav-link active" href="#">Home</Link>
