@@ -9,6 +9,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "framer-motion": "^3.3.0",
+    "jquerry": "0.0.1-security",
+    "jquery": "^3.5.1",
     "json-parser": "^3.1.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
