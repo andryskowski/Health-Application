@@ -1,6 +1,7 @@
 import React from 'react';
 import './sass/App.sass';
 import { useSelector } from 'react-redux';
+import  WeatherWidget  from './WeatherWidget';
 
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
@@ -18,7 +19,9 @@ const App = () => {
         <div className="content">
             <div className="elementsFlex">
                 <div>{BMR_INFO}</div>
+                <WeatherWidget/>
             </div>
+           
         </div>
 
     );
