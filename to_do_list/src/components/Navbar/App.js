@@ -1,29 +1,30 @@
 import react from 'react';
 import './sass/App.sass';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion"
 const App = () => {
-  return (
-    <nav class="navbar navbar-dark bg-dark position-absolute vh-100 vw-20">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <Link  to="/Home" class="nav-link active" href="#">Home</Link>
-        </li>
-        <li class="nav-item">
-            <Link to="/BMICalculator" class="nav-link" href="#">BMICalculator</Link>
-        </li>
-        <li class="nav-item">
-            <Link to="/BMRCalculator" class="nav-link" href="#">BMRCalculator</Link>
-        </li>
-        <li class="nav-item">
-            <Link to="/ToDoList" class="nav-link" href="#">ToDoList</Link>
-        </li>
-        <li class="nav-item">
-            <Link to="/Food" class="nav-link" href="#">FoodCalculator</Link>
-        </li>
-    </ul>
-</nav>
-);
+    return (
+            <nav className="navbar navbar-dark bg-dark position-absolute vh-100 vw-2 d-none d-lg-block">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link to="/Home" className="nav-link active" href="#">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/BMICalculator" className="nav-link" href="#">BMICalculator</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/BMRCalculator" className="nav-link" href="#">BMRCalculator</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/ToDoList" className="nav-link" href="#">ToDoList</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/Food" className="nav-link" href="#">FoodCalculator</Link>
+                    </li>
+                </ul>
+            </nav>
+        
+    );
 };
 
 export default App;
