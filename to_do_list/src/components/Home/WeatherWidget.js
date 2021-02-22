@@ -8,6 +8,7 @@ const WeatherWidget = () => {
     const [ACTUAL_TEMPERATURE, setActualTemperature] = useState(0);
     const [WEATHER_DESCRIPTION, setWeatherDescription] = useState(0);
     const [WEATHER_LOCATION, setWeatherLocation] = useState(0);
+    const [WEATHER_ICON, setWeatherIcon] = useState(0);
 
     function getLocation() {
         if (navigator.geolocation) {
@@ -35,6 +36,7 @@ const WeatherWidget = () => {
         setActualTemperature(Math.ceil(API_RES.main.temp - 273.15));
         setWeatherDescription(API_RES.weather[0].description);
         setWeatherLocation(API_RES.name);
+        setWeatherIcon(`http://openweathermap.org/img/wn/${API_RES.weather[0].icon}.png`)
     }
 
     return (
@@ -43,7 +45,8 @@ const WeatherWidget = () => {
             WeatherWidget
             <button onClick={weatherData()}>WeatherButton</button>
             {ACTUAL_TEMPERATURE}&#176;C
-            -{WEATHER_DESCRIPTION}
+            -{WEATHER_DESCRIPTION}-{WEATHER_LOCATION}-
+            <img src={WEATHER_ICON}></img>
         </div>
 
     );
