@@ -3,8 +3,9 @@ import Axios from 'axios';
 
 const WeatherWidget = () => {
     //geolocation
-    const [LAT, setLAT] = useState(0);
-    const [LON, setLON] = useState(0);
+    const [LAT, setLat] = useState(0);
+    const [LON, setLon] = useState(0);
+    const [ACTUAL_TEMPERATURE, setActualTemperature] = useState(0);
     function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
@@ -16,8 +17,8 @@ const WeatherWidget = () => {
     function showPosition(position) {
         console.log("Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude);
-        setLAT(position.coords.latitude);
-        setLON(position.coords.longitude);
+        setLat(position.coords.latitude);
+        setLon(position.coords.longitude);
       }
 
       //connection with API (OpenWeatherMap)
@@ -26,8 +27,10 @@ const WeatherWidget = () => {
 
     async function weatherData(){
         getLocation();
-        await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`).then((res) => console.log(res.json() ));
+        const API_RES = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`).then((res) => res.json());
         console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`);
+        setActualTemperature(Math.ceil(API_RES.main.temp - 273.15));
+        
     }
 
     return (
@@ -35,6 +38,7 @@ const WeatherWidget = () => {
             <b>Home page is in maintenance mode</b>
             WeatherWidget
             <button onClick={weatherData()}>WeatherButton</button>
+            {ACTUAL_TEMPERATURE}&#176;C
         </div>
 
     );
