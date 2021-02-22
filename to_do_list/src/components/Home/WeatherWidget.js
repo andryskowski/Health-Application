@@ -7,6 +7,7 @@ const WeatherWidget = () => {
     const [LON, setLon] = useState(0);
     const [ACTUAL_TEMPERATURE, setActualTemperature] = useState(0);
     const [WEATHER_DESCRIPTION, setWeatherDescription] = useState(0);
+    const [WEATHER_LOCATION, setWeatherLocation] = useState(0);
 
     function getLocation() {
         if (navigator.geolocation) {
@@ -33,7 +34,7 @@ const WeatherWidget = () => {
         console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`);
         setActualTemperature(Math.ceil(API_RES.main.temp - 273.15));
         setWeatherDescription(API_RES.weather[0].description);
-        
+        setWeatherLocation(API_RES.name);
     }
 
     return (
