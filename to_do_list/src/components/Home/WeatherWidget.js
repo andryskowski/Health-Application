@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import './sass/App.sass';
 
 const WeatherWidget = () => {
     //geolocation
@@ -44,9 +45,11 @@ const WeatherWidget = () => {
             <b>Home page is in maintenance mode</b>
             WeatherWidget
             <button onClick={weatherData()}>WeatherButton</button>
+            <div className="weather-widget">
             {ACTUAL_TEMPERATURE}&#176;C
             -{WEATHER_DESCRIPTION}-{WEATHER_LOCATION}-
             <img src={WEATHER_ICON}></img>
+            </div>
         </div>
 
     );
