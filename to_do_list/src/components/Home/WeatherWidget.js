@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './sass/App.sass';
 
@@ -30,7 +30,7 @@ const WeatherWidget = () => {
 
     const API_KEY = `9215f8be73c158f8f88c53de2a692d57`;
 
-    async function weatherData(){
+    async function getWeatherData(){
         getLocation();
         const API_RES = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`).then((res) => res.json());
         console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`);
@@ -40,11 +40,15 @@ const WeatherWidget = () => {
         setWeatherIcon(`http://openweathermap.org/img/wn/${API_RES.weather[0].icon}.png`)
     }
 
+    useEffect(()=>{
+     getWeatherData();
+    });
+
     return (
         <div className="content">
             <b>Home page is in maintenance mode</b>
             WeatherWidget
-            <button onClick={weatherData()}>WeatherButton</button>
+            {/* <button onClick={getWeatherData()}>WeatherButton</button> */}
             <div className="weather-widget">
             <div class="first-row">
             <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
