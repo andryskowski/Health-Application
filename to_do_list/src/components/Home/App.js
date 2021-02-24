@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './sass/App.sass';
 import { useSelector } from 'react-redux';
 import  WeatherWidget  from './WeatherWidget';
 
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
+    const [TASKS_TODAY, setTasksToday] = useState(0);
 
     const INFO_BMR_ELEMENTS = BMRInformations.map(info => (
         info.BMR
@@ -24,10 +25,12 @@ const App = () => {
                if (task.date === TODAY_DATE)
            { 
                ARRAY_FOR_TEXTS_TASKS_TODAY.push(task.text);
+                // setTasksToday(task.text);
             }
         }
             );
         console.log(ARRAY_FOR_TEXTS_TASKS_TODAY);
+        return ARRAY_FOR_TEXTS_TASKS_TODAY;
         
     }
 
@@ -44,7 +47,7 @@ const App = () => {
                 <WeatherWidget/>
                 <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMRActual'))}</h2></div>
                 <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
-                <div className="to-do-list-widget widget"><h2>Tasks to be done today: 
+                <div className="to-do-list-widget widget"><h2>Tasks for today: {getTasksForToday()}
   
                     </h2></div>
         </div>
