@@ -21,7 +21,7 @@ const App = () => {
                 {/* <div>{BMR_INFO}</div> */}
                 <WeatherWidget/>
                 <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMRActual'))}</h2></div>
-                <div className="bmi-widget widget"><h2>Your actual BMI is: {0}</h2></div>
+                <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
                 <div className="to-do-list-widget widget"><h2>Tasks to be done today: {0}</h2></div>
         </div>
 

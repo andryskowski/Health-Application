@@ -45,6 +45,7 @@ function App() {
         if (weight != 0 && height != 0) {
             let bmiNumber = (Number(weight) / (Number(height) * 2)) * 100;
             setBMI(bmiNumber.toFixed(1));
+            localStorage.setItem('BMI', bmiNumber.toFixed(1));
             changeResult(bmiNumber);
             
         }
@@ -63,7 +64,6 @@ function App() {
                 <label>Your height</label><input type="number" className="form-control w-75" onChange={handleHeight} ></input>
                 <label>Your weight</label><input type="number" className="form-control w-75" onChange={handleWeight} ></input>
                 <h2 className="mt-2">Your BMI is = {bmi}</h2>
-                {console.log(bmi)}
                 {bmi != 0 ? <h4>It means <span style={{ color: `${resultColor}`}}>{result}</span>.</h4> : <h4> </h4>}
             </div>
 
