@@ -15,8 +15,20 @@ const App = () => {
     console.log(BMR_INFO);
 
     function getTasksForToday () {
-        const ALL_TASKS = window.localStorage.getItem('Tasks');
-        console.log(ALL_TASKS);
+        const TODAY_DATE = new Date().toISOString().slice(0, 10);
+        const ALL_TASKS = JSON.parse(window.localStorage.getItem('Tasks'));
+        const ARRAY_FOR_TEXTS_TASKS_TODAY = [];
+        
+        const TASKS_FOR_TODAY = ALL_TASKS.map(task => 
+           { 
+               if (task.date === TODAY_DATE)
+           { 
+               ARRAY_FOR_TEXTS_TASKS_TODAY.push(task.text);
+            }
+        }
+            );
+        console.log(ARRAY_FOR_TEXTS_TASKS_TODAY);
+        
     }
 
     useEffect(() => {
