@@ -30,7 +30,7 @@ const App = () => {
         }
             );
         console.log(ARRAY_FOR_TEXTS_TASKS_TODAY);
-        return ARRAY_FOR_TEXTS_TASKS_TODAY;
+        return ARRAY_FOR_TEXTS_TASKS_TODAY.join(", ");
         
     }
 
