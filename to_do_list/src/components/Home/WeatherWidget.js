@@ -13,15 +13,13 @@ const WeatherWidget = () => {
 
     function getLocation() {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(setPosition);
         } else {
           console.log("Geolocation is not supported by this browser.");
         }
       }
 
-    function showPosition(position) {
-        console.log("Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude);
+    function setPosition(position) {
         setLat(position.coords.latitude);
         setLon(position.coords.longitude);
       }

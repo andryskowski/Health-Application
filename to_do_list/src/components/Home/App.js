@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './sass/App.sass';
 import { useSelector } from 'react-redux';
 import  WeatherWidget  from './WeatherWidget';
@@ -14,6 +14,16 @@ const App = () => {
 
     console.log(BMR_INFO);
 
+    function getTasksForToday () {
+        const ALL_TASKS = window.localStorage.getItem('Tasks');
+        console.log(ALL_TASKS);
+    }
+
+    useEffect(() => {
+        getTasksForToday();
+    }, []);
+
+
     return (
 
         <div className="content">
@@ -22,7 +32,9 @@ const App = () => {
                 <WeatherWidget/>
                 <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMRActual'))}</h2></div>
                 <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
-                <div className="to-do-list-widget widget"><h2>Tasks to be done today: {0}</h2></div>
+                <div className="to-do-list-widget widget"><h2>Tasks to be done today: 
+  
+                    </h2></div>
         </div>
 
     );
