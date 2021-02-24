@@ -17,11 +17,10 @@ const App = () => {
     return (
 
         <div className="content">
-            <div className="elementsFlex">
+            <b>Home page is in maintenance mode</b>
                 <div>{BMR_INFO}</div>
                 <WeatherWidget/>
-            </div>
-           
+                <div className="widget">BRM</div>
         </div>
 
     );

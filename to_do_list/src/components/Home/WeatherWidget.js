@@ -45,11 +45,10 @@ const WeatherWidget = () => {
     });
 
     return (
-        <div className="content">
-            <b>Home page is in maintenance mode</b>
+        <>
             WeatherWidget
             {/* <button onClick={getWeatherData()}>WeatherButton</button> */}
-            <div className="weather-widget">
+            <div className="weather-widget widget">
             <div class="first-row">
             <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
             <img class="weather-icon" src={WEATHER_ICON}></img>
@@ -57,7 +56,7 @@ const WeatherWidget = () => {
             <h3>{WEATHER_LOCATION}, {WEATHER_DESCRIPTION}</h3>
             
             </div>
-        </div>
+        </>
 
     );
 };
