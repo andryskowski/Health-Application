@@ -83,7 +83,14 @@ class App extends Component {
     const IS_ADD_OR_REMOVE = true;
     this.changeActualBMR(calories, isFoodOrSport, IS_ADD_OR_REMOVE);
 
+
     return true;
+  }
+
+  resetActualBMR = () => {
+    const BMR = JSON.parse(window.localStorage.getItem('BMR'));
+    window.localStorage.removeItem('BMRActual');
+    window.location.reload(true);
   }
 
   render() {
@@ -95,6 +102,7 @@ class App extends Component {
           <AddTask add={this.addTask} />
           <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
           <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
+          <button className="btn btn-outline-secondary" onClick={this.resetActualBMR}>Reset Actual BMR</button>
         </div>
       </motion.div>
     );
