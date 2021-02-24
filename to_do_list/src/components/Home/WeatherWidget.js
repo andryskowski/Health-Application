@@ -46,9 +46,12 @@ const WeatherWidget = () => {
             WeatherWidget
             <button onClick={weatherData()}>WeatherButton</button>
             <div className="weather-widget">
+            <div class="first-row">
             <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
-            -{WEATHER_DESCRIPTION}-{WEATHER_LOCATION}-
             <img class="weather-icon" src={WEATHER_ICON}></img>
+            </div>
+            <h3>{WEATHER_LOCATION}, {WEATHER_DESCRIPTION}</h3>
+            
             </div>
         </div>
 
