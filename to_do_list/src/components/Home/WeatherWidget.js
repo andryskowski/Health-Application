@@ -46,7 +46,6 @@ const WeatherWidget = () => {
 
     return (
         <>
-            WeatherWidget
             {/* <button onClick={getWeatherData()}>WeatherButton</button> */}
             <div className="weather-widget widget">
             <div class="first-row">
