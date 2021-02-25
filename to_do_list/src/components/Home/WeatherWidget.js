@@ -30,12 +30,13 @@ const WeatherWidget = () => {
 
     async function getWeatherData(){
         getLocation();
-        const API_RES = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`).then((res) => res.json());
-        console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`);
-        setActualTemperature(Math.ceil(API_RES.main.temp - 273.15));
-        setWeatherDescription(API_RES.weather[0].description);
-        setWeatherLocation(API_RES.name);
-        setWeatherIcon(`http://openweathermap.org/img/wn/${API_RES.weather[0].icon}.png`)
+        const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`;
+        const apiRES = await fetch(URL).then((res) => res.json());
+        setActualTemperature(Math.ceil(apiRES.main.temp - 273.15));
+        setWeatherDescription(apiRES.weather[0].description);
+        setWeatherLocation(apiRES.name);
+        const iconURL = `http://openweathermap.org/img/wn/${apiRES.weather[0].icon}.png`;
+        setWeatherIcon(iconURL);
     }
 
     useEffect(()=>{
@@ -44,7 +45,6 @@ const WeatherWidget = () => {
 
     return (
         <>
-            {/* <button onClick={getWeatherData()}>WeatherButton</button> */}
             <div className="weather-widget widget">
             <div class="first-row">
             <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
