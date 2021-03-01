@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-// import {Provider} from 'react-redux';
-
 import { useDispatch } from 'react-redux';
 
 import {addBMRInformation} from '../../actions/appActions';
@@ -27,8 +25,6 @@ function App() {
         weight: 12,
         BMR: 13
     }
-    // const dispatch = useDispatch();
-    // dispatch(addBMRInfromations(BMRObject));
 
     function setHeightOn(e) {
         setHeight(e.target.value);
@@ -78,8 +74,7 @@ function App() {
     };
 
     dispatch(addBMRInformation(BMRObject));
-    
-    // setBMRInfo(JSON.stringify(BMRInformations));
+
     console.log(BMRInformations);
   }
 
@@ -107,7 +102,7 @@ function App() {
             <h1>Your BMR is = {cal}</h1>
             <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button>
             <div>{bmrbmr}</div>
-            
+
         </motion.div>
         // {/* </Provider> */}
     );

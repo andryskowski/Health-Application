@@ -65,6 +65,12 @@ function App() {
                 <label>Your weight</label><input type="number" className="form-control w-75" onChange={handleWeight} ></input>
                 <h2 className="mt-2">Your BMI is = {bmi}</h2>
                 {bmi != 0 ? <h4>It means <span style={{ color: `${resultColor}`}}>{result}</span>.</h4> : <h4> </h4>}
+                <h2>What is the body mass index (BMI)?</h2>
+                <p>BMI takes into account natural variations in body shape, giving a healthy weight range for a particular height.
+                As well as measuring your BMI, healthcare professionals may take other factors into account when assessing if you're a healthy weight.0
+                Muscle is much denser than fat, so very muscular people, such as heavyweight boxers, weight trainers and athletes, may be a healthy weight even though their BMI is classed as obese.
+                Your ethnic group can also affect your risk of some health conditions. For example, adults of Asian origin may have a higher risk of health problems at BMI levels below 25.
+                You should not use BMI as a measure if you're pregnant. Get advice from your midwife or GP if you're concerned about your weight.</p>
             </div>
 
         </div>

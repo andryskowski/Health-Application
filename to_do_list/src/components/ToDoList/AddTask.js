@@ -83,7 +83,7 @@ class AddTask extends Component {
                 <label id="date" htmlFor="date"className="form-label">Date</label>
                 <input type="date" className="form-control m-2" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
 
-                <button  onClick={this.handleClick} className="btn btn-outline-secondary  ">Dodaj</button>
+                <button  onClick={this.handleClick} className="btn btn-outline-secondary  ">Add</button>
             </div>
         );
     }
