@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
-
+import './sass/App.sass';
 import {addBMRInformation} from '../../actions/appActions';
 
 import store from '../../store/store';
