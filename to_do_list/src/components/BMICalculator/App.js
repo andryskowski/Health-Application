@@ -61,7 +61,8 @@ function App() {
                     <label>Your height</label><input type="number" className="form-control w-25" onChange={handleHeight} ></input>
                     <label>Your weight</label><input type="number" className="form-control w-25" onChange={handleWeight} ></input>
                     <h2 className="mt-2">Your BMI is = {bmi}</h2>
-                    {bmi != 0 ? <h4>It means <span style={{ color: `${resultColor}` }}>{result}</span>.</h4> : <h4> </h4>}
+                    {bmi != 0 ? <h4>It means <span style={{ color: `${resultColor}` }}>{result}</span>.</h4> : <h4> It means ...</h4>}
+                    {/* {bmi != 0 ? <h4>It means <span style={{ color: `${resultColor}` }}>{result}</span>.</h4> : <h4> </h4>} */}
                     <div className="bmi-info">
                     <h2>What is the body mass index (BMI)?</h2>
                     <p >BMI takes into account natural variations in body shape, giving a healthy weight range for a particular height.
