@@ -86,7 +86,7 @@ function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="App form-group">
-            <h1>Calories calculator</h1>
+            <h1 className="h1-bmi">Calories calculator</h1>
                 height <input onChange={setHeightOn} className="form-control w-75"></input>
                 weight <input onChange={setWeightOn} className="form-control w-75"></input>
                 age <input onChange={setAgeOn} className="form-control w-75"></input>
@@ -100,8 +100,12 @@ function App() {
                 </div>
 
             <h1>Your BMR is = {cal}</h1>
-            <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button>
-            <div>{bmrbmr}</div>
+            {/* <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button> */}
+            {/* <div>{bmrbmr}</div> */}
+            <div className="bmr-info">
+                    <h2>What is the Basal Metabolic Rate?(BMR)?</h2>
+                    <p>Basal metabolic rate (BMR) is the total number of calories that your body needs to perform basic, life-sustaining functions. These basal functions include circulation, breathing, cell production, nutrient processing, protein synthesis, and ion transport. You can calculate the basal metabolic rate using a mathematical formula. </p>
+            </div>
 
         </motion.div>
         // {/* </Provider> */}
