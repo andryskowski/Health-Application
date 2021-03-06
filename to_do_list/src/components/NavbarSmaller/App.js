@@ -20,6 +20,9 @@ const App = () => {
                     <li className="nav-item">
                         <Link to="/Food" className="nav-link" href="#">FoodCalculator</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to="/Dashboard" className="nav-link" href="#">Dashboard</Link>
+                    </li>
                 </ul>
             </nav>
         
