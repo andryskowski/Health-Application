@@ -9,6 +9,8 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './sass/App.sass';
 
+import { DateNavigator } from '@devexpress/dx-react-scheduler-material-ui';
+
 const currentDate = new Date().toISOString().slice(0, 10);
 const schedulerData = [
   { startDate: '2018-11-01T09:45', endDate: '2018-11-01T09:46', title: 'Meeting' },
@@ -16,16 +18,18 @@ const schedulerData = [
 ];
 
 export default () => (
+    
   <Paper className="scheduler">
+      
     <Scheduler
       data={schedulerData}
     >
+        <DateNavigator></DateNavigator>
       <ViewState
         currentDate={currentDate}
       />
-      <MonthView
-        
-      />
+      <MonthView></MonthView>
+      
       <Appointments />
     </Scheduler>
   </Paper>
