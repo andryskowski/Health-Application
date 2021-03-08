@@ -24,6 +24,7 @@ import Login from "./components/Authentication/Login"
 import PrivateRoute from "./components/Authentication/PrivateRoute"
 import ForgotPassword from "./components/Authentication/ForgotPassword"
 import UpdateProfile from "./components/Authentication/UpdateProfile"
+import Scheduler from './components/Scheduler/App';
 
 const App = () => {
 
@@ -45,6 +46,7 @@ const App = () => {
               <PrivateRoute path="/ToDoList" component={ToDoList}></PrivateRoute>
               <PrivateRoute path="/Food" component={FoodCalculator}></PrivateRoute>
               <PrivateRoute path="/home" component={Home}></PrivateRoute>
+              <PrivateRoute path="/scheduler" component={Scheduler}></PrivateRoute>
 
               <Container
                 className="d-flex align-items-center justify-content-center"
