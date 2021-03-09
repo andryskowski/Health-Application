@@ -56,6 +56,7 @@ function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}>
             <div className="App form-group " >
+            <h1 className="header">BMI</h1>
                 <h1 className="h1-bmi">BMI Calculator</h1>
                 <div class="form-group">
                     <label>Your height</label><input type="number" className="form-control w-25" onChange={handleHeight} ></input>

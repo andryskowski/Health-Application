@@ -43,7 +43,7 @@ const App = () => {
     return (
 
         <div className="content">
-
+            <h1 className="header">Home</h1>
                 {/* <div>{BMR_INFO}</div> */}
                 <WeatherWidget/>
                 <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>

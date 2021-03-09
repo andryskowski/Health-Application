@@ -99,6 +99,7 @@ class App extends Component {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}>
         <div className="content-application">
+        <h1 className="header">Activities</h1>
           <AddTask add={this.addTask} />
           <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
           <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>

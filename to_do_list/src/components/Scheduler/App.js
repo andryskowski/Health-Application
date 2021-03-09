@@ -45,7 +45,7 @@ export default class Demo extends React.PureComponent {
         const TASK_FOR_SCHEDULER = {
           startDate: task.date + `T00:00`,
           endDate: task.date + `T00:01`,
-          title: task.text + `, ` + task.calories + ` calories` + `, ` + task.isFoodOrSport,
+          title: task.text + `, ` + task.calories + ` calories`,
           isFoodOrSport: task.isFoodOrSport
         }
         this.ARRAY_TASKS_FOR_SCHEDULER.push(TASK_FOR_SCHEDULER);
@@ -70,7 +70,10 @@ export default class Demo extends React.PureComponent {
     const currentDate = new Date().toISOString().slice(0, 10);
 
     return (
+      <>
+      
       <Paper className="scheduler">
+      <h1 className="header">Scheduler</h1>
         <Scheduler
           data={data}
         >
@@ -91,7 +94,7 @@ export default class Demo extends React.PureComponent {
         </Scheduler>
         <h5>food - <span style={{color: "#BC243C"}}>red</span>, sport - <span style={{color: "blue"}}>blue</span></h5>
       </Paper>
-      
+      </>
     );
   }
 }

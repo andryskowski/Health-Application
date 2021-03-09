@@ -43,7 +43,7 @@ const App = () => {
     <motion.div initial={{opacity: 0}}
     animate={{opacity: 1}}
     exit={{opacity: 0}}>
-
+<h1 className="header">Food</h1>
   <div className="App">
     <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
     <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>

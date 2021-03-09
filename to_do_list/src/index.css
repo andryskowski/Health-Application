@@ -16,4 +16,12 @@ code {
 .App{
   margin-left: 15vw;
 }
+
+.header{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    font-size: 8em;
+  }
     
