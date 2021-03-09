@@ -13,7 +13,7 @@ const Task = props => {
                 <button className="checked-button" onClick={() => props.change(id)}>&#10003;</button>
                  </p>
                 :
-                <p style={{ color: "red" }}>  {props.task.text} /
+                <p style={{ color: "#BC243C" }}>  {props.task.text} /
                  {props.task.date} /
                  {props.task.calories} {'calories'} 
                  <button className="x-button" onClick={() => props.remove(id)}>X</button>
