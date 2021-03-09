@@ -19,7 +19,7 @@ const CustomAppointment = ({ style, ...restProps }) => {
     return (
       <Appointments.Appointment
         {...restProps}
-        style={{ ...style, backgroundColor: "red" }}
+        style={{ ...style, backgroundColor: "#BC243C" }}
         className="food"
       />
     );
