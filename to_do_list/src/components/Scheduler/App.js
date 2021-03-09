@@ -11,6 +11,7 @@ import {
   Resources
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './sass/App.sass';
+import { motion } from 'framer-motion';
 
 // import { appointments } from '../../../demo-data/month-appointments';
 
@@ -70,7 +71,9 @@ export default class Demo extends React.PureComponent {
     const currentDate = new Date().toISOString().slice(0, 10);
 
     return (
-      <>
+      <motion.div initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}>
       
       <Paper className="scheduler">
       <h1 className="header">Scheduler</h1>
@@ -94,7 +97,7 @@ export default class Demo extends React.PureComponent {
         </Scheduler>
         <h5>food - <span style={{color: "#BC243C"}}>red</span>, sport - <span style={{color: "blue"}}>blue</span></h5>
       </Paper>
-      </>
+      </motion.div>
     );
   }
 }
