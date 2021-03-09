@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const App = () => {
     return (
-            <nav className="navbar-expand navbar-light bg-light  vw-2 d-block d-lg-none">
+            <nav className="navbar-expand navbar-dark bg-dark  vw-2 d-block d-lg-none">
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <Link to="/Home" className="nav-link active" href="#">Home</Link>
