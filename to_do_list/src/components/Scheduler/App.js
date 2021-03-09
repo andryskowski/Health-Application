@@ -4,6 +4,7 @@ import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
   DayView,
+  Toolbar,
   MonthView,
   Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
@@ -24,11 +25,13 @@ export default () => (
     <Scheduler
       data={schedulerData}
     >
-        <DateNavigator></DateNavigator>
+        
       <ViewState
         currentDate={currentDate}
       />
       <MonthView></MonthView>
+      <Toolbar />
+          <DateNavigator />
       
       <Appointments />
     </Scheduler>
