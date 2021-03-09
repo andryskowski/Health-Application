@@ -8,10 +8,30 @@ import {
   DateNavigator,
   Appointments,
   TodayButton,
+  Resources
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './sass/App.sass';
 
 // import { appointments } from '../../../demo-data/month-appointments';
+
+const CustomAppointment = ({ style, ...restProps }) => {
+  if (restProps.data.isFoodOrSport === false)
+    return (
+      <Appointments.Appointment
+        {...restProps}
+        style={{ ...style, backgroundColor: "red" }}
+        className="food"
+      />
+    );
+  if (restProps.data.isFoodOrSport === true)
+    return (
+      <Appointments.Appointment
+        {...restProps}
+        style={{ ...style, backgroundColor: "blue" }}
+        className="sport"
+      />
+    );
+};
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
@@ -26,7 +46,8 @@ export default class Demo extends React.PureComponent {
         const TASK_FOR_SCHEDULER = {
           startDate: task.date + `T00:00`,
           endDate: task.date + `T00:01`,
-          title: task.text + `, ` + task.calories + ` calories`,
+          title: task.text + `, ` + task.calories + ` calories` + `, ` + task.isFoodOrSport,
+          isFoodOrSport: task.isFoodOrSport
         }
         this.ARRAY_TASKS_FOR_SCHEDULER.push(TASK_FOR_SCHEDULER);
       }}
@@ -42,6 +63,7 @@ export default class Demo extends React.PureComponent {
   }
 
 
+  
 
   render() {
     const { data } = this.state;
@@ -53,13 +75,19 @@ export default class Demo extends React.PureComponent {
           data={data} 
         >
           <ViewState
-            defaultCurrentDate={currentDate}
+            defaultCurrentDate={currentDate} 
           />
           <MonthView />
           <Toolbar />
           <DateNavigator />
           <TodayButton />
-          <Appointments />
+          {/* <Appointments className="task"/> */}
+          <Appointments appointmentComponent={CustomAppointment} />
+          {/* <Appointments.Appointment style={{ ...style, backgroundColor: "red" }} className="CLASS_ROOM1" /> */}
+          <Resources
+              // data={data}
+              // mainResourceName={mainResourceName}
+            />
         </Scheduler>
       </Paper>
     );
