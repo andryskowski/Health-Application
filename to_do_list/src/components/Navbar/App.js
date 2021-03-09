@@ -18,8 +18,12 @@ const App = () => {
                     <li className="nav-item">
                         <Link to="/ToDoList" className="nav-link" href="#">ToDoList</Link>
                     </li>
+                    
                     <li className="nav-item">
                         <Link to="/Food" className="nav-link" href="#">FoodCalculator</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/Scheduler" className="nav-link" href="#">Scheduler</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/Dashboard" className="nav-link" href="#">Dashboard</Link>
