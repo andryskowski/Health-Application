@@ -39,10 +39,9 @@ export default class Demo extends React.PureComponent {
 
     this.ARRAY_TASKS_FOR_SCHEDULER = [];
     const TASKS = JSON.parse(window.localStorage.getItem('Tasks'));
-    TASKS.forEach(task => 
-      {
-        if(task.text)
-      {
+    if( window.localStorage.getItem('Tasks') )
+    {TASKS.forEach(task => {
+      if (task.text) {
         const TASK_FOR_SCHEDULER = {
           startDate: task.date + `T00:00`,
           endDate: task.date + `T00:01`,
@@ -50,8 +49,9 @@ export default class Demo extends React.PureComponent {
           isFoodOrSport: task.isFoodOrSport
         }
         this.ARRAY_TASKS_FOR_SCHEDULER.push(TASK_FOR_SCHEDULER);
-      }}
-      );
+      }
+    }
+    );}
 
     this.state = {
       // data: [
@@ -63,19 +63,19 @@ export default class Demo extends React.PureComponent {
   }
 
 
-  
+
 
   render() {
     const { data } = this.state;
     const currentDate = new Date().toISOString().slice(0, 10);
-    
+
     return (
       <Paper className="scheduler">
         <Scheduler
-          data={data} 
+          data={data}
         >
           <ViewState
-            defaultCurrentDate={currentDate} 
+            defaultCurrentDate={currentDate}
           />
           <MonthView />
           <Toolbar />
@@ -85,9 +85,9 @@ export default class Demo extends React.PureComponent {
           <Appointments appointmentComponent={CustomAppointment} />
           {/* <Appointments.Appointment style={{ ...style, backgroundColor: "red" }} className="CLASS_ROOM1" /> */}
           <Resources
-              // data={data}
-              // mainResourceName={mainResourceName}
-            />
+          // data={data}
+          // mainResourceName={mainResourceName}
+          />
         </Scheduler>
       </Paper>
     );
