@@ -17,11 +17,27 @@ export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.ARRAY_TASKS_FOR_SCHEDULER = [];
+    const TASKS = JSON.parse(window.localStorage.getItem('Tasks'));
+    TASKS.forEach(task => 
+      {
+        if(task.text)
+      {
+        const TASK_FOR_SCHEDULER = {
+          startDate: task.date + `T09:45`,
+          endDate: task.date + `T09:46`,
+          title: task.text,
+        }
+        this.ARRAY_TASKS_FOR_SCHEDULER.push(TASK_FOR_SCHEDULER);
+      }}
+      );
+
     this.state = {
-      data: [
-        { startDate: '2021-03-09T09:45', endDate: '2021-03-09T09:46', title: 'Meeting' },
-        { startDate: '2021-03-09T12:00', endDate: '2021-03-09T13:30', title: 'Go to a gym' },
-      ],
+      // data: [
+      //   { startDate: '2021-03-09T09:45', endDate: '2021-03-09T09:46', title: 'Meeting' },
+      //   { startDate: '2021-03-09T12:00', endDate: '2021-03-09T13:30', title: 'Go to a gym' },
+      // ],
+      data: this.ARRAY_TASKS_FOR_SCHEDULER
     };
   }
 
@@ -30,6 +46,7 @@ export default class Demo extends React.PureComponent {
   render() {
     const { data } = this.state;
     const currentDate = new Date().toISOString().slice(0, 10);
+    
     return (
       <Paper className="scheduler">
         <Scheduler
