@@ -24,8 +24,8 @@ export default class Demo extends React.PureComponent {
         if(task.text)
       {
         const TASK_FOR_SCHEDULER = {
-          startDate: task.date + `T09:45`,
-          endDate: task.date + `T09:46`,
+          startDate: task.date + `T00:00`,
+          endDate: task.date + `T00:01`,
           title: task.text,
         }
         this.ARRAY_TASKS_FOR_SCHEDULER.push(TASK_FOR_SCHEDULER);
