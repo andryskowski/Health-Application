@@ -16,14 +16,15 @@ const App = () => {
     }
 
     function postForumPost() {
+        console.log('click');
         fetch(`http://localhost:8000/posts`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              title: `siema`,
-              content: `stronaa supi`
+              title: `sdsadsa`,
+              content: `stdsasupi`
             })
           })
             .then(resp => resp.json())
@@ -40,6 +41,7 @@ const App = () => {
         <div className="content">
             <h1 className="header">Forum</h1>
             <button onClick={postForumPost}>dodaj post</button>
+            <button onClick={getForumPost}>get posts</button>
         </div>
 
     );
