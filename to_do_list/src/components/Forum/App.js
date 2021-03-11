@@ -16,21 +16,21 @@ const App = () => {
             });
     }
 
-    function postForumPost() {
-        console.log('click');
-        fetch(`http://localhost:8000/posts`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              title: `sdsadsa`,
-              content: `stdsasupi`
-            })
-          })
-            .then(resp => resp.json())
-            // .then(renderToys)
-    }
+    // function postForumPost() {
+    //     console.log('click');
+    //     fetch(`http://localhost:8000/posts`, {
+    //         method: 'POST',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //           title: `sdsadsa`,
+    //           content: `stdsasupi`
+    //         })
+    //       })
+    //         .then(resp => resp.json())
+    //         // .then(renderToys)
+    // }
 
     useEffect(() => {
         getForumPost()
@@ -46,8 +46,8 @@ const App = () => {
         <div className="content">
             <WindowPosts/>
             <h1 className="header">Forum</h1>
-            <button onClick={postForumPost}>dodaj post</button>
-            <button onClick={getForumPost}>get posts</button>
+            {/* <button onClick={postForumPost}>dodaj post</button> */}
+            {/* <button onClick={getForumPost}>get posts</button> */}
             
         </div>
 
