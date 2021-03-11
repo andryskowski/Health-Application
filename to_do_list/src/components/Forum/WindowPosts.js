@@ -22,9 +22,10 @@ const WindowPosts = () => {
     }
 
     
-    function postForumPost() {
+    async function postForumPost(event) {
+        event.preventDefault();
         console.log('click');
-        fetch(`http://localhost:8000/posts`, {
+        await fetch(`http://localhost:8000/posts`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -35,7 +36,8 @@ const WindowPosts = () => {
             })
           })
             .then(resp => resp.json())
-          
+            .then(window.location.reload())
+        
             // .then(renderToys)
     }
 
@@ -61,14 +63,16 @@ const WindowPosts = () => {
             <div>{posts}</div>
             <button onClick={showPostsInState}>show posts in state</button>
             <br></br>
-            <form>
+            <form onSubmit={postForumPost}>
                 <label>
                     Content:
                 <input type="text" onChange={handleOnChangePost} name="newPost" />
                 </label>
-                
+                {/* <input type="submit" value="Wyślij" onClick={postForumPost}/> */}
+                <button>Submit</button>
+                {/* <input type="submit" value="Wyślij" /> */}
             </form>
-            <button onClick={postForumPost}>Send</button>
+            
         </div>
 
     );
