@@ -12,13 +12,14 @@ const WindowPosts = () => {
                 // response.map(resp => array_posts.push(<a>{resp.title}</a>))
                 // array_posts.push(response);
                 // console.log(array_posts);
-                response.map(resp => setPosts(prevState => prevState + ', ' + resp.title));
+                response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 // setPosts(response);
+                console.log(posts);
             })
             .catch(() => {
                 alert('Error retrieving data!');
             });
-        const posts = await response;
+        
        
         // setPosts(posts);
     }
@@ -30,9 +31,10 @@ const WindowPosts = () => {
 
     return (
 
-        <div>
+        <div style={{"width" : "20%"}}>
             <h1>Posts</h1>
-            {posts}
+            <div>{posts}</div>
+            
 
         </div>
 
