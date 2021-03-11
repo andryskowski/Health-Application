@@ -26,6 +26,9 @@ const App = () => {
                         <Link to="/Scheduler" className="nav-link" href="#">Scheduler</Link>
                     </li>
                     <li className="nav-item">
+                        <Link to="/Forum" className="nav-link" href="#">Forum</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link to="/Dashboard" className="nav-link" href="#">Dashboard</Link>
                     </li>
                 </ul>

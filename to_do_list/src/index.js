@@ -9,6 +9,7 @@ import Nav from './components/Navbar/App';
 import Nav2 from './components/NavbarSmaller/App';
 import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home/App';
+import Forum from './components/Forum/App';
 
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -47,6 +48,7 @@ const App = () => {
               <PrivateRoute path="/Food" component={FoodCalculator}></PrivateRoute>
               <PrivateRoute path="/home" component={Home}></PrivateRoute>
               <PrivateRoute path="/scheduler" component={Scheduler}></PrivateRoute>
+              <PrivateRoute path="/Forum" component={Forum}></PrivateRoute>
 
               <Container
                 className="d-flex align-items-center justify-content-center"
