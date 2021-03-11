@@ -15,14 +15,31 @@ const App = () => {
             });
     }
 
-    
+    function postForumPost() {
+        fetch(`http://localhost:8000/posts`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              title: `siema`,
+              content: `stronaa supi`
+            })
+          })
+            .then(resp => resp.json())
+            // .then(renderToys)
+    }
+
+    useEffect(() => {
+        getForumPost()
+    }, []);
 
 
     return (
 
         <div className="content">
             <h1 className="header">Forum</h1>
-            {/* <button onClick={postForumPost}>dodaj post</button> */}
+            <button onClick={postForumPost}>dodaj post</button>
         </div>
 
     );
