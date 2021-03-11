@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import WindowPosts from './WindowPosts';
 // import './sass/App.sass';
 
 const App = () => {
@@ -35,13 +36,19 @@ const App = () => {
         getForumPost()
     }, []);
 
+    function displayPosts() {
+        return ('<h1>Posts</h1>')
+    }
+
 
     return (
 
         <div className="content">
+            <WindowPosts/>
             <h1 className="header">Forum</h1>
             <button onClick={postForumPost}>dodaj post</button>
             <button onClick={getForumPost}>get posts</button>
+            
         </div>
 
     );
