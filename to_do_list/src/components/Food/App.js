@@ -50,7 +50,7 @@ const App = () => {
     <div class="form-inline">
       <div >
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control  " onChange={handleText} />
-        <input type="submit" value="search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
+        <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
       </div>
     </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
