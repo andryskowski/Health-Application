@@ -64,9 +64,9 @@ const WindowPosts = () => {
 
     return (
 
-        <div style={{ "width": "30%" }}>
+        <div >
             <h1>Posts</h1>
-            <div>{posts}</div>
+            <ul style={{  }}>{posts}</ul>
             <button onClick={showPostsInState}>show posts in state</button>
             <br></br>
             <form onSubmit={postForumPost}>
