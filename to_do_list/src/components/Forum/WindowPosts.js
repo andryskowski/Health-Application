@@ -39,9 +39,7 @@ const WindowPosts = () => {
           })
             .then(resp => resp.json())
             .then(window.location.reload())
-            .catch(() => {
-                alert('Error posting data!');
-            });
+
     }
 
     useEffect(() => {
