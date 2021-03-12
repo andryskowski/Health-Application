@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const WindowPosts = () => {
     const [posts, setPosts] = useState([]);
+    const [actualPostTitle, setActualPostTitle] = useState('');
     const [actualPostContent, setActualPostContent] = useState('');
     // const array_posts = [];
 
@@ -31,7 +32,7 @@ const WindowPosts = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              title: `nowyPost`,
+              title: actualPostTitle,
               content: actualPostContent
             })
           })
@@ -48,13 +49,18 @@ const WindowPosts = () => {
     function showPostsInState() {
         console.log(posts);
         console.log(typeof posts);
-        console.log(actualPostContent);
     }
 
-    function handleOnChangePost(e) {
-        let h = e.target.value;
-        setActualPostContent(h);
+    function handleOnChangeTitle(e) {
+        let actualInput = e.target.value;
+        setActualPostTitle(actualInput);
     }
+
+    function handleOnChangeContent(e) {
+        let actualInput = e.target.value;
+        setActualPostContent(actualInput);
+    }
+
 
     return (
 
@@ -65,8 +71,10 @@ const WindowPosts = () => {
             <br></br>
             <form onSubmit={postForumPost}>
                 <label>
-                    Content:
-                <input type="text" onChange={handleOnChangePost} name="newPost" />
+                    Title:
+                <input type="text" onChange={handleOnChangeTitle} name="newPost" />
+                Content:
+                <input type="text" onChange={handleOnChangeContent} name="newPost" />
                 </label>
                 {/* <input type="submit" value="Wyślij" onClick={postForumPost}/> */}
                 <button>Submit</button>
