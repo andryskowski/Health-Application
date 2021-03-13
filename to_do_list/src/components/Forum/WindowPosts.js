@@ -30,27 +30,26 @@ const WindowPosts = () => {
         await fetch(`http://localhost:8000/posts`, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              title: actualPostTitle,
-              content: actualPostContent
+                title: actualPostTitle,
+                content: actualPostContent
             })
-          })
+        })
             .then(resp => resp.json())
             .then(window.location.reload())
-
     }
 
     useEffect(() => {
         getForumPost();
         const windowPosts = document.querySelector('.ul-posts');
-        window.scrollTo(0,windowPosts.scrollHeight);
+        window.scrollTo(0, windowPosts.scrollHeight);
     }, []);
 
     //to set navigation bar of div with posts at bottom
-   useEffect(() => {
-    el.current.scrollIntoView({ block: 'end', behavior: 'auto' });
+    useEffect(() => {
+        el.current.scrollIntoView({ block: 'end', behavior: 'auto' });
     });
 
     function showPostsInState() {
@@ -68,26 +67,24 @@ const WindowPosts = () => {
         setActualPostContent(actualInput);
     }
 
-
     return (
 
         <div >
             <h1>Posts</h1>
             
             <div className="window-posts">
-            <ul className="ul-posts" style={{  }}>{posts}
-            </ul>
-            {/* to set navigation bar of div with posts at bottom */}
-            <div id={'el'} ref={el}>
+                <ul className="ul-posts" style={{}}>{posts}
+                </ul>
+                {/* to set navigation bar of div with posts at bottom */}
+                <div id={'el'} ref={el}>
+                </div>
             </div>
-            </div>
-            
-            
+
             <button onClick={showPostsInState}>show posts in state</button>
             <br></br>
             <form onSubmit={postForumPost}>
                 <label>
-                Title:
+                    Title:
                 <input type="text" onChange={handleOnChangeTitle} name="newPost" />
                 Content:
                 <input type="text" onChange={handleOnChangeContent} name="newPost" />
@@ -96,7 +93,7 @@ const WindowPosts = () => {
                 <button className="btn btn-outline-secondary">Submit</button>
                 {/* <input type="submit" value="Wyślij" /> */}
             </form>
-            
+
         </div>
 
     );
