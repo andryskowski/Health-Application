@@ -5,6 +5,7 @@ const WindowPosts = () => {
     const [posts, setPosts] = useState([]);
     const [actualPostTitle, setActualPostTitle] = useState('');
     const [actualPostContent, setActualPostContent] = useState('');
+    const TODAY_DATE = new Date().toISOString().slice(0, 10);
     //to set navigation bar of div with posts at bottom
     const el = useRef(null);
 
@@ -34,7 +35,8 @@ const WindowPosts = () => {
             },
             body: JSON.stringify({
                 title: actualPostTitle,
-                content: actualPostContent
+                content: actualPostContent,
+                date: TODAY_DATE
             })
         })
             .then(resp => resp.json())
