@@ -5,6 +5,7 @@ const App = () => {
     const [posts, setPosts] = useState([]);
     const [actualPostTitle, setActualPostTitle] = useState('');
     const [actualPostContent, setActualPostContent] = useState('');
+    const TODAY_DATE = new Date().toISOString().slice(0, 10);
     //to set navigation bar of div with posts at bottom
     const el = useRef(null);
 
@@ -14,7 +15,7 @@ const App = () => {
             .then(response => {
                 // response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 response.map(resp =>
-                    setPosts(prevState => [...prevState, <li>{'title: ' + resp.title + ', '}{'content: ' + resp.content}</li>]));
+                    setPosts(prevState => [...prevState, <li>{'title: ' + resp.title + ', ' + 'date: ' + resp.date + ', ' + 'content: ' + resp.content}</li>]));
 
                 console.log(posts);
             })
@@ -34,7 +35,8 @@ const App = () => {
             },
             body: JSON.stringify({
                 title: actualPostTitle,
-                content: actualPostContent
+                content: actualPostContent,
+                date: TODAY_DATE
             })
         })
             .then(resp => resp.json())

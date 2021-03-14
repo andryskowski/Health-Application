@@ -6,6 +6,7 @@ const WindowPosts = () => {
     const [actualPostTitle, setActualPostTitle] = useState('');
     const [actualPostContent, setActualPostContent] = useState('');
     const TODAY_DATE = new Date().toISOString().slice(0, 10);
+    
     //to set navigation bar of div with posts at bottom
     const el = useRef(null);
 
@@ -47,6 +48,7 @@ const WindowPosts = () => {
         getForumPost();
         const windowPosts = document.querySelector('.ul-posts');
         window.scrollTo(0, windowPosts.scrollHeight);
+        console.log("ELLLLLLLL");
     }, []);
 
     //to set navigation bar of div with posts at bottom
