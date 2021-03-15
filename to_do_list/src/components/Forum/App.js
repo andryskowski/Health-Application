@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './sass/App.sass';
+import { useAuth } from "../../contexts/AuthContext"
 
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -8,6 +9,8 @@ const App = () => {
     const TODAY_DATE = new Date().toISOString().slice(0, 10);
     //to set navigation bar of div with posts at bottom
     const el = useRef(null);
+    const { currentUser } = useAuth();
+    console.log(currentUser.email);
 
     async function getForumPost() {
         const response = await fetch("http://localhost:8000/posts")
