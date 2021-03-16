@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const App = () => {
   const [food, setFood] = useState('your product');
   const [calories, setCalories] = useState(0);
-  const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], calories: 300});
+  const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
   const [weightFood, setWeightFood] = useState(0);
 
@@ -40,7 +40,7 @@ const App = () => {
 
   function setActualDish() {
     setDish(prevState => {
-      return {...prevState, name: nameDish, ingredients: [...prevState.ingredients, food]};
+      return {...prevState, name: nameDish, ingredients: [...prevState.ingredients, food], caloriesDish: prevState.caloriesDish + calories};
     });
   }
 
@@ -91,7 +91,7 @@ const App = () => {
         <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
       </div>
     </div>
-    <p>{dish.name}, {dish.ingredients}</p>
+    <p>{dish.name}; {dish.ingredients.join()}; {dish.caloriesDish}</p>
   </div>
   <button onClick={showDish}>showDish</button>
  </motion.div>
