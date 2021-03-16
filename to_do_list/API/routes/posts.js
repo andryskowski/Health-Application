@@ -19,7 +19,8 @@ router.post('/', async (req, res) => {
     const post = new Post({
         title: req.body.title,
         content: req.body.content,
-        date: req.body.date
+        date: req.body.date,
+        email: req.body.email
     });
 
         try {

@@ -4,7 +4,8 @@ const PostSchema = mongoose.Schema(
     {
         title: String,
         content: String,
-        date: String
+        date: String,
+        email: String
     }
 );
 

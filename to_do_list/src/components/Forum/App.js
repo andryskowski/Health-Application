@@ -18,7 +18,10 @@ const App = () => {
             .then(response => {
                 // response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 response.map(resp =>
-                    setPosts(prevState => [...prevState, <li>{'title: ' + resp.title + ', ' + 'date: ' + resp.date + ', ' + 'content: ' + resp.content}</li>]));
+                    setPosts(prevState => [...prevState, <li>{'email: ' + resp.email }
+                    {' title: ' + resp.title + ', ' + 
+                    'date: ' + resp.date + ', ' + 
+                    'content: ' + resp.content}</li>]));
 
                 console.log(posts);
             })
@@ -39,7 +42,8 @@ const App = () => {
             body: JSON.stringify({
                 title: actualPostTitle,
                 content: actualPostContent,
-                date: TODAY_DATE
+                date: TODAY_DATE,
+                email: currentUser.email
             })
         })
             .then(resp => resp.json())
