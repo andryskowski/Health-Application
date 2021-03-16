@@ -38,6 +38,7 @@ const App = () => {
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setCalories(caloriesPer100G/100*weightIngredient);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
+      console.log(apiRes.data.parsed[0].food.image);
 
     } catch (err) {
       console.error("Error response:");
@@ -51,7 +52,7 @@ const App = () => {
     // const url = `https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=${APP_ID}&app_key=${APP_KEY}`
     // const result = await Axios.get(url);
     // console.log(result.data.parsed[0].food.nutrients.ENERC_KCAL);
-    // console.log(result.data.parsed[0].food.image);
+    
 
   };
 
@@ -91,7 +92,7 @@ const App = () => {
     <div class="form-inline">
       <div >
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
-        <input type="text" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightIngredient} />
+        <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightIngredient} />
         <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
         <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
       </div>
