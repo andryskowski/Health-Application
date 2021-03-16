@@ -14,6 +14,23 @@ const App = () => {
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
 
+  async function postDish(event) {
+    event.preventDefault();
+    await fetch(`http://localhost:8000/dishes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: "drugiesn",
+            ingredients: ["jablko", "rzodkiew"],
+            calories: "420"
+        })
+    })
+        .then(resp => resp.json())
+        .then(window.location.reload())
+}
+
   const getData = async () => {
     let apiRes = null;
     try {
@@ -93,7 +110,7 @@ const App = () => {
     </div>
     <p>{dish.name}; {dish.ingredients.join()}; {dish.caloriesDish}</p>
   </div>
-  <button onClick={showDish}>showDish</button>
+  <button onClick={postDish}>postDish</button>
  </motion.div>
   );
 };
