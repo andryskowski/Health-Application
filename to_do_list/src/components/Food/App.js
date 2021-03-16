@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 
 
 const App = () => {
-  const [food, setFood] = useState('your product');
+  const [ingredient, setIngredient] = useState('your product');
   const [calories, setCalories] = useState(0);
   const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
-  const [weightFood, setWeightFood] = useState(0);
+  const [weightIngredient, setWeightIngredient] = useState(0);
 
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
@@ -17,9 +17,9 @@ const App = () => {
   const getData = async () => {
     let apiRes = null;
     try {
-      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${ingredient}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
-      setCalories(caloriesPer100G/100*weightFood);
+      setCalories(caloriesPer100G/100*weightIngredient);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
 
     } catch (err) {
@@ -40,7 +40,7 @@ const App = () => {
 
   function setActualDish() {
     setDish(prevState => {
-      return {...prevState, name: nameDish, ingredients: [...prevState.ingredients, food], caloriesDish: prevState.caloriesDish + calories};
+      return {...prevState, name: nameDish, ingredients: [...prevState.ingredients, ingredient], caloriesDish: prevState.caloriesDish + calories};
     });
   }
 
@@ -50,7 +50,7 @@ const App = () => {
 
   const handleText = e => {
     let h = e.target.value;
-    setFood(h);
+    setIngredient(h);
   };
 
   const handleNameDish = e => {
@@ -58,9 +58,9 @@ const App = () => {
     setNameDish(h);
   };
 
-  const handleWeightFood = e => {
+  const handleWeightIngredient = e => {
     let h = e.target.value;
-    setWeightFood(h);
+    setWeightIngredient(h);
   };
 
   return (
@@ -74,14 +74,14 @@ const App = () => {
     <div class="form-inline">
       <div >
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
-        <input type="text" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightFood} />
+        <input type="text" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightIngredient} />
         <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
         <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
       </div>
     </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
-    <h2 className="display-4 text-secondary">{food}</h2>
-    <h3>{calories} cal/{weightFood}g</h3>
+    <h2 className="display-4 text-secondary">{ingredient}</h2>
+    <h3>{calories} cal/{weightIngredient}g</h3>
     
     <h1>New Dish</h1>
     <div class="form-inline">
