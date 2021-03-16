@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 const App = () => {
   const [food, setFood] = useState('your product');
   const [calories, setCalories] = useState(0);
+  const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], calories: 300});
+  console.log(dish);
 
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
@@ -34,6 +36,10 @@ const App = () => {
 
   };
 
+  function setActualDish() {
+    setDish({name: 'jajecznica', ingredients: ['bread', 'butter'], calories: 300})
+  }
+
   const handleText = e => {
     let h = e.target.value;
     setFood(h);
@@ -56,6 +62,7 @@ const App = () => {
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
     <h2 className="display-4 text-secondary">{food}</h2>
     <h3>{calories} cal/100g</h3>
+    <button onClick={setActualDish}>setDish</button>
   </div>
  </motion.div>
   );
