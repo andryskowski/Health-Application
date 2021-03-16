@@ -18,7 +18,7 @@ const App = () => {
             .then(response => {
                 // response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 response.map(resp =>
-                    setPosts(prevState => [...prevState, <li>{'email: ' + resp.email }
+                    setPosts(prevState => [...prevState, <li><b>{'email: ' + resp.email }</b>
                     {' title: ' + resp.title + ', ' + 
                     'date: ' + resp.date + ', ' + 
                     'content: ' + resp.content}</li>]));
