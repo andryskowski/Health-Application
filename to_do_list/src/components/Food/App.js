@@ -40,7 +40,7 @@ const App = () => {
 
   function setActualDish() {
     setDish(prevState => {
-      return {...prevState, name: nameDish};
+      return {...prevState, name: nameDish, ingredients: [...prevState.ingredients, food]};
     });
   }
 
@@ -76,6 +76,7 @@ const App = () => {
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
         <input type="text" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightFood} />
         <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
+        <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
       </div>
     </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
@@ -90,6 +91,7 @@ const App = () => {
         <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
       </div>
     </div>
+    <p>{dish.name}, {dish.ingredients}</p>
   </div>
   <button onClick={showDish}>showDish</button>
  </motion.div>
