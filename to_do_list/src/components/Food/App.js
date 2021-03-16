@@ -22,13 +22,13 @@ const App = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name: "drugiesn",
-            ingredients: ["jablko", "rzodkiew"],
-            calories: "420"
+            name: dish.name,
+            ingredients: dish.ingredients,
+            calories: dish.caloriesDish
         })
     })
         .then(resp => resp.json())
-        .then(window.location.reload())
+        // .then(window.location.reload())
 }
 
   const getData = async () => {
