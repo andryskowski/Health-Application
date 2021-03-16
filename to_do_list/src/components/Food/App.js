@@ -8,7 +8,7 @@ const App = () => {
   const [food, setFood] = useState('your product');
   const [calories, setCalories] = useState(0);
   const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], calories: 300});
-  console.log(dish);
+  const [nameDish, setNameDish] = useState('no name');
 
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
@@ -37,12 +37,23 @@ const App = () => {
   };
 
   function setActualDish() {
-    setDish({name: 'jajecznica', ingredients: ['bread', 'butter'], calories: 300})
+    setDish(prevState => {
+      return {...prevState, name: nameDish};
+    });
+  }
+
+  function showDish() {
+    console.log({dish});
   }
 
   const handleText = e => {
     let h = e.target.value;
     setFood(h);
+  };
+
+  const handleNameDish = e => {
+    let h = e.target.value;
+    setNameDish(h);
   };
 
   return (
@@ -55,15 +66,24 @@ const App = () => {
     <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
     <div class="form-inline">
       <div >
-        <input type="text" placeholder="Search food" autoComplete="off" className="form-control  " onChange={handleText} />
+        <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
         <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
       </div>
     </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
     <h2 className="display-4 text-secondary">{food}</h2>
     <h3>{calories} cal/100g</h3>
-    <button onClick={setActualDish}>setDish</button>
+    
+    <h1>New Dish</h1>
+    <div class="form-inline">
+      <div >
+        <p>Dish name</p>
+        <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
+        <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+      </div>
+    </div>
   </div>
+  <button onClick={showDish}>showDish</button>
  </motion.div>
   );
 };
