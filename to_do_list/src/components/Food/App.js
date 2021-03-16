@@ -9,6 +9,7 @@ const App = () => {
   const [calories, setCalories] = useState(0);
   const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], calories: 300});
   const [nameDish, setNameDish] = useState('no name');
+  const [weightFood, setWeightFood] = useState(0);
 
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
@@ -17,7 +18,8 @@ const App = () => {
     let apiRes = null;
     try {
       apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-      setCalories(apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
+      const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
+      setCalories(caloriesPer100G/100*weightFood);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
 
     } catch (err) {
@@ -56,6 +58,11 @@ const App = () => {
     setNameDish(h);
   };
 
+  const handleWeightFood = e => {
+    let h = e.target.value;
+    setWeightFood(h);
+  };
+
   return (
     <motion.div initial={{opacity: 0}}
     animate={{opacity: 1}}
@@ -67,12 +74,13 @@ const App = () => {
     <div class="form-inline">
       <div >
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
+        <input type="text" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightFood} />
         <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
       </div>
     </div>
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
     <h2 className="display-4 text-secondary">{food}</h2>
-    <h3>{calories} cal/100g</h3>
+    <h3>{calories} cal/{weightFood}g</h3>
     
     <h1>New Dish</h1>
     <div class="form-inline">
