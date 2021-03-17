@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const App = () => {
   const [ingredient, setIngredient] = useState('your product');
   const [calories, setCalories] = useState(0);
-  const [dish, setDish] = useState({name: 'kanapka', ingredients: ['bread', 'butter'], caloriesDish: 300});
+  const [dish, setDish] = useState({name: 'Dish name', ingredients: ['bread', 'butter'], caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
   const [weightIngredient, setWeightIngredient] = useState(0);
 
@@ -39,6 +39,7 @@ const App = () => {
       setCalories(caloriesPer100G/100*weightIngredient);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
       console.log(apiRes.data.parsed[0].food.image);
+      console.log(apiRes);
 
     } catch (err) {
       console.error("Error response:");
@@ -85,10 +86,22 @@ const App = () => {
     <motion.div initial={{opacity: 0}}
     animate={{opacity: 1}}
     exit={{opacity: 0}}>
-<h1 className="header">Food</h1>
+    <h1 className="header">Food</h1>
   <div className="App">
     <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
     <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
+
+    
+    <h1>New Dish</h1>
+    <div class="form-inline">
+      <div >
+        {dish.name}
+        <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
+        <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+      </div>
+    </div>
+
+    <h1>Add ingredient</h1>
     <div class="form-inline">
       <div >
         <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
@@ -100,15 +113,7 @@ const App = () => {
     {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
     <h2 className="display-4 text-secondary">{ingredient}</h2>
     <h3>{calories} cal/{weightIngredient}g</h3>
-    
-    <h1>New Dish</h1>
-    <div class="form-inline">
-      <div >
-        <p>Dish name</p>
-        <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
-        <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
-      </div>
-    </div>
+
     <p>{dish.name}; {dish.ingredients.join()}; {dish.caloriesDish}</p>
   </div>
   <button onClick={postDish}>postDish</button>
