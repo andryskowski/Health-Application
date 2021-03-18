@@ -6,14 +6,15 @@ import { motion } from 'framer-motion';
 const App = () => {
   const [actualIngredientName, setActualIngredientName] = useState('your product');
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
+  const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://static.thenounproject.com/png/802590-200.png");
   const [dish, setDish] = useState({ name: 'Dish name', 
-  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientPhoto: 'nothing'},
+  ingredients: [{ingredientName: 'bread', ingredientCal: 200, weightIngredient: 10, ingredientPhoto: 'nothing'},
   {ingredientName: 'butter', ingredientCal: 250, ingredientPhoto: 'nothing2'}], 
-  caloriesDish: 300 });
+  caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
   const [weightIngredient, setWeightIngredient] = useState(0);
-  const APP_ID = "d91664c7"
-  const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
+  const APP_ID = "d91664c7";
+  const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3";
 
   async function postDish(event) {
     event.preventDefault();
@@ -38,6 +39,13 @@ const App = () => {
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setActualIngredientCalories(caloriesPer100G / 100 * weightIngredient);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
+      if(apiRes.data.parsed[0].food.image){
+        setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
+      }
+      else
+      {
+        setActualIngredientPhoto("https://static.thenounproject.com/png/802590-200.png");
+      }
       console.log(apiRes.data.parsed[0].food.image);
       console.log(apiRes);
 
@@ -52,7 +60,10 @@ const App = () => {
   function setActualDish() {
     setDish(prevState => {
       // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
-      return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, {ingredientName: actualIngredientName, ingredientCal: actualIngredientCalories}], caloriesDish: prevState.caloriesDish + actualIngredientCalories };
+      return { ...prevState, name: nameDish, 
+        ingredients: [...prevState.ingredients, 
+          {ingredientName: actualIngredientName, ingredientCal: actualIngredientCalories, ingredientPhoto: actualIngredientPhoto}], 
+        caloriesDish: prevState.caloriesDish + actualIngredientCalories };
     });
   }
 
@@ -76,7 +87,9 @@ const App = () => {
   };
 
   const ingredientsToDisplay = dish.ingredients.map(
-    ingredient => <li class="list-group-item">{ingredient.ingredientName}, {ingredient.ingredientCal}</li>
+    ingredient => <li class="list-group-item">
+      {ingredient.ingredientName}, {ingredient.ingredientCal}, <img src={ingredient.ingredientPhoto} className="photo" alt='Logo'></img>
+      </li>
   )
 
   return (
@@ -102,7 +115,8 @@ const App = () => {
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
-            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off" className="form-control" onChange={handleWeightIngredient} />
+            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off" 
+            className="form-control" onChange={handleWeightIngredient} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
             <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
           </div>
