@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 const App = () => {
   const [actualIngredientName, setActualIngredientName] = useState('your product');
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
-  const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://static.thenounproject.com/png/802590-200.png");
+  const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://image.flaticon.com/icons/png/512/985/985552.png");
   const [dish, setDish] = useState({ name: 'Dish name', 
-  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: 'nothing'},
-  {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: 'nothing2'}], 
+  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: actualIngredientPhoto},
+  {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: actualIngredientPhoto}], 
   caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
   const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
@@ -72,6 +72,13 @@ const App = () => {
     });
   }
 
+  function resetActualDish() {
+    setDish({ name: 'Dish name', 
+    ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png"},
+    {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png"}], 
+    caloriesDish: 300});
+  }
+
   function showDish() {
     console.log({ dish });
   }
@@ -110,7 +117,7 @@ const App = () => {
         <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
 
 
-        <h1>New Dish</h1>
+        <h5 className="text-secondary">New Dish</h5>
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
@@ -118,7 +125,7 @@ const App = () => {
           </div>
         </div>
 
-        <h1>Add ingredient</h1>
+        <h5 className="text-secondary">Add ingredient</h5>
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
@@ -128,11 +135,11 @@ const App = () => {
             <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
           </div>
         </div>
-        {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
-        <h2 className="display-4 text-secondary">{actualIngredientName}</h2>
+
         <h3>{actualIngredientCalories} cal/{actualIngredientWeight}g</h3>
 
         <div className="card" style={{ width: '18rem' }}>
+          <div onClick={resetActualDish}>XReset</div>
           <div class="card-header">
             {dish.name}
           </div>
