@@ -12,7 +12,7 @@ const App = () => {
   {ingredientName: 'butter', ingredientCal: 250, ingredientPhoto: 'nothing2'}], 
   caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
-  const [weightIngredient, setWeightIngredient] = useState(0);
+  const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
   const APP_ID = "d91664c7";
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3";
 
@@ -37,7 +37,7 @@ const App = () => {
     try {
       apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
-      setActualIngredientCalories(caloriesPer100G / 100 * weightIngredient);
+      setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
       if(apiRes.data.parsed[0].food.image){
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
@@ -83,7 +83,7 @@ const App = () => {
 
   const handleWeightIngredient = e => {
     let h = e.target.value;
-    setWeightIngredient(h);
+    setActualIngredientWeight(h);
   };
 
   const ingredientsToDisplay = dish.ingredients.map(
@@ -123,7 +123,7 @@ const App = () => {
         </div>
         {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
         <h2 className="display-4 text-secondary">{actualIngredientName}</h2>
-        <h3>{actualIngredientCalories} cal/{weightIngredient}g</h3>
+        <h3>{actualIngredientCalories} cal/{actualIngredientWeight}g</h3>
 
         <div className="card" style={{ width: '18rem' }}>
           <div class="card-header">
