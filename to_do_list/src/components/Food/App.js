@@ -8,8 +8,8 @@ const App = () => {
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
   const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://static.thenounproject.com/png/802590-200.png");
   const [dish, setDish] = useState({ name: 'Dish name', 
-  ingredients: [{ingredientName: 'bread', ingredientCal: 200, weightIngredient: 10, ingredientPhoto: 'nothing'},
-  {ingredientName: 'butter', ingredientCal: 250, ingredientPhoto: 'nothing2'}], 
+  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: 'nothing'},
+  {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: 'nothing2'}], 
   caloriesDish: 300});
   const [nameDish, setNameDish] = useState('no name');
   const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
@@ -61,9 +61,14 @@ const App = () => {
     setDish(prevState => {
       // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
       return { ...prevState, name: nameDish, 
+
         ingredients: [...prevState.ingredients, 
-          {ingredientName: actualIngredientName, ingredientCal: actualIngredientCalories, ingredientPhoto: actualIngredientPhoto}], 
-        caloriesDish: prevState.caloriesDish + actualIngredientCalories };
+          {ingredientName: actualIngredientName
+            , ingredientCal: actualIngredientCalories
+            , ingredientPhoto: actualIngredientPhoto
+            , ingredientWeight: actualIngredientWeight}], 
+
+          caloriesDish: prevState.caloriesDish + actualIngredientCalories };
     });
   }
 
@@ -88,7 +93,10 @@ const App = () => {
 
   const ingredientsToDisplay = dish.ingredients.map(
     ingredient => <li class="list-group-item">
-      {ingredient.ingredientName}, {ingredient.ingredientCal}, <img src={ingredient.ingredientPhoto} className="photo" alt='Logo'></img>
+      {ingredient.ingredientName}, 
+      {ingredient.ingredientCal} cal, 
+      {ingredient.ingredientWeight} g,
+      <img src={ingredient.ingredientPhoto} className="photo" alt='Logo'></img>
       </li>
   )
 
@@ -105,9 +113,8 @@ const App = () => {
         <h1>New Dish</h1>
         <div class="form-inline">
           <div >
-            {dish.name}
             <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
-            <input type="submit" value="Add" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+            <input type="submit" value="ChangeName" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
           </div>
         </div>
 
