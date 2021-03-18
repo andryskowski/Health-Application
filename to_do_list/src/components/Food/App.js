@@ -3,14 +3,15 @@ import Axios from 'axios';
 import './sass/App.sass';
 import { motion } from 'framer-motion';
 
-
 const App = () => {
-  const [ingredient, setIngredient] = useState('your product');
-  const [calories, setCalories] = useState(0);
-  const [dish, setDish] = useState({ name: 'Dish name', ingredients: ['bread', 'butter'], caloriesDish: 300 });
+  const [actualIngredientName, setActualIngredientName] = useState('your product');
+  const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
+  const [dish, setDish] = useState({ name: 'Dish name', 
+  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientPhoto: 'nothing'},
+  {ingredientName: 'butter', ingredientCal: 250, ingredientPhoto: 'nothing2'}], 
+  caloriesDish: 300 });
   const [nameDish, setNameDish] = useState('no name');
   const [weightIngredient, setWeightIngredient] = useState(0);
-
   const APP_ID = "d91664c7"
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3"
 
@@ -28,38 +29,30 @@ const App = () => {
       })
     })
       .then(resp => resp.json())
-    // .then(window.location.reload())
   }
 
   const getData = async () => {
     let apiRes = null;
     try {
-      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${ingredient}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
-      setCalories(caloriesPer100G / 100 * weightIngredient);
+      setActualIngredientCalories(caloriesPer100G / 100 * weightIngredient);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
       console.log(apiRes.data.parsed[0].food.image);
       console.log(apiRes);
 
     } catch (err) {
       console.error("Error response:");
-      //   console.error(err.response.data);    // ***
-      //   console.error(err.response.status);  // ***
-      //   console.error(err.response.headers); // ***
     } finally {
       console.log(apiRes);
     }
-
-    // const url = `https://api.edamam.com/api/food-database/v2/parser?ingr=${food}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    // const result = await Axios.get(url);
-    // console.log(result.data.parsed[0].food.nutrients.ENERC_KCAL);
-
 
   };
 
   function setActualDish() {
     setDish(prevState => {
-      return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, ingredient], caloriesDish: prevState.caloriesDish + calories };
+      // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
+      return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, {ingredientName: actualIngredientName, ingredientCal: actualIngredientCalories}], caloriesDish: prevState.caloriesDish + actualIngredientCalories };
     });
   }
 
@@ -69,7 +62,7 @@ const App = () => {
 
   const handleText = e => {
     let h = e.target.value;
-    setIngredient(h);
+    setActualIngredientName(h);
   };
 
   const handleNameDish = e => {
@@ -81,6 +74,10 @@ const App = () => {
     let h = e.target.value;
     setWeightIngredient(h);
   };
+
+  const ingredientsToDisplay = dish.ingredients.map(
+    ingredient => <li class="list-group-item">{ingredient.ingredientName}, {ingredient.ingredientCal}</li>
+  )
 
   return (
     <motion.div initial={{ opacity: 0 }}
@@ -111,8 +108,8 @@ const App = () => {
           </div>
         </div>
         {/* <h2>{typeof calories === Number ? calories : <p>Invalid value</p>}</h2> */}
-        <h2 className="display-4 text-secondary">{ingredient}</h2>
-        <h3>{calories} cal/{weightIngredient}g</h3>
+        <h2 className="display-4 text-secondary">{actualIngredientName}</h2>
+        <h3>{actualIngredientCalories} cal/{weightIngredient}g</h3>
 
         <div className="card" style={{ width: '18rem' }}>
           <div class="card-header">
@@ -120,12 +117,13 @@ const App = () => {
           </div>
           <ul class="list-group list-group-flush">
             {/* ; {dish.ingredients.join()}; {dish.caloriesDish} */}
-            <li class="list-group-item">{dish.ingredients.join()}</li>
+            {ingredientsToDisplay}
             <li class="list-group-item"><b>{dish.caloriesDish} calories</b> </li>
           </ul>
         </div>
       </div>
       <button onClick={postDish}>postDish</button>
+      
     </motion.div>
   );
 };
