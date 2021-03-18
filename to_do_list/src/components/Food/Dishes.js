@@ -20,17 +20,20 @@ const Dishes = () => {
             });
     }
     const dishesToDisplay = (response) => {
-        const mappedDishes = response.map(resp => <div>{resp.name}, 
+        const mappedDishes = response.map(resp => <div className="card" style={{ width: '18rem' }}>
+            <div class="card-header">{resp.name}</div>
 
         {resp.ingredients.map(ingredient => 
-        <div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
             {ingredient.ingredientName}, 
             {ingredient.ingredientCal} cal, 
             {ingredient.ingredientWeight} g,
             <img src={ingredient.ingredientPhoto} className="photo"></img>
-        </div>)}
+            </li>
+        </ul>)}
 
-        ,{resp.calories}</div>);
+        <li class="list-group-item">{resp.calories} calories</li></div>);
         setDishes(mappedDishes);
         
     }
@@ -40,9 +43,9 @@ const Dishes = () => {
     }, []);
 
   return (
-    <>
+    <div className="div-dishes">
     {dishes}
-    </>
+    </div>
   );
 };
 
