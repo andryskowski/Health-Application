@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 import './sass/App.sass';
 import { motion } from 'framer-motion';
+import Dishes from './Dishes';
 
 const App = () => {
   const [actualIngredientName, setActualIngredientName] = useState('your product');
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
   const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://image.flaticon.com/icons/png/512/985/985552.png");
-  const [dish, setDish] = useState({ name: 'Dish name', 
-  ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: actualIngredientPhoto},
-  {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: actualIngredientPhoto}], 
-  caloriesDish: 300});
+  const dishObj = {
+    name: 'Dish name',
+    ingredients: [
+      { ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: actualIngredientPhoto },
+      { ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15, ingredientPhoto: actualIngredientPhoto }],
+    caloriesDish: 300
+  };
+
+  const [dish, setDish] = useState(dishObj);
   const [nameDish, setNameDish] = useState('no name');
   const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
   const APP_ID = "d91664c7";
@@ -39,11 +45,10 @@ const App = () => {
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
-      if(apiRes.data.parsed[0].food.image){
+      if (apiRes.data.parsed[0].food.image) {
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
       }
-      else
-      {
+      else {
         setActualIngredientPhoto("https://static.thenounproject.com/png/802590-200.png");
       }
       console.log(apiRes.data.parsed[0].food.image);
@@ -60,23 +65,29 @@ const App = () => {
   function setActualDish() {
     setDish(prevState => {
       // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
-      return { ...prevState, name: nameDish, 
+      return {
+        ...prevState, name: nameDish,
 
-        ingredients: [...prevState.ingredients, 
-          {ingredientName: actualIngredientName
-            , ingredientCal: actualIngredientCalories
-            , ingredientPhoto: actualIngredientPhoto
-            , ingredientWeight: actualIngredientWeight}], 
+        ingredients: [...prevState.ingredients,
+        {
+          ingredientName: actualIngredientName
+          , ingredientCal: actualIngredientCalories
+          , ingredientPhoto: actualIngredientPhoto
+          , ingredientWeight: actualIngredientWeight
+        }],
 
-          caloriesDish: prevState.caloriesDish + actualIngredientCalories };
+        caloriesDish: prevState.caloriesDish + actualIngredientCalories
+      };
     });
   }
 
   function resetActualDish() {
-    setDish({ name: 'Dish name', 
-    ingredients: [{ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png"},
-    {ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15,ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png"}], 
-    caloriesDish: 300});
+    setDish({
+      name: 'Dish name',
+      ingredients: [{ ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png" },
+      { ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png" }],
+      caloriesDish: 300
+    });
   }
 
   function showDish() {
@@ -100,11 +111,11 @@ const App = () => {
 
   const ingredientsToDisplay = dish.ingredients.map(
     ingredient => <li class="list-group-item">
-      {ingredient.ingredientName}, 
-      {ingredient.ingredientCal} cal, 
+      {ingredient.ingredientName},
+      {ingredient.ingredientCal} cal,
       {ingredient.ingredientWeight} g,
       <img src={ingredient.ingredientPhoto} className="photo" alt='Logo'></img>
-      </li>
+    </li>
   )
 
   return (
@@ -129,8 +140,8 @@ const App = () => {
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
-            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off" 
-            className="form-control" onChange={handleWeightIngredient} />
+            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
+              className="form-control" onChange={handleWeightIngredient} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
             <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
           </div>
@@ -149,9 +160,12 @@ const App = () => {
             <li class="list-group-item"><b>{dish.caloriesDish} calories</b> </li>
           </ul>
         </div>
+
+        <button onClick={postDish}>postDish</button>
+        <Dishes></Dishes>
       </div>
-      <button onClick={postDish}>postDish</button>
       
+
     </motion.div>
   );
 };
