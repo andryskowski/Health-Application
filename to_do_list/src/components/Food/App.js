@@ -38,7 +38,7 @@ const App = () => {
       })
     })
       .then(resp => resp.json())
-     
+      .then(window.location.reload())
   }
 
   const getData = async () => {
@@ -136,7 +136,7 @@ const App = () => {
       exit={{ opacity: 0 }}>
       <h1 className="header">Food</h1>
      
-      <div className="App">
+      <div className="App dish-container">
         
 
         <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
@@ -158,14 +158,15 @@ const App = () => {
               className="form-control" onChange={handleWeightIngredient} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
             <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+            <output  class="h4" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output>
           </div>
         </div>
 
-        <h3>{actualIngredientCalories} cal/{actualIngredientWeight}g</h3>
+        
 
         <div className="card " style={{ width: '18rem' }}>
           <div onClick={resetActualDish} className="x-button-dish">X Reset</div>
-          <div class="card-header bg-info">
+          <div class="card-header bg-info text-light">
             {dish.name}
           </div>
           <ul class="list-group list-group-flush">
