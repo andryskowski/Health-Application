@@ -3,6 +3,7 @@ import Axios from 'axios';
 import './sass/App.sass';
 import { motion } from 'framer-motion';
 import Dishes from './Dishes';
+import { Card } from '@material-ui/core';
 
 
 const App = () => {
@@ -82,6 +83,15 @@ const App = () => {
     });
   }
 
+  function setActualDishName() {
+    setDish(prevState => {
+      // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
+      return {
+        ...prevState, name: nameDish
+      };
+    });
+  }
+
   function resetActualDish() {
     setDish({
       name: 'Dish name',
@@ -124,16 +134,18 @@ const App = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
       <h1 className="header">Food</h1>
+     
       <div className="App">
+        
+
         <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
         <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
-
 
         <h5 className="text-secondary">New Dish</h5>
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
-            <input type="submit" value="ChangeName" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+            <input type="submit" value="ChangeName" className="btn btn-outline-secondary  ml-2" onClick={setActualDishName} />
           </div>
         </div>
 
@@ -162,10 +174,12 @@ const App = () => {
           </ul>
         </div>
 
-        <button onClick={postDish}>postDish</button>
+        <button className="btn btn-outline-secondary  ml-2" onClick={postDish}>Add to dishes</button>
+        
         <Dishes></Dishes>
         
       </div>
+      
       
 
     </motion.div>
