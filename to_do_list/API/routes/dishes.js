@@ -45,7 +45,7 @@ router.get('/:dishId', async (req, res) => {
 //delete dish
 router.delete('/:dishId', async (req, res) => {
     try{
-        const removedDish = await Dish.remove({ _id: req.params.postId });
+        const removedDish = await Dish.remove({ _id: req.params.dishId });
         res.json(removedDish);
     }
     catch (err){
