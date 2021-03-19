@@ -6,10 +6,10 @@ import Pagination from './Pagination';
 
 const Dishes = () => {
     // const [dishes, setDishes] = useState(0);
-    const [posts, setPosts] = useState([]);
+    const [dishes, setDishes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(3);
+    const [dishesPerPage] = useState(3);
 
     async function getDishes() {
         const response = await fetch("http://localhost:8000/dishes")
@@ -17,7 +17,6 @@ const Dishes = () => {
             .then(response => {
                 setLoading(true);
                 dishesToDisplay(response);
-                // setPosts(response);
                 console.log(response);
 
             })
@@ -41,7 +40,7 @@ const Dishes = () => {
                 </ul>)}
 
             <li class="list-group-item">{resp.calories} calories</li></div>);
-        setPosts(mappedDishes);
+        setDishes(mappedDishes);
 
     }
 
@@ -49,22 +48,21 @@ const Dishes = () => {
         getDishes();
     }, []);
 
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(currentPosts);
+    // Get current dishes
+    const indexOfLastDish = currentPage * dishesPerPage;
+    const indexOfFirstDish = indexOfLastDish - dishesPerPage;
+    const currentDishes = dishes.slice(indexOfFirstDish, indexOfLastDish);
+    console.log(currentDishes);
 
     // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div className="div-dishes">
-            {currentPosts}
-            {/* <Posts posts={currentPosts} loading={loading} /> */}
+            {currentDishes}
             <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={posts.length}
+            dishesPerPage={dishesPerPage}
+            totalDishes={dishes.length}
             paginate={paginate}
             />
         </div>
