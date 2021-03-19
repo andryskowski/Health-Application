@@ -88,12 +88,12 @@ function App() {
             className="App form-group">
             <h1 className="header">BMR</h1>
             <h1 className="h1-bmi">Calories calculator</h1>
-                height <input onChange={setHeightOn} className="form-control w-75"></input>
-                weight <input onChange={setWeightOn} className="form-control w-75"></input>
-                age <input onChange={setAgeOn} className="form-control w-75"></input>
+                height <input onChange={setHeightOn} className="form-control w-25"></input>
+                weight <input onChange={setWeightOn} className="form-control w-25"></input>
+                age <input onChange={setAgeOn} className="form-control w-25"></input>
                  
                 <label htmlFor="bonus">burned today</label>
-                <input id="bonus" onChange={setBonusOn} className="form-control w-75"></input>
+                <input id="bonus" onChange={setBonusOn} className="form-control w-25"></input>
                 
                 <div className="form-inline">
                 <input id="checkbox" type="checkbox" onChange={setGenderOn} className="form-check-label"></input>

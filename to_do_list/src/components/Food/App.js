@@ -15,7 +15,7 @@ const App = () => {
     ingredients: [
       { ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: actualIngredientPhoto },
       { ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15, ingredientPhoto: actualIngredientPhoto }],
-    caloriesDish: 300
+    caloriesDish: 450
   };
 
   const [dish, setDish] = useState(dishObj);
@@ -52,7 +52,7 @@ const App = () => {
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
       }
       else {
-        setActualIngredientPhoto("https://static.thenounproject.com/png/802590-200.png");
+        setActualIngredientPhoto("https://image.flaticon.com/icons/png/512/985/985552.png");
       }
       console.log(apiRes.data.parsed[0].food.image);
       console.log(apiRes);
@@ -96,9 +96,8 @@ const App = () => {
   function resetActualDish() {
     setDish({
       name: 'Dish name',
-      ingredients: [{ ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png" },
-      { ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15, ingredientPhoto: "https://image.flaticon.com/icons/png/512/985/985552.png" }],
-      caloriesDish: 300
+      ingredients: [],
+      caloriesDish: 0
     });
   }
 
@@ -139,10 +138,10 @@ const App = () => {
       <div className="App dish-container">
         
 
-        <h1 onClick={getData}>It's place where you can find caloric value of your food.</h1>
-        <p>At first, type name of product (for example 'apple'), click 'search' buttom and  </p>
+        <h1 onClick={getData}>It's place where you can organize your dishes.</h1>
+        <p>At first, type name of product (for example 'apple'), add ingredient, click 'Search' buttom to find caloric value and add your dish to your collection!  </p>
 
-        <h5 className="text-secondary">New Dish</h5>
+        <h5 className="text-secondary">&bull; New Dish</h5>
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
@@ -150,7 +149,7 @@ const App = () => {
           </div>
         </div>
 
-        <h5 className="text-secondary">Add ingredient</h5>
+        <h5 className="text-secondary">&bull; Add ingredient</h5>
         <div class="form-inline">
           <div >
             <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
