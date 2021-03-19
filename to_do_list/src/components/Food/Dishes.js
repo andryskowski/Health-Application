@@ -11,7 +11,7 @@ const Dishes = () => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [dishesPerPage] = useState(3);
-    const [idDish, setIdDish] = useState(`6053b531b489914858f37a10`);
+    const [idDish, setIdDish] = useState();
 
     async function getDishes() {
         const response = await fetch("http://localhost:8000/dishes")
@@ -28,8 +28,9 @@ const Dishes = () => {
             });
     }
 
-    async function deleteDish() {
-        await fetch(`http://localhost:8000/dishes/${idDish}`, {
+    async function deleteDish(id) {
+
+        await fetch(`http://localhost:8000/dishes/${id}`, {
             method: 'DELETE',
           })
           .then(res => res.text()) // or res.json()
@@ -49,7 +50,7 @@ const Dishes = () => {
 
     const dishesToDisplay = (response) => {
         const mappedDishes = response.map(resp => <div className="card" style={{ width: '18rem' }} >
-            <button onClick={deleteDish}>X</button>
+            <button onClick={() => deleteDish(resp._id)}>X</button>
             <div class="card-header bg-primary text-light">{resp.name}</div>
 
             {resp.ingredients.map(ingredient =>
