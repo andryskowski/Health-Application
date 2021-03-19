@@ -50,8 +50,8 @@ const Dishes = () => {
     
 
     const dishesToDisplay = (response) => {
-        const mappedDishes = response.map(resp => <div className="card" style={{ width: '18rem' }} >
-            <button onClick={() => deleteDish(resp._id)}>X</button>
+        const mappedDishes = response.map(resp => <div className="card " style={{ width: '18rem' }} >
+            <div className="x-button-dish" onClick={() => deleteDish(resp._id)}>X</div>
             <div class="card-header bg-primary text-light">{resp.name}</div>
 
             {resp.ingredients.map(ingredient =>

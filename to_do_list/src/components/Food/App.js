@@ -38,6 +38,7 @@ const App = () => {
       })
     })
       .then(resp => resp.json())
+     
   }
 
   const getData = async () => {
@@ -162,9 +163,9 @@ const App = () => {
 
         <h3>{actualIngredientCalories} cal/{actualIngredientWeight}g</h3>
 
-        <div className="card" style={{ width: '18rem' }}>
-          <div onClick={resetActualDish}>XReset</div>
-          <div class="card-header">
+        <div className="card " style={{ width: '18rem' }}>
+          <div onClick={resetActualDish} className="x-button-dish">X Reset</div>
+          <div class="card-header bg-info">
             {dish.name}
           </div>
           <ul class="list-group list-group-flush">
