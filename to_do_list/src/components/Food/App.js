@@ -9,7 +9,8 @@ import { Card } from '@material-ui/core';
 const App = () => {
   const [actualIngredientName, setActualIngredientName] = useState('your product');
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
-  const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://image.flaticon.com/icons/png/512/985/985552.png");
+  const [actualIngredientPhoto, setActualIngredientPhoto] = 
+  useState("https://image.flaticon.com/icons/png/512/985/985552.png");
   const dishObj = {
     name: 'Dish name',
     ingredients: [
@@ -44,7 +45,8 @@ const App = () => {
   const getData = async () => {
     let apiRes = null;
     try {
-      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=
+      ${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
       console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
@@ -67,7 +69,6 @@ const App = () => {
 
   function setActualDish() {
     setDish(prevState => {
-      // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
       return {
         ...prevState, name: nameDish,
 
@@ -86,7 +87,6 @@ const App = () => {
 
   function setActualDishName() {
     setDish(prevState => {
-      // return { ...prevState, name: nameDish, ingredients: [...prevState.ingredients, actualIngredientName], caloriesDish: prevState.caloriesDish + calories };
       return {
         ...prevState, name: nameDish
       };
@@ -120,6 +120,12 @@ const App = () => {
     setActualIngredientWeight(h);
   };
 
+  const handleCaloriesIngredient = e => {
+    let h = e.target.value;
+    setActualIngredientCalories(h);
+    
+  };
+
   const ingredientsToDisplay = dish.ingredients.map(
     ingredient => <li class="list-group-item">
       {ingredient.ingredientName},
@@ -139,7 +145,9 @@ const App = () => {
         
 
         <h1 onClick={getData}>It's place where you can organize your dishes.</h1>
-        <p>At first, type name of product (for example 'apple'), add ingredient, click 'Search' buttom to find caloric value and add your dish to your collection!  </p>
+        <p>At first, type name of product (for example 'apple'), add ingredient, 
+          click 'Search' buttom to find caloric value 
+          and add your dish to your collection!  </p>
 
         <h5 className="text-secondary">&bull; New Dish</h5>
         <div class="form-inline">
@@ -157,12 +165,23 @@ const App = () => {
               className="form-control" onChange={handleWeightIngredient} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
             <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
-            <output  class="h4" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output>
+            
           </div>
         </div>
 
-        
-
+        <h5 className="text-secondary">&bull; Add your own ingredient</h5>
+        <div class="form-inline">
+          <div >
+            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
+            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
+              className="form-control" onChange={handleWeightIngredient} />
+            <input type="number" min="0" placeholder="Calories" autoComplete="off"
+              className="form-control" onChange={handleCaloriesIngredient} />
+            <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+          </div>
+        </div>
+        <output  class="h5" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output>
+        <h5>Your actual dish:</h5>
         <div className="card " style={{ width: '18rem' }}>
           <div onClick={resetActualDish} className="x-button-dish">X Reset</div>
           <div class="card-header bg-info text-light">
@@ -177,6 +196,7 @@ const App = () => {
 
         <button className="btn btn-outline-secondary  ml-2" onClick={postDish}>Add to dishes</button>
         
+        <h5>Collection of yours dishes:</h5>
         <Dishes></Dishes>
         
       </div>
