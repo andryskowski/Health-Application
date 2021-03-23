@@ -7,6 +7,7 @@ import axios from 'axios';
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
+    const [ACTUAL_ADDICTION, setActualAddiction] = useState("addiction");
 
     const INFO_BMR_ELEMENTS = BMRInformations.map(info => (
         info.BMR
@@ -27,6 +28,11 @@ const App = () => {
         const FIRST_DAY = window.localStorage.getItem('LAST_DAY_ADDICTION');
         const COUNTER = Math.floor(FIRST_DAY / TODAY_DAY);
         setDayWithoutAddiction(COUNTER.toString());
+    }
+    
+    function changeActualAddiction(e) {
+        const ACTUAL_ADDICTION = e.target.value;
+        setActualAddiction(ACTUAL_ADDICTION);
     }
 
     function getTasksForToday() {
@@ -73,12 +79,12 @@ const App = () => {
             <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>
             <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
-            <div className="addiction-widget widget"><h2>It's your {dayWithoutAddiction} day without addiction!<button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary  ml-2">Reset</button></h2>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Addiction</option>
-                    <option value="1">Cigarettes</option>
-                    <option value="2">Alcohol</option>
-                    <option value="3">Drugs</option>
+            <div className="addiction-widget widget"><h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!<button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary  ml-2">Reset</button></h2>
+                <select class="form-select form-select-addiction" aria-label="Default select example" onChange={changeActualAddiction}>
+                    <option selected>addiction</option>
+                    <option value="cigarettes">cigarettes</option>
+                    <option value="alcohol">alcohol</option>
+                    <option value="drugs">drugs</option>
                 </select>
             </div>
 
