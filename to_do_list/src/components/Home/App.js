@@ -41,11 +41,15 @@ const App = () => {
         window.localStorage.setItem('ACTUAL_ADDICTION', ACTUAL_ADDICTION);
         if(e.target.value == "cigarettes")
         {
-            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1686/1686390.svg?token=exp=1616529249~hmac=917433e77c8ff495fd63c3449de048ba");
+            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1685/1685839.svg?token=exp=1616529803~hmac=276594dcd05b6082fa00cc73a6cfe275");
         }
         else if(e.target.value == "alcohol")
         {
-            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1686/1686390.svg?token=exp=1616529249~hmac=917433e77c8ff495fd63c3449de048ba");
+            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1685/1685837.svg?token=exp=1616529760~hmac=15c5ef9af9bfea4e4f80a568ffccfe5a");
+        }
+        else if(e.target.value == "drugs")
+        {
+            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1685/1685841.svg?token=exp=1616529779~hmac=3a3747f6847ca9ed7fd0e56aab848f98");
         }
         
         setActualAddiction(ACTUAL_ADDICTION);
