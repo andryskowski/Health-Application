@@ -16,9 +16,16 @@ const App = () => {
 
     const [dayWithoutAddiction, setDayWithoutAddiction] = useState(0);
 
+    function resetDayWithoutAddiction() {
+        const TODAY_DATE = new Date().toISOString().slice(8, 10);
+        window.localStorage.setItem('LAST_DAY_ADDICTION', TODAY_DATE);
+        setDayWithoutAddiction(TODAY_DATE);
+    }
+
     function changeDayWithoutAddiction() {
         const TODAY_DATE = new Date().toISOString().slice(8, 10);
-        setDayWithoutAddiction(TODAY_DATE);
+        const FIRST_DAY = JSON.parse(window.localStorage.getItem('LAST_DAY_ADDICTION'));
+        setDayWithoutAddiction(Number(TODAY_DATE-FIRST_DAY));
     }
 
     function getTasksForToday() {
@@ -65,7 +72,7 @@ const App = () => {
             <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>
             <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
-            <div className="bmr-widget widget"><h2>It's your {dayWithoutAddiction} day without addiction!<button>Reset</button></h2></div>
+            <div className="bmr-widget widget"><h2>It's your {dayWithoutAddiction} day without addiction!<button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary  ml-2">Reset</button></h2></div>
 
         </div>
 
