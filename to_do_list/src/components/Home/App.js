@@ -17,15 +17,16 @@ const App = () => {
     const [dayWithoutAddiction, setDayWithoutAddiction] = useState(0);
 
     function resetDayWithoutAddiction() {
-        const TODAY_DATE = new Date().toISOString().slice(8, 10);
-        window.localStorage.setItem('LAST_DAY_ADDICTION', TODAY_DATE);
-        setDayWithoutAddiction(TODAY_DATE);
+        const TODAY_DATE = new Date();
+        window.localStorage.setItem('LAST_DAY_ADDICTION', TODAY_DATE.getTime());
+        setDayWithoutAddiction(0);
     }
 
     function changeDayWithoutAddiction() {
-        const TODAY_DATE = new Date().toISOString().slice(8, 10);
-        const FIRST_DAY = JSON.parse(window.localStorage.getItem('LAST_DAY_ADDICTION'));
-        setDayWithoutAddiction(Number(TODAY_DATE-FIRST_DAY));
+        const TODAY_DAY = new Date().getTime();
+        const FIRST_DAY = window.localStorage.getItem('LAST_DAY_ADDICTION');
+        const COUNTER = Math.floor(FIRST_DAY / TODAY_DAY);
+        setDayWithoutAddiction(COUNTER.toString());
     }
 
     function getTasksForToday() {
