@@ -7,6 +7,7 @@ import axios from 'axios';
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
+    // const [ADDICTION_IMG,]
     const [ACTUAL_ADDICTION, setActualAddiction] = useState(
         window.localStorage.getItem('ACTUAL_ADDICTION') 
         ? 
@@ -99,6 +100,7 @@ const App = () => {
                     <option value="alcohol">alcohol</option>
                     <option value="drugs">drugs</option>
                 </select>
+            <img src="https://www.flaticon.com/svg/vstatic/svg/1685/1685853.svg?token=exp=1616529380~hmac=7a9c266abddf95432829fff3ba95c44d" width="100" height="100"></img>
             </div>
 
         </div>
