@@ -7,7 +7,7 @@ import axios from 'axios';
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
-    // const [ADDICTION_IMG,]
+    const [ADDICTION_IMG, setAddictionImg] = useState("https://www.flaticon.com/svg/vstatic/svg/1685/1685853.svg?token=exp=1616529380~hmac=7a9c266abddf95432829fff3ba95c44d")
     const [ACTUAL_ADDICTION, setActualAddiction] = useState(
         window.localStorage.getItem('ACTUAL_ADDICTION') 
         ? 
@@ -39,7 +39,16 @@ const App = () => {
     function changeActualAddiction(e) {
         const ACTUAL_ADDICTION = e.target.value;
         window.localStorage.setItem('ACTUAL_ADDICTION', ACTUAL_ADDICTION);
+        if(e.target.value == "cigarettes")
+        {
+            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1686/1686390.svg?token=exp=1616529249~hmac=917433e77c8ff495fd63c3449de048ba");
+        }
         setActualAddiction(ACTUAL_ADDICTION);
+    }
+
+    function showListOfAddictions() {
+        const LIST_ADDICTIONS = document.querySelector('.form-select-addiction');
+        LIST_ADDICTIONS.style.display = "inline-block";
     }
 
     function getTasksForToday() {
@@ -76,10 +85,7 @@ const App = () => {
         changeDayWithoutAddiction();
     }, []);
 
-    function showListOfAddictions() {
-        const LIST_ADDICTIONS = document.querySelector('.form-select-addiction');
-        LIST_ADDICTIONS.style.display = "inline-block";
-    }
+
 
     return (
 
@@ -100,7 +106,7 @@ const App = () => {
                     <option value="alcohol">alcohol</option>
                     <option value="drugs">drugs</option>
                 </select>
-            <img src="https://www.flaticon.com/svg/vstatic/svg/1685/1685853.svg?token=exp=1616529380~hmac=7a9c266abddf95432829fff3ba95c44d" width="100" height="100"></img>
+            <img src={ADDICTION_IMG} width="100" height="100"></img>
             </div>
 
         </div>
