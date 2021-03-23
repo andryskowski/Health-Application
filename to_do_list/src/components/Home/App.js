@@ -43,6 +43,11 @@ const App = () => {
         {
             setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1686/1686390.svg?token=exp=1616529249~hmac=917433e77c8ff495fd63c3449de048ba");
         }
+        else if(e.target.value == "alcohol")
+        {
+            setAddictionImg("https://www.flaticon.com/svg/vstatic/svg/1686/1686390.svg?token=exp=1616529249~hmac=917433e77c8ff495fd63c3449de048ba");
+        }
+        
         setActualAddiction(ACTUAL_ADDICTION);
     }
 
