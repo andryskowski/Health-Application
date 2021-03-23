@@ -75,6 +75,10 @@ const App = () => {
         changeDayWithoutAddiction();
     }, []);
 
+    function showListOfAddictions() {
+        const LIST_ADDICTIONS = document.querySelector('.form-select-addiction');
+        LIST_ADDICTIONS.style.display = "inline-block";
+    }
 
     return (
 
@@ -85,8 +89,11 @@ const App = () => {
             <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>
             <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
-            <div className="addiction-widget widget"><h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!<button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary  ml-2">Reset</button></h2>
-                <select class="form-select form-select-addiction" aria-label="Default select example" onChange={changeActualAddiction}>
+            <div className="addiction-widget widget">
+            <h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
+            <button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary">Reset</button>
+            <h5 className="change-btn" onClick={showListOfAddictions}>Change</h5>
+                <select style={{display: "none"}} class="form-select form-select-addiction ml-2" aria-label="Default select example" onChange={changeActualAddiction}>
                     <option selected>addiction</option>
                     <option value="cigarettes">cigarettes</option>
                     <option value="alcohol">alcohol</option>
