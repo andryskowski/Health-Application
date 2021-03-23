@@ -14,6 +14,13 @@ const App = () => {
 
     const BMR_INFO = JSON.stringify(INFO_BMR_ELEMENTS);
 
+    const [dayWithoutAddiction, setDayWithoutAddiction] = useState(0);
+
+    function changeDayWithoutAddiction() {
+        const TODAY_DATE = new Date().toISOString().slice(8, 10);
+        setDayWithoutAddiction(TODAY_DATE);
+    }
+
     function getTasksForToday() {
         const TODAY_DATE = new Date().toISOString().slice(0, 10);
         const ALL_TASKS = JSON.parse(window.localStorage.getItem('Tasks'));
@@ -44,7 +51,8 @@ const App = () => {
     }
 
     useEffect(() => {
-        getForumPost()
+        getForumPost();
+        changeDayWithoutAddiction();
     }, []);
 
 
@@ -57,7 +65,8 @@ const App = () => {
             <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>
             <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
-            <div className="bmr-widget widget"><h2>It's your X day without addiction!</h2></div>
+            <div className="bmr-widget widget"><h2>It's your {dayWithoutAddiction} day without addiction!<button>Reset</button></h2></div>
+
         </div>
 
     );
