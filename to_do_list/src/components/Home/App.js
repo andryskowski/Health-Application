@@ -7,7 +7,12 @@ import axios from 'axios';
 const App = () => {
     const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
-    const [ACTUAL_ADDICTION, setActualAddiction] = useState("addiction");
+    const [ACTUAL_ADDICTION, setActualAddiction] = useState(
+        window.localStorage.getItem('ACTUAL_ADDICTION') 
+        ? 
+        window.localStorage.getItem('ACTUAL_ADDICTION') :
+        "addiction"
+    );
 
     const INFO_BMR_ELEMENTS = BMRInformations.map(info => (
         info.BMR
@@ -32,6 +37,7 @@ const App = () => {
     
     function changeActualAddiction(e) {
         const ACTUAL_ADDICTION = e.target.value;
+        window.localStorage.setItem('ACTUAL_ADDICTION', ACTUAL_ADDICTION);
         setActualAddiction(ACTUAL_ADDICTION);
     }
 
