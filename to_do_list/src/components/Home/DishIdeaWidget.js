@@ -5,6 +5,8 @@ import './sass/App.sass';
 const DishIdeaWidget = () => {
     const APP_ID = "8bf2417a";
     const APP_KEY = "0bc46a300e6d997eb656edde84e08192";
+    const [dishIdeaName] = useState("Dish");
+    const [dishIdeaImg, setDishIdeaImg] = useState("https://cdn2.iconfinder.com/data/icons/hotel-96/64/restaurant-food-dinner-plate-dish-512.png");
 
     function getRandomLetter() {
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -17,11 +19,17 @@ const DishIdeaWidget = () => {
         try {
             const randomLetter = getRandomLetter();
             apiRes = await Axios.get(`https://api.edamam.com/search?q=${randomLetter}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`);
+            
+            
         } catch (err) {
             console.error("Error response:");
         } finally {
-            console.log(apiRes);
-            console.log(apiRes.data.hits[0].recipe.label);
+            const amountRecipes = apiRes.data.hits.length;
+            const indexRecipe = Math.floor(Math.random() * amountRecipes);
+            console.log(apiRes.data.hits[indexRecipe].recipe.label);
+            console.log(apiRes.data.hits[indexRecipe].recipe.image);
+           setDishIdeaImg(apiRes.data.hits[indexRecipe].recipe.image);
+
         }
 
     };
@@ -34,6 +42,7 @@ const DishIdeaWidget = () => {
         <>
             <div className="dish-widget widget">
                 <h1>Recipe of the Day:</h1>
+                <img width="100" height="100" src={dishIdeaImg}></img>
             </div>
         </>
 
