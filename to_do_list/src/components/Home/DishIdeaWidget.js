@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './sass/App.sass';
+import { Link } from "react-router-dom";
 
 const DishIdeaWidget = () => {
     const APP_ID = "8bf2417a";
     const APP_KEY = "0bc46a300e6d997eb656edde84e08192";
     const [dishIdeaName, setDishIdeaName] = useState("Dish");
+    const [dishIdeaLink, setDishIdeaLink] = useState("https://google.com");
     const [dishIdeaImg, setDishIdeaImg] = useState("https://cdn2.iconfinder.com/data/icons/hotel-96/64/restaurant-food-dinner-plate-dish-512.png");
 
     function getRandomLetter() {
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
         return alphabet[Math.floor(Math.random() * alphabet.length)]
-        
     }
 
     const getData = async () => {
@@ -44,7 +45,8 @@ const DishIdeaWidget = () => {
         <>
             <div className="dish-widget widget">
                 <h1>Recipe of the Day:</h1>
-                <h4>{dishIdeaName}</h4>
+                {/* <h4 href={dishIdeaLink}>{dishIdeaName}</h4> */}
+                <h4><a href={dishIdeaLink} class="stretched-link link">{dishIdeaName}</a></h4>
                 <img width="100" height="100" src={dishIdeaImg}></img>
             </div>
         </>
