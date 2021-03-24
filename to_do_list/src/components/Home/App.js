@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './sass/App.sass';
 import { useSelector } from 'react-redux';
 import WeatherWidget from './WeatherWidget';
+import DishIdeaWidget from './DishIdeaWidget';
 import AddictionWidget from './AddictionWidget'
 import axios from 'axios';
 
@@ -48,8 +49,9 @@ const App = () => {
             <div className="bmr-widget widget"><h2>You actual BMR is: {JSON.parse(window.localStorage.getItem('BMR'))}</h2></div>
             <div className="bmi-widget widget"><h2>Your actual BMI is: {JSON.parse(window.localStorage.getItem('BMI'))}</h2></div>
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
+            <DishIdeaWidget />
             <AddictionWidget />
-
+            
         </div>
 
     );
