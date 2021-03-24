@@ -45,8 +45,7 @@ const App = () => {
   const getData = async () => {
     let apiRes = null;
     try {
-      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=
-      ${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
       if (apiRes.data.parsed[0].food.image) {
@@ -59,7 +58,7 @@ const App = () => {
     } catch (err) {
       console.error("Error response:");
     } finally {
-      console.log(actualIngredientCalories);
+      console.log(actualIngredientName);
     }
 
   };
@@ -102,7 +101,7 @@ const App = () => {
     console.log({ dish });
   }
 
-  const handleText = e => {
+  const handleActualIngredientName = e => {
     let h = e.target.value;
     setActualIngredientName(h);
   };
@@ -157,7 +156,7 @@ const App = () => {
         <h5 className="text-secondary">&bull; Add ingredient</h5>
         <div class="form-inline">
           <div >
-            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
+            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleActualIngredientName} />
             <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
               className="form-control" onChange={handleWeightIngredient} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
@@ -169,7 +168,7 @@ const App = () => {
         <h5 className="text-secondary">&bull; Add your own ingredient</h5>
         <div class="form-inline">
           <div >
-            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleText} />
+            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleActualIngredientName} />
             <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
               className="form-control" onChange={handleWeightIngredient} />
             <input type="number" min="0" placeholder="Calories" autoComplete="off"
