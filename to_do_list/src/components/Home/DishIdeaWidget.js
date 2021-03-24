@@ -5,7 +5,7 @@ import './sass/App.sass';
 const DishIdeaWidget = () => {
     const APP_ID = "8bf2417a";
     const APP_KEY = "0bc46a300e6d997eb656edde84e08192";
-    const [dishIdeaName] = useState("Dish");
+    const [dishIdeaName, setDishIdeaName] = useState("Dish");
     const [dishIdeaImg, setDishIdeaImg] = useState("https://cdn2.iconfinder.com/data/icons/hotel-96/64/restaurant-food-dinner-plate-dish-512.png");
 
     function getRandomLetter() {
@@ -28,6 +28,8 @@ const DishIdeaWidget = () => {
             const indexRecipe = Math.floor(Math.random() * amountRecipes);
             console.log(apiRes.data.hits[indexRecipe].recipe.label);
             console.log(apiRes.data.hits[indexRecipe].recipe.image);
+            console.log(apiRes);
+            setDishIdeaName(apiRes.data.hits[indexRecipe].recipe.label);
            setDishIdeaImg(apiRes.data.hits[indexRecipe].recipe.image);
 
         }
@@ -42,6 +44,7 @@ const DishIdeaWidget = () => {
         <>
             <div className="dish-widget widget">
                 <h1>Recipe of the Day:</h1>
+                <h4>{dishIdeaName}</h4>
                 <img width="100" height="100" src={dishIdeaImg}></img>
             </div>
         </>
