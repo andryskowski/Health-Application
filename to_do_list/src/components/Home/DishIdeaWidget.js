@@ -47,7 +47,7 @@ const DishIdeaWidget = () => {
             <div className="dish-widget widget">
                 <h1>Recipe of the Day:</h1>
                 {/* <h4 href={dishIdeaLink}>{dishIdeaName}</h4> */}
-                <h4><a href={dishIdeaLink} class="stretched-link link">{dishIdeaName}</a></h4>
+                <h4><a href={dishIdeaLink} target="_blank" class="stretched-link link">{dishIdeaName}</a></h4>
                 <img width="100" height="100" src={dishIdeaImg}></img>
             </div>
         </>
