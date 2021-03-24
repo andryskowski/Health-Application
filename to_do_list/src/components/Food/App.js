@@ -11,6 +11,7 @@ const App = () => {
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
   const [actualIngredientPhoto, setActualIngredientPhoto] = 
   useState("https://image.flaticon.com/icons/png/512/985/985552.png");
+  const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
   const dishObj = {
     name: 'Dish name',
     ingredients: [
@@ -21,7 +22,6 @@ const App = () => {
 
   const [dish, setDish] = useState(dishObj);
   const [nameDish, setNameDish] = useState('no name');
-  const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
   const APP_ID = "d91664c7";
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3";
 
@@ -49,20 +49,17 @@ const App = () => {
       ${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
       setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
-      console.log(typeof apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
       if (apiRes.data.parsed[0].food.image) {
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
       }
       else {
         setActualIngredientPhoto("https://image.flaticon.com/icons/png/512/985/985552.png");
       }
-      console.log(apiRes.data.parsed[0].food.image);
-      console.log(apiRes);
 
     } catch (err) {
       console.error("Error response:");
     } finally {
-      console.log(apiRes);
+      console.log(actualIngredientCalories);
     }
 
   };
@@ -144,7 +141,7 @@ const App = () => {
       <div className="App dish-container">
         
 
-        <h1 onClick={getData}>It's place where you can organize your dishes.</h1>
+        <h1>It's place where you can organize your dishes.</h1>
         <p>At first, type name of product (for example 'apple'), add ingredient, 
           click 'Search' buttom to find caloric value 
           and add your dish to your collection!  </p>

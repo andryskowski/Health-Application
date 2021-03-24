@@ -20,7 +20,6 @@ const Dishes = () => {
             .then(response => {
                 setLoading(true);
                 dishesToDisplay(response);
-                console.log(response);
 
             })
             // .then(window.scrollTo(0,document.body.scrollHeight))
@@ -30,7 +29,6 @@ const Dishes = () => {
     }
 
     async function deleteDish(id) {
-        console.log(id);
         const currentDish = document.getElementById(id);
         currentDish.style.opacity = (0.3);
         await fetch(`http://localhost:8000/dishes/${id}`, {
@@ -72,7 +70,7 @@ const Dishes = () => {
     const indexOfLastDish = currentPage * dishesPerPage;
     const indexOfFirstDish = indexOfLastDish - dishesPerPage;
     const currentDishes = dishes.slice(indexOfFirstDish, indexOfLastDish);
-    console.log(currentDishes);
+
 
     // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
