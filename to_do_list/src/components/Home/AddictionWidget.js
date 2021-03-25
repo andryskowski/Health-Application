@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './sass/App.sass';
+import Addiction from './icons/workaholic.svg';
+import Drugs from './icons/capsules.svg';
+import Alcohol from './icons/beer.svg';
+import Cigarettes from './icons/cigarette.svg';
 
 const AddictionWidget = () => {
     // const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
 
     const [ADDICTION_IMG, setAddictionImg] = useState(
-        window.localStorage.getItem('ADDICTION_IMG') ?
+        window.localStorage.getItem('ADDICTION_IMG') 
+        ?
         window.localStorage.getItem('ADDICTION_IMG') :
-        "https://www.flaticon.com/svg/vstatic/svg/1685/1685853.svg?token=exp=1616529380~hmac=7a9c266abddf95432829fff3ba95c44d"
+        Addiction
     )
     const [ACTUAL_ADDICTION, setActualAddiction] = useState(
         window.localStorage.getItem('ACTUAL_ADDICTION') 
@@ -38,15 +43,19 @@ const AddictionWidget = () => {
         let LINK_IMG;
         if(e.target.value == "cigarettes")
         {
-            LINK_IMG = "https://www.flaticon.com/svg/vstatic/svg/1685/1685839.svg?token=exp=1616529803~hmac=276594dcd05b6082fa00cc73a6cfe275";
+            LINK_IMG = Cigarettes;
         }
         else if(e.target.value == "alcohol")
         {
-            LINK_IMG = "https://www.flaticon.com/svg/vstatic/svg/1685/1685837.svg?token=exp=1616529760~hmac=15c5ef9af9bfea4e4f80a568ffccfe5a";
+            LINK_IMG = Alcohol;
         }
         else if(e.target.value == "drugs")
         {
-            LINK_IMG = "https://www.flaticon.com/svg/vstatic/svg/1685/1685841.svg?token=exp=1616529779~hmac=3a3747f6847ca9ed7fd0e56aab848f98";
+            LINK_IMG = Drugs;
+        }
+        else if(e.target.value == "addiction")
+        {
+            LINK_IMG = Addiction;
         }
         setAddictionImg(LINK_IMG);
         window.localStorage.setItem('ADDICTION_IMG', LINK_IMG);
@@ -71,6 +80,7 @@ const AddictionWidget = () => {
                     <option value="drugs">drugs</option>
                 </select>
             <img src={ADDICTION_IMG} width="100" height="100"></img>
+            
             </div>
     );
 };
