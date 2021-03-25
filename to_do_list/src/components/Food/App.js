@@ -55,7 +55,6 @@ const App = () => {
       else {
         setActualIngredientPhoto("https://image.flaticon.com/icons/png/512/985/985552.png");
       }
-
     } catch (err) {
       console.error("Error response:");
     } finally {
@@ -198,8 +197,6 @@ const App = () => {
         
       </div>
       
-      
-
     </motion.div>
   );
 };

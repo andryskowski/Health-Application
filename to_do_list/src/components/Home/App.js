@@ -10,14 +10,11 @@ const App = () => {
     // const BMRInformations = useSelector(store => store.BMRInformations);
     const [TASKS_TODAY, setTasksToday] = useState(0);
 
-
-
     // const INFO_BMR_ELEMENTS = BMRInformations.map(info => (
     //     info.BMR
     // ));
 
     // const BMR_INFO = JSON.stringify(INFO_BMR_ELEMENTS);
-
 
     function getTasksForToday() {
         const TODAY_DATE = new Date().toISOString().slice(0, 10);
@@ -36,10 +33,6 @@ const App = () => {
 
     }
 
-    useEffect(() => {
-
-    }, []);
-
     return (
 
         <div className="content">
@@ -51,7 +44,6 @@ const App = () => {
             <div className="to-do-list-widget widget"><h2>Tasks for today: {window.localStorage.getItem('Tasks') != null ? getTasksForToday() : "nothing to do."}</h2></div>
             <DishIdeaWidget />
             <AddictionWidget />
-            
         </div>
 
     );

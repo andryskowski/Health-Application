@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
 import './sass/App.sass';
 import { motion } from 'framer-motion';
 import Pagination from './Pagination';
 import { Card } from "react-bootstrap"
 
-
 const Dishes = () => {
-    // const [dishes, setDishes] = useState(0);
     const [dishes, setDishes] = useState([]);
+    //pagination
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [dishesPerPage] = useState(4);
-    const [idDish, setIdDish] = useState();
 
     async function getDishes() {
         const response = await fetch("http://localhost:8000/dishes")
@@ -20,7 +17,6 @@ const Dishes = () => {
             .then(response => {
                 setLoading(true);
                 dishesToDisplay(response);
-
             })
             // .then(window.scrollTo(0,document.body.scrollHeight))
             .catch(() => {
@@ -33,31 +29,31 @@ const Dishes = () => {
         currentDish.style.opacity = (0.3);
         await fetch(`http://localhost:8000/dishes/${id}`, {
             method: 'DELETE',
-          })
-          .then(res => res.text()) // or res.json()
-          .then(res => console.log(res))
-      }
-    
-    const dishesToDisplay = (response) => {
-        
-        const mappedDishes = response.map(resp => 
-            
-        <div className="card dish-from-collection " id={resp._id} style={{ width: '18rem' }} >
-            <div className="x-button-dish" id={resp.id} onClick={() => {deleteDish(resp._id); }}>X</div>
-            <div class="card-header bg-primary text-light ">{resp.name}</div>
+        })
+            .then(res => res.text()) // or res.json()
+            .then(res => console.log(res))
+    }
 
-            {resp.ingredients.map(ingredient =>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        {ingredient.ingredientName},
+    const dishesToDisplay = (response) => {
+
+        const mappedDishes = response.map(resp =>
+
+            <div className="card dish-from-collection " id={resp._id} style={{ width: '18rem' }} >
+                <div className="x-button-dish" id={resp.id} onClick={() => { deleteDish(resp._id); }}>X</div>
+                <div class="card-header bg-primary text-light ">{resp.name}</div>
+
+                {resp.ingredients.map(ingredient =>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            {ingredient.ingredientName},
             {ingredient.ingredientCal} cal,
             {ingredient.ingredientWeight} g,
             <img src={ingredient.ingredientPhoto} className="photo"></img>
-                    </li>
-                </ul>)}
+                        </li>
+                    </ul>)}
 
-            <li class="list-group-item">{resp.calories} calories</li></div> );
-            
+                <li class="list-group-item">{resp.calories} calories</li></div>);
+
         setDishes(mappedDishes);
 
     }
@@ -73,21 +69,21 @@ const Dishes = () => {
 
 
     // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <Card>
-        <Card.Body>
-        <div className="div-dishes">
-            {currentDishes}
-            </div>
-            <Pagination
-            dishesPerPage={dishesPerPage}
-            totalDishes={dishes.length}
-            paginate={paginate}
-            />
-       
-        </Card.Body>
+            <Card.Body>
+                <div className="div-dishes">
+                    {currentDishes}
+                </div>
+                <Pagination
+                    dishesPerPage={dishesPerPage}
+                    totalDishes={dishes.length}
+                    paginate={paginate}
+                />
+
+            </Card.Body>
         </Card>
     );
 };
