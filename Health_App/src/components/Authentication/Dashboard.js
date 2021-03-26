@@ -29,6 +29,9 @@ export default function Dashboard() {
         //  setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
          setImageAsUrl(fireBaseUrl);
        })
+       .catch(() => {
+        alert('Error retrieving data!');
+    });
 
   }
 
@@ -41,7 +44,9 @@ export default function Dashboard() {
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
-          <img src={imageAsUrl} width="100" height="100"></img>
+          <div >
+          <img className="rounded-circle z-depth-2 mx-auto d-block" width="100" height="100" src={imageAsUrl} ></img>
+          </div>
           {/* {error && <Alert variant="danger">{error}</Alert>} */}
           {currentUser ? <strong>Email: {currentUser.email}</strong> : <strong>Email:</strong> }
           
