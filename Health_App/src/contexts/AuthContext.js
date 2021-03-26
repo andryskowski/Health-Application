@@ -43,7 +43,9 @@ export function AuthProvider({ children }) {
 
   function updateProfilePhoto(file) {
     console.log(typeof currentUser.email);
-    firebase.storage().ref(`/images/${currentUser.email}`).put(file)
+    console.log(file.name);
+    console.log(typeof file.name);
+    firebase.storage().ref(`/images/${file.name}`).put(file)
   }
 
 
