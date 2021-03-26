@@ -92,7 +92,7 @@ export default function UpdateProfile() {
               />
             </Form.Group>
 
-            I am testing here sth */}
+            Upload your profile picture
              <div className="field">
               <input type='file' onChange={chooseFile} />
             </div>
