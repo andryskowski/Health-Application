@@ -98,15 +98,14 @@ export default function UpdateProfile() {
               <input type='file' onChange={chooseFile} />
             </div>
             
+            {file 
+            ? 
             <img src={URL.createObjectURL(file) } className="mt-1 mb-1" width="100" height="100"></img>
-            {/* <Form.Group id="fileUpload">
-              <Form.Label>Upload Profile Picture</Form.Label>
-              <Form.Control
-                type="file"
-                onClick={chooseFile}
-                placeholder="Upload your profile picture"
-              />
-            </Form.Group> */}
+            :
+            file
+            }
+            {/* <img src={URL.createObjectURL(file) } className="mt-1 mb-1" width="100" height="100"></img> */}
+  
 
             <Button disabled={loading} className="w-100" type="submit">
               Update
