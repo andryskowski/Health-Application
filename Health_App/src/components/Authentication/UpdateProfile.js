@@ -54,6 +54,7 @@ export default function UpdateProfile() {
 
   function chooseFile(e) {
     console.log(e.target.files[0]);
+    console.log(e.target.files);
     fileUploaded = e.target.files[0];
     setFile(fileUploaded);
   }
@@ -93,9 +94,11 @@ export default function UpdateProfile() {
             </Form.Group>
 
             Upload your profile picture
-             <div className="field">
+             <div className="field" className="mt-1 mb-1">
               <input type='file' onChange={chooseFile} />
             </div>
+            
+            <img src={URL.createObjectURL(file) } className="mt-1 mb-1" width="100" height="100"></img>
             {/* <Form.Group id="fileUpload">
               <Form.Label>Upload Profile Picture</Form.Label>
               <Form.Control
