@@ -2,15 +2,19 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import firebase from "firebase/app"
+import "firebase/auth"
 
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { currentUser, updatePassword, updateEmail } = useAuth()
+  const { currentUser, updatePassword, updateEmail, updateProfilePhoto } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const [file, setFile] = useState(false)
+  const uploadedFileRef = useRef()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -22,12 +26,17 @@ export default function UpdateProfile() {
     setLoading(true)
     setError("")
 
+    if (file)
+    {
+      promises.push(updateProfilePhoto(file));
+    }
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value))
     }
     if (passwordRef.current.value) {
       promises.push(updatePassword(passwordRef.current.value))
     }
+
 
     Promise.all(promises)
       .then(() => {
@@ -40,6 +49,15 @@ export default function UpdateProfile() {
         setLoading(false)
       })
   }
+
+  let fileUploaded = {};
+
+  function chooseFile(e) {
+    console.log(e.target.files[0]);
+    fileUploaded = e.target.files[0];
+    setFile(fileUploaded);
+  }
+
 
   return (
     <>
@@ -73,15 +91,25 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
+
+            I am testing here sth */}
+             <div className="field">
+              <input type='file' onChange={chooseFile} />
+            </div>
+            {/* <Form.Group id="fileUpload">
+              <Form.Label>Upload Profile Picture</Form.Label>
+              <Form.Control
+                type="file"
+                onClick={chooseFile}
+                placeholder="Upload your profile picture"
+              />
+            </Form.Group> */}
+
             <Button disabled={loading} className="w-100" type="submit">
               Update
             </Button>
           </Form>
-          {/* I am testing here sth */}
-          <div className="field">
-          <h2>Siema</h2>
 
-          </div>
 
         </Card.Body>
       </Card>
