@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const history = useHistory()
-  const [imageAsUrl, setImageAsUrl] = useState(0);
+  const [imageAsUrl, setImageAsUrl] = useState(`https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png`);
 
   async function handleLogout() {
     setError("")
