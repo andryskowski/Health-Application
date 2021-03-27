@@ -78,8 +78,6 @@ function App() {
     console.log(BMRInformations);
   }
 
-  
-
     return (
         // <Provider store={store}>
         <motion.div initial={{ opacity: 0 }}
@@ -87,7 +85,7 @@ function App() {
             exit={{ opacity: 0 }}
             className="App form-group">
             <h1 className="header">BMR</h1>
-            <h1 className="h1-bmi">Calories calculator</h1>
+            <h1 className="h1-bmi">BMR calculator</h1>
                 height <input onChange={setHeightOn} className="form-control w-25"></input>
                 weight <input onChange={setWeightOn} className="form-control w-25"></input>
                 age <input onChange={setAgeOn} className="form-control w-25"></input>
