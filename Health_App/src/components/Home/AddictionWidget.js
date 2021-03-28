@@ -15,6 +15,7 @@ const AddictionWidget = () => {
         window.localStorage.getItem('ADDICTION_IMG') :
         Addiction
     )
+    
     const [ACTUAL_ADDICTION, setActualAddiction] = useState(
         window.localStorage.getItem('ACTUAL_ADDICTION') 
         ? 

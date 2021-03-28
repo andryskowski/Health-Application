@@ -5,8 +5,6 @@ import { motion } from 'framer-motion';
 import Dishes from './Dishes';
 import { Card } from '@material-ui/core';
 
-
-
 const App = () => {
   const [actualIngredientName, setActualIngredientName] = useState('your product');
   const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
@@ -184,7 +182,6 @@ const App = () => {
             {dish.name}
           </div>
           <ul class="list-group list-group-flush">
-            {/* ; {dish.ingredients.join()}; {dish.caloriesDish} */}
             {ingredientsToDisplay}
             <li class="list-group-item"><b>{dish.caloriesDish} calories</b> </li>
           </ul>

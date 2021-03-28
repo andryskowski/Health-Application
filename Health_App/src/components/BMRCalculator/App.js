@@ -19,7 +19,6 @@ function App() {
     const BMRInformations = useSelector(store => store.BMRInformations);
     const bmrbmr = JSON.stringify(BMRInformations);
     
-
     const BMRObject = {
         height: 10,
         weight: 12,

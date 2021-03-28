@@ -12,7 +12,6 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import './sass/App.sass';
 import { motion } from 'framer-motion';
-
 // import { appointments } from '../../../demo-data/month-appointments';
 
 const CustomAppointment = ({ style, ...restProps }) => {
