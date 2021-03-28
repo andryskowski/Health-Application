@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './sass/App.sass';
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth } from "../../contexts/AuthContext";
+import { motion } from 'framer-motion';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -77,7 +78,9 @@ const App = () => {
     }
 
     return (
-
+        <motion.div initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
         <div className="App">
             <h1>Posts</h1>
             
@@ -104,7 +107,7 @@ const App = () => {
             </form>
 
         </div>
-
+        </motion.div>
     );
 };
 
