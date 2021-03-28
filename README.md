@@ -5,7 +5,7 @@ To launch the app:
 If that doesn't help, contact me by mail s.andryskowski@gmail.com.
 
 Screens from App:
-![image](https://user-images.githubusercontent.com/52753339/112758985-558b1280-8ff1-11eb-8636-ef3737b009bb.png)
+![image](https://user-images.githubusercontent.com/52753339/112759180-288b2f80-8ff2-11eb-8dd2-e1c7814873d5.png)
 ![image](https://user-images.githubusercontent.com/52753339/112758996-62a80180-8ff1-11eb-90a0-6a6fca38c560.png)
 ![image](https://user-images.githubusercontent.com/52753339/112759008-6f2c5a00-8ff1-11eb-964c-d8b2bca4f5a9.png)
 ![image](https://user-images.githubusercontent.com/52753339/112759019-78b5c200-8ff1-11eb-90d4-3081744cde36.png)
