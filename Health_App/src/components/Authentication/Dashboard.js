@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { motion } from 'framer-motion';
 
 import firebase from "firebase/app"
 import 'firebase/storage'
@@ -41,7 +42,9 @@ export default function Dashboard() {
 }, []);
 
   return (
-    <>
+    <motion.div initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity: 0}}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
@@ -61,6 +64,6 @@ export default function Dashboard() {
           Log Out
         </Button>
       </div>
-    </>
+      </motion.div>
   )
 }
