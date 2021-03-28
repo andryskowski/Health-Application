@@ -4,7 +4,7 @@ To launch the app:
 
 If that doesn't help, contact me by mail s.andryskowski@gmail.com.
 
-Screens from App:
+Screens from the app:
 ![image](https://user-images.githubusercontent.com/52753339/112759180-288b2f80-8ff2-11eb-8dd2-e1c7814873d5.png)
 ![image](https://user-images.githubusercontent.com/52753339/112758996-62a80180-8ff1-11eb-90a0-6a6fca38c560.png)
 ![image](https://user-images.githubusercontent.com/52753339/112759008-6f2c5a00-8ff1-11eb-964c-d8b2bca4f5a9.png)
