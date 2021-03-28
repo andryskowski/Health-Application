@@ -89,7 +89,7 @@ const App = () => {
                 </div>
             </div>
 
-            <button onClick={showPostsInState}>show posts in state</button>
+            {/* <button onClick={showPostsInState}>show posts in state</button> */}
             <br></br>
             <form onSubmit={postForumPost}>
                 <label>
