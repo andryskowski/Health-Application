@@ -5,6 +5,7 @@ import WeatherWidget from './WeatherWidget';
 import DishIdeaWidget from './DishIdeaWidget';
 import AddictionWidget from './AddictionWidget'
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const App = () => {
     // const BMRInformations = useSelector(store => store.BMRInformations);
@@ -34,7 +35,9 @@ const App = () => {
     }
 
     return (
-
+        <motion.div initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}>
         <div className="content">
             <h1 className="header">Home</h1>
             {/* <div>{BMR_INFO}</div> */}
@@ -45,6 +48,7 @@ const App = () => {
             <DishIdeaWidget />
             <AddictionWidget />
         </div>
+        </motion.div>
 
     );
 };
