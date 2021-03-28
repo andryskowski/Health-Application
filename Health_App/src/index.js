@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-route
 import Home from './components/Home/App';
 import Forum from './components/Forum/App';
 
-import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
@@ -33,12 +32,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-
         <AnimatePresence exit={{ opacity: 0 }}>
-
-
           <AuthProvider>
-            <PrivateRoute path="/" component={Nav} />
+            {/* <PrivateRoute path="/" component={Nav} /> */}
             <PrivateRoute path="/" component={Nav2} />
             <Switch>
 
@@ -65,7 +61,6 @@ const App = () => {
 
                 </div>
               </Container>
-
             </Switch>
           </AuthProvider>
         </AnimatePresence>

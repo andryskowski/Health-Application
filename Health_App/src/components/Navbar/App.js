@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion"
 const App = () => {
     return (
+            // <nav className="navbar navbar-dark bg-dark position-fixed navbar-fixed-left m-0 vh-100 p-4  d-none d-lg-flex"
             <nav className="navbar navbar-dark bg-dark position-fixed navbar-fixed-left m-0 vh-100 p-4  d-none d-lg-flex"
             style={{zIndex:10}}>
                 <ul className="navbar-nav">
