@@ -43,26 +43,22 @@ export function AuthProvider({ children }) {
   }
 
   function updateProfilePhoto(file) {
-    // console.log(typeof currentUser.email);
-    // console.log(file.name);
-    // console.log(typeof file.name);
-    firebase.storage().ref(`/images/${currentUser.email}`).put(file)
-    // db.collection('users').doc(cred.user.uid).set({ bio: 'elo' });
-    // console.log(currentUser);
+    firebase.storage().ref(`/images/${currentUser.email}`).put(file);
+  }
+
+  function setProfileUsername(newUsername) {
     const idUser = currentUser.uid;
-    const userNameObj = {userName : 'Login'};
-    return firebase.firestore()
+    const userNameObj = {userName : newUsername};
+    console.log(userNameObj)
+    firebase.firestore()
       .collection("users")
       .doc(currentUser.uid)
-      .get()
-      .then(doc => console.log(doc.data().userName))
-      .catch((error) => console.error("Error: ", error))
+      .set(userNameObj)
+      .catch((error) => console.error("Error: ", error));
       
   }
 
   function getProfileUsername() {
-    // const idUser = currentUser.uid;
-    // const userNameObj = {userName : 'Login'};
     return firebase.firestore()
       .collection("users")
       .doc(currentUser.uid)
@@ -71,7 +67,6 @@ export function AuthProvider({ children }) {
       .catch((error) => console.error("Error: ", error))
       
   }
-
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
