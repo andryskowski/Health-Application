@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from "react"
 import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/storage'
+import 'firebase/firestore'
 
 import { auth } from "../firebase"
 
@@ -46,6 +47,29 @@ export function AuthProvider({ children }) {
     // console.log(file.name);
     // console.log(typeof file.name);
     firebase.storage().ref(`/images/${currentUser.email}`).put(file)
+    // db.collection('users').doc(cred.user.uid).set({ bio: 'elo' });
+    // console.log(currentUser);
+    const idUser = currentUser.uid;
+    const userNameObj = {userName : 'Login'};
+    return firebase.firestore()
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then(doc => console.log(doc.data().userName))
+      .catch((error) => console.error("Error: ", error))
+      
+  }
+
+  function getProfileUsername() {
+    // const idUser = currentUser.uid;
+    // const userNameObj = {userName : 'Login'};
+    return firebase.firestore()
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then(doc => console.log(doc.data().userName))
+      .catch((error) => console.error("Error: ", error))
+      
   }
 
 
