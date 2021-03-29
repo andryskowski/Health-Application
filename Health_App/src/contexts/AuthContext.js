@@ -58,15 +58,14 @@ export function AuthProvider({ children }) {
       
   }
 
-  async function getUsername() {
-    let actualUsername = "Username";
-    await firebase.firestore()
+  function getUsername() {
+    return firebase.firestore()
       .collection("users")
       .doc(currentUser.uid)
       .get()
-      .then(doc => actualUsername = window.localStorage.setItem('Username', doc.data().userName))
+      .then(doc => console.log(doc.data().userName))
       .catch((error) => console.error("Error: ", error))
-    return actualUsername;
+      
   }
 
   useEffect(() => {
