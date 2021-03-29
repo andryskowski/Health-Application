@@ -9,9 +9,10 @@ import 'firebase/storage'
 
 export default function Dashboard() {
   const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
+  const { currentUser, logout, getUsername } = useAuth()
   const history = useHistory()
   const [imageAsUrl, setImageAsUrl] = useState(`https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png`);
+  const [actualUsername, setActualUsername] = useState()
 
   async function handleLogout() {
     setError("")
@@ -26,34 +27,42 @@ export default function Dashboard() {
 
   async function getProfilePicture() {
     await firebase.storage().ref('images').child(currentUser.email).getDownloadURL()
-       .then(fireBaseUrl => {
+      .then(fireBaseUrl => {
         //  setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
-         setImageAsUrl(fireBaseUrl);
-       })
-       .catch(() => {
+        setImageAsUrl(fireBaseUrl);
+      })
+      .catch(() => {
         setImageAsUrl(`https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png`);
         console.log('Error retrieving data! User doesnt have profile picture');
-    });
+      });
 
   }
 
   useEffect(() => {
     getProfilePicture();
-}, []);
+    getUsername();
+
+  }, []);
 
   return (
-    <motion.div initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    exit={{opacity: 0}}>
+    <motion.div initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           <div >
-          <img className="rounded-circle z-depth-2 mx-auto d-block" width="100" height="100" src={imageAsUrl} ></img>
+            <img className="rounded-circle z-depth-2 mx-auto d-block" width="100" height="100" src={imageAsUrl} ></img>
           </div>
           {/* {error && <Alert variant="danger">{error}</Alert>} */}
-          {currentUser ? <strong>Email: {currentUser.email}</strong> : <strong>Email:</strong> }
-          
+          <h5>
+          {window.localStorage.getItem('Username')
+            ?
+            window.localStorage.getItem('Username') 
+            :
+            currentUser.email
+            }
+          </h5>
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
@@ -64,6 +73,6 @@ export default function Dashboard() {
           Log Out
         </Button>
       </div>
-      </motion.div>
+    </motion.div>
   )
 }
