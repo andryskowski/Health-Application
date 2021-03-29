@@ -46,10 +46,10 @@ export function AuthProvider({ children }) {
     firebase.storage().ref(`/images/${currentUser.email}`).put(file);
   }
 
-  function setProfileUsername(newUsername) {
+  function updateUsername(newUsername) {
     const idUser = currentUser.uid;
     const userNameObj = {userName : newUsername};
-    console.log(userNameObj)
+    console.log(userNameObj);
     firebase.firestore()
       .collection("users")
       .doc(currentUser.uid)
@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
       
   }
 
-  function getProfileUsername() {
+  function getUsername() {
     return firebase.firestore()
       .collection("users")
       .doc(currentUser.uid)
@@ -85,7 +85,9 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
-    updateProfilePhoto
+    updateProfilePhoto,
+    updateUsername,
+    getUsername
   }
 
   return (
