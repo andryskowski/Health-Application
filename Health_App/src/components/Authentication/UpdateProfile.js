@@ -53,8 +53,6 @@ export default function UpdateProfile() {
   let fileUploaded = {};
 
   function chooseFile(e) {
-    console.log(e.target.files[0]);
-    console.log(e.target.files);
     fileUploaded = e.target.files[0];
     setFile(fileUploaded);
   }
@@ -106,7 +104,6 @@ export default function UpdateProfile() {
             }
             {/* <img src={URL.createObjectURL(file) } className="mt-1 mb-1" width="100" height="100"></img> */}
   
-
             <Button disabled={loading} className="w-100" type="submit">
               Update
             </Button>

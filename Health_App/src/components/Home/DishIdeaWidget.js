@@ -24,9 +24,6 @@ const DishIdeaWidget = () => {
         } finally {
             const amountRecipes = apiRes.data.hits.length;
             const indexRecipe = Math.floor(Math.random() * amountRecipes);
-            console.log(apiRes.data.hits[indexRecipe].recipe.label);
-            console.log(apiRes.data.hits[indexRecipe].recipe.image);
-            console.log(apiRes);
             setDishIdeaName(apiRes.data.hits[indexRecipe].recipe.label);
             setDishIdeaLink(apiRes.data.hits[indexRecipe].recipe.url)
            setDishIdeaImg(apiRes.data.hits[indexRecipe].recipe.image);
