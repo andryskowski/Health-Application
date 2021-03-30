@@ -9,7 +9,7 @@ import 'firebase/storage'
 
 export default function Dashboard() {
   const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
+  const { currentUser, logout, getUsername } = useAuth()
   const history = useHistory()
   const [imageAsUrl, setImageAsUrl] = useState(`https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png`);
   const [actualUsername, setActualUsername] = useState()
@@ -38,17 +38,6 @@ export default function Dashboard() {
 
   }
 
-  async function getUsername() {
-    
-    await firebase.firestore()
-      .collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then(doc => setActualUsername(doc.data().userName))
-      .catch((error) => console.error("Error: ", error))
-    
-  }
-
   useEffect(() => {
     getProfilePicture();
     getUsername();
@@ -66,12 +55,12 @@ export default function Dashboard() {
             <img className="rounded-circle z-depth-2 mx-auto d-block" width="100" height="100" src={imageAsUrl} ></img>
           </div>
           {/* {error && <Alert variant="danger">{error}</Alert>} */}
-          <h5 className="text-center">
-          {actualUsername
+          <h5>
+          {window.localStorage.getItem('Username')
             ?
-            actualUsername
+            window.localStorage.getItem('Username') 
             :
-            ""
+            currentUser.email
             }
           </h5>
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">

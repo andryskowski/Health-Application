@@ -58,7 +58,16 @@ export function AuthProvider({ children }) {
       
   }
 
-
+  async function getUsername() {
+    let actualUsername = "Username";
+    await firebase.firestore()
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then(doc => actualUsername = window.localStorage.setItem('Username', doc.data().userName))
+      .catch((error) => console.error("Error: ", error))
+    return actualUsername;
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -79,7 +88,7 @@ export function AuthProvider({ children }) {
     updatePassword,
     updateProfilePhoto,
     updateUsername,
-    // getUsername
+    getUsername
   }
 
   return (

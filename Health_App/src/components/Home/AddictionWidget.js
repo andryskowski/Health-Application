@@ -32,13 +32,9 @@ const AddictionWidget = () => {
     }
 
     function changeDayWithoutAddiction() {
-        const SECOND = 1000;
-        const MINUTE = SECOND * 60;
-        const HOUR = MINUTE * 60;
-        const DAY = HOUR * 24;
         const TODAY_DAY = new Date().getTime();
         const FIRST_DAY = window.localStorage.getItem('LAST_DAY_ADDICTION');
-        const COUNTER = Math.floor(Number(TODAY_DAY - FIRST_DAY) / DAY);
+        const COUNTER = Math.floor(FIRST_DAY / TODAY_DAY);
         setDayWithoutAddiction(COUNTER.toString());
     }
     
@@ -72,10 +68,6 @@ const AddictionWidget = () => {
         const LIST_ADDICTIONS = document.querySelector('.form-select-addiction');
         LIST_ADDICTIONS.style.display = "inline-block";
     }
-
-    useEffect(() => {
-        changeDayWithoutAddiction();
-    });
 
     return (
             <div className="addiction-widget widget">
