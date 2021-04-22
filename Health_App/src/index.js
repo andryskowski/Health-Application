@@ -34,7 +34,7 @@ const App = () => {
       <Router>
         <AnimatePresence exit={{ opacity: 0 }}>
           <AuthProvider>
-            {/* <PrivateRoute path="/" component={Nav} /> */}
+            <PrivateRoute path="/" component={Nav} />
             <PrivateRoute path="/" component={Nav2} />
             <Switch>
 

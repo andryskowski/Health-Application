@@ -76,9 +76,11 @@ class AddTask extends Component {
                 <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
                 <label htmlFor="name2" className="form__label"></label>
 
-                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="check "/>
-                <label htmlFor="c1" htmlFor="important" className="checkLabel" >{!this.state.checked ? `Food` : `Sport`}</label>
-
+                <div class="custom-control custom-switch">
+                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="custom-control-input"/>
+                <label htmlFor="c1" htmlFor="important" className="custom-control-label" >{!this.state.checked ? `Food` : `Sport`}</label>
+                </div>
+                
                 <label id="date" htmlFor="date"className="form-label">Date</label>
                 <input type="date" className="form-control m-2" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
 
