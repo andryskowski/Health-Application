@@ -27,7 +27,6 @@ class AddTask extends Component {
         })
     }
 
-    
     handleCalories = (e) => {
         this.setState({
             calories: e.target.value

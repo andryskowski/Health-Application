@@ -14,6 +14,7 @@ const DishIdeaWidget = () => {
         return alphabet[Math.floor(Math.random() * alphabet.length)]
     }
 
+    //get information about dish from food api
     const getData = async () => {
         let apiRes = null;
         try {

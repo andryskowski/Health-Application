@@ -11,6 +11,7 @@ const WeatherWidget = () => {
     const [WEATHER_LOCATION, setWeatherLocation] = useState(0);
     const [WEATHER_ICON, setWeatherIcon] = useState(0);
 
+    //get actual user location
     function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(setPosition);
@@ -28,6 +29,7 @@ const WeatherWidget = () => {
 
     const API_KEY = `9215f8be73c158f8f88c53de2a692d57`;
 
+    //get info about weather from weather APi
     async function getWeatherData(){
         getLocation();
         const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}`;

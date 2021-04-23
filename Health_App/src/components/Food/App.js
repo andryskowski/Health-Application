@@ -58,7 +58,6 @@ const App = () => {
     } finally {
       console.log(actualIngredientName);
     }
-
   };
 
   function setActualDish() {
@@ -137,7 +136,6 @@ const App = () => {
      
       <div className="App dish-container">
         
-
         <h1>It's place where you can organize your dishes.</h1>
         <p>At first, type name of product (for example 'apple'), add ingredient, 
           click 'Search' buttom to find caloric value 
