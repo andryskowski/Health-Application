@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 require('dotenv/config');
 
 app.use(bodyParser.json());
@@ -9,7 +10,7 @@ app.use(bodyParser.json());
 //import Routes
 const postsRoute = require('./routes/posts');
 const dishesRoute = require('./routes/dishes');
-
+app.use(cors())
 app.use('/posts', postsRoute);
 app.use('/dishes', dishesRoute);
 

@@ -12,14 +12,15 @@ const Dishes = () => {
     const [dishesPerPage] = useState(4);
 
     async function getDishes() {
-        const response = await fetch("http://localhost:8000/dishes")
+        await fetch('http://localhost:8000/dishes')
             .then(response => response.json())
             .then(response => {
                 setLoading(true);
                 dishesToDisplay(response);
             })
             // .then(window.scrollTo(0,document.body.scrollHeight))
-            .catch(() => {
+            .catch((error) => {
+                console.error(error.name + ': ' + error.message);
                 alert('Error retrieving data!');
             });
     }
@@ -28,7 +29,7 @@ const Dishes = () => {
         const currentDish = document.getElementById(id);
         currentDish.style.opacity = (0.3);
         await fetch(`http://localhost:8000/dishes/${id}`, {
-            method: 'DELETE',
+            method: 'DELETE'
         })
             .then(res => res.text()) // or res.json()
             .then(res => console.log(res))
