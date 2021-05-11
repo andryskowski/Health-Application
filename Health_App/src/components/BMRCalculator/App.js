@@ -26,12 +26,15 @@ function App() {
     }
 
     function setHeightOn(e) {
+        if(e.target.value<0) e.target.value=0;
         setHeight(e.target.value);
     }
     function setWeightOn(e) {
+        if(e.target.value<0) e.target.value=0;
         setWeight(e.target.value);
     }
     function setAgeOn(e) {
+        if(e.target.value<0) e.target.value=0;
         setAge(e.target.value);
     }
     function setGenderOn(e) {
@@ -84,20 +87,20 @@ function App() {
             exit={{ opacity: 0 }}
             className="App form-group">
             <h1 className="header">BMR</h1>
-            <h1 className="h1-bmi">BMR calculator</h1>
-                height <input onChange={setHeightOn} className="form-control w-25"></input>
-                weight <input onChange={setWeightOn} className="form-control w-25"></input>
-                age <input onChange={setAgeOn} className="form-control w-25"></input>
+            <h1 className="h1-bmi">BMR Calculator</h1>
+                Your height <input type="number" onChange={setHeightOn} className="form-control w-25"></input>
+                Your weight <input type="number" onChange={setWeightOn} className="form-control w-25"></input>
+                Your age <input type="number" onChange={setAgeOn} className="form-control w-25"></input>
                  
-                <label htmlFor="bonus">burned today</label>
-                <input id="bonus" onChange={setBonusOn} className="form-control w-25"></input>
+                <label htmlFor="bonus">Calories burned today</label>
+                <input id="bonus" type="number" onChange={setBonusOn} className="form-control w-25"></input>
                 
                 <div className="form-inline">
                 <input id="checkbox" type="checkbox" onChange={setGenderOn} className="form-check-label"></input>
                 <label htmlFor="checkbox">{gender ? `male` : `female` }</label>
                 </div>
 
-            <h1>Your BMR is = {cal}</h1>
+            <h1>Your BMR is: {cal}</h1>
             {/* <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button> */}
             {/* <div>{bmrbmr}</div> */}
             <div className="bmr-info">

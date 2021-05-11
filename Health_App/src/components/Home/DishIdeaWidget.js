@@ -8,7 +8,6 @@ const DishIdeaWidget = () => {
     const [dishIdeaName, setDishIdeaName] = useState("Dish");
     const [dishIdeaLink, setDishIdeaLink] = useState("https://google.com");
     const [dishIdeaImg, setDishIdeaImg] = useState("https://cdn2.iconfinder.com/data/icons/hotel-96/64/restaurant-food-dinner-plate-dish-512.png");
-
     function getRandomLetter() {
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
         return alphabet[Math.floor(Math.random() * alphabet.length)]
