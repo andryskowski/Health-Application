@@ -40,7 +40,7 @@ const Dishes = () => {
         const mappedDishes = response.map(resp =>
 
             <div className="card dish-from-collection " id={resp._id} style={{ width: '18rem' }} >
-                <div className="x-button-dish" id={resp.id} onClick={() => { deleteDish(resp._id); }}>X</div>
+                <div className="x-button-dish" id={resp._id} onClick={() => { deleteDish(resp._id); }}>X</div>
                 <div class="card-header bg-primary text-light ">{resp.name}</div>
 
                 {resp.ingredients.map(ingredient =>

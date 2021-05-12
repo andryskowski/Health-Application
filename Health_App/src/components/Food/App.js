@@ -6,76 +6,86 @@ import Dishes from './Dishes';
 import { Card } from '@material-ui/core';
 
 const App = () => {
-  const [actualIngredientName, setActualIngredientName] = useState('your product');
-  const [actualIngredientCalories, setActualIngredientCalories] = useState(0);
-  const [actualIngredientPhoto, setActualIngredientPhoto] = 
-  useState("https://image.flaticon.com/icons/png/512/985/985552.png");
-  const [actualIngredientWeight, setActualIngredientWeight] = useState(0);
-  const dishObj = {
-    name: 'Dish name',
-    ingredients: [
-      { ingredientName: 'bread', ingredientCal: 200, ingredientWeight: 10, ingredientPhoto: actualIngredientPhoto },
-      { ingredientName: 'butter', ingredientCal: 250, ingredientWeight: 15, ingredientPhoto: actualIngredientPhoto }],
-    caloriesDish: 450
+  const [actualIngredientName, setActualIngredientName] = useState('');
+  const [searchIngredientName, setSearchIngredientName] = useState('');
+  const [actualIngredientCalories, setActualIngredientCalories] = useState('');
+  const [actualCaloriesPer100G, setActualCaloriesPer100G] = useState('');
+  const [actualIngredientPhoto, setActualIngredientPhoto] = useState("https://image.flaticon.com/icons/png/512/985/985552.png");
+  const [defaultIngredientPhoto, setDefaultIngredientPhoto] = useState("https://image.flaticon.com/icons/png/512/985/985552.png");
+  const [actualIngredientWeight, setActualIngredientWeight] = useState('');
+  const emptyDish = {
+    name: 'New Dish',
+    ingredients: [],
+    caloriesDish: 0
   };
 
-  const [dish, setDish] = useState(dishObj);
-  const [nameDish, setNameDish] = useState('no name');
+  const [dish, setDish] = useState(emptyDish);
+  const [nameDish, setNameDish] = useState('New Dish');
   const APP_ID = "d91664c7";
   const APP_KEY = "42ccfb6e7bc9af092dcf9c81907435a3";
 
   async function postDish(event) {
-    event.preventDefault();
-    await fetch(`http://localhost:8000/dishes`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: dish.name,
-        ingredients: dish.ingredients,
-        calories: dish.caloriesDish
+    if (dish.ingredients.length == 0) {
+      alert("Add at least one ingredient to your dish");
+    } else {
+      event.preventDefault();
+      await fetch(`http://localhost:8000/dishes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: dish.name,
+          ingredients: dish.ingredients,
+          calories: dish.caloriesDish
+        })
       })
-    })
-      .then(resp => resp.json())
-      .then(window.location.reload())
+        .then(resp => resp.json())
+        .then(window.location.reload())
+    }
   }
 
   const getData = async () => {
     let apiRes = null;
     try {
-      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${actualIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-      const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
-      setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
+      apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${searchIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+      setActualCaloriesPer100G(apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
+      setActualIngredientName(searchIngredientName);
+      setActualIngredientCalories(actualCaloriesPer100G / 100 * actualIngredientWeight);
       if (apiRes.data.parsed[0].food.image) {
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
       }
       else {
-        setActualIngredientPhoto("https://image.flaticon.com/icons/png/512/985/985552.png");
+        setActualIngredientPhoto(defaultIngredientPhoto);
       }
     } catch (err) {
       console.error("Error response:");
+      alert('Ingredient not found')
     } finally {
       console.log(actualIngredientName);
     }
   };
 
   function setActualDish() {
-    setDish(prevState => {
-      return {
-        ...prevState, name: nameDish,
+    if (actualIngredientName == '' || actualIngredientWeight == '' || actualIngredientCalories == '') {
+      alert('Fill up all the ingredient fields');
+    } else {
+      setDish(prevState => {
+        return {
+          ...prevState, name: nameDish,
 
-        ingredients: [...prevState.ingredients,
-        {
-          ingredientName: actualIngredientName
-          , ingredientCal: actualIngredientCalories
-          , ingredientPhoto: actualIngredientPhoto
-          , ingredientWeight: actualIngredientWeight
-        }],
+          ingredients: [...prevState.ingredients,
+          {
+            ingredientName: actualIngredientName
+            , ingredientCal: actualIngredientCalories
+            , ingredientPhoto: actualIngredientPhoto
+            , ingredientWeight: actualIngredientWeight
+          }],
 
-        caloriesDish: prevState.caloriesDish + actualIngredientCalories
-      };
-    });
+          caloriesDish: prevState.caloriesDish + actualIngredientCalories
+        };
+      });
+    }
   }
 
   function setActualDishName() {
@@ -87,11 +97,7 @@ const App = () => {
   }
 
   function resetActualDish() {
-    setDish({
-      name: 'Dish name',
-      ingredients: [],
-      caloriesDish: 0
-    });
+    setDish(emptyDish);
   }
 
   function showDish() {
@@ -101,6 +107,7 @@ const App = () => {
   const handleActualIngredientName = e => {
     let h = e.target.value;
     setActualIngredientName(h);
+    setActualIngredientPhoto(defaultIngredientPhoto);
   };
 
   const handleNameDish = e => {
@@ -111,12 +118,18 @@ const App = () => {
   const handleWeightIngredient = e => {
     let h = e.target.value;
     setActualIngredientWeight(h);
+    setActualIngredientCalories(actualCaloriesPer100G / 100 * h);
   };
 
   const handleCaloriesIngredient = e => {
     let h = e.target.value;
     setActualIngredientCalories(h);
     
+  };
+
+  const handleSearchIngredientName = e => {
+    let h = e.target.value;
+    setSearchIngredientName(h);
   };
 
   const ingredientsToDisplay = dish.ingredients.map(
@@ -149,27 +162,37 @@ const App = () => {
           </div>
         </div>
 
-        <h5 className="text-secondary">&bull; Add ingredient</h5>
+        <h5 className="text-secondary">&bull; Find ingredient</h5>
         <div class="form-inline">
           <div >
-            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleActualIngredientName} />
-            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
-              className="form-control" onChange={handleWeightIngredient} />
+            <input type="text" placeholder="Ingredient name" autoComplete="off" className="form-control" onChange={handleSearchIngredientName} />
             <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
-            <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
-            
           </div>
         </div>
 
-        <h5 className="text-secondary">&bull; Add your own ingredient</h5>
+        <h5 className="text-secondary">&bull; Add ingredient</h5>
         <div class="form-inline">
-          <div >
-            <input type="text" placeholder="Search food" autoComplete="off" className="form-control" onChange={handleActualIngredientName} />
-            <input type="number" min="0" placeholder="Food weight [g]" autoComplete="off"
-              className="form-control" onChange={handleWeightIngredient} />
+          <div>
+            <h6>Ingredient name:</h6>
+            <input type="text" placeholder="Ingredient name" autoComplete="off"
+              className="form-control" value={actualIngredientName} onChange={handleActualIngredientName} />
+          </div>
+          <div>
+            <h6>Ingredient weight [g]:</h6>
+            <input type="number" min="0" placeholder="Ingredient weight [g]" autoComplete="off"
+              className="form-control" value={actualIngredientWeight} onChange={handleWeightIngredient} />
+          </div>
+          <div>
+            <h6>Calories:</h6>
             <input type="number" min="0" placeholder="Calories" autoComplete="off"
-              className="form-control" onChange={handleCaloriesIngredient} />
-            <input type="submit" value="Add to dish" className="btn btn-outline-secondary  ml-2" onClick={setActualDish} />
+              className="form-control" value={actualIngredientCalories} onChange={handleCaloriesIngredient} />
+          </div>
+          <div>
+            <img src={actualIngredientPhoto} className="photo center mt-4" alt='Logo'></img>
+          </div>
+          <div>
+            <h6 className="invisible">Submit:</h6>
+            <input type="submit" value="Add to dish" className="btn btn-outline-secondary" onClick={setActualDish} />
           </div>
         </div>
         <output  class="h5" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output>
