@@ -8,18 +8,16 @@ function App() {
   const [bmi, setBMI] = useState(0);
   const [result, setResult] = useState(`healthy weight`);
   const [resultColor, setResultColor] = useState(`green`);
-  let message = '';
+  let message = "";
 
   function handleHeight(e) {
-    let h = e.target.value;
-    if(h<0) h=0;
-    setHeight(h);
+    if (e.target.value < 0) e.target.value = 0;
+    setHeight(e.target.value);
   }
 
   function handleWeight(e) {
-    let w = e.target.value;
-    if(w<0) w=0;
-    setWeight(w);
+    if (e.target.value < 0) e.target.value = 0;
+    setWeight(e.target.value);
   }
 
   function changeResult(bmiNumber) {
