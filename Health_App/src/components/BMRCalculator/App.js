@@ -38,8 +38,8 @@ function App() {
         setAge(e.target.value);
     }
     function setGenderOn(e) {
-        console.log(gender, e.target.value, e.target.checked);
-        setGender(e.target.checked);
+        console.log(gender, e.target.value);
+        setGender(e.target.value === "Male"?  true : false);
     }
     function setBonusOn(e) {
         setBonus(e.target.value);
@@ -95,10 +95,10 @@ function App() {
                 <label htmlFor="bonus">Calories burned today</label>
                 <input id="bonus" type="number" onChange={setBonusOn} className="form-control w-25"></input>
                 
-                <div className="form-inline">
-                <input id="checkbox" type="checkbox" onChange={setGenderOn} className="form-check-label"></input>
-                <label htmlFor="checkbox">{gender ? `male` : `female` }</label>
-                </div>
+                    <div className="form-inline" className="radio">
+                        <label><input type="radio" value="Female" checked={!gender} onChange={setGenderOn}/> Female </label>
+                        <label><input type="radio" value="Male" checked={gender} onChange={setGenderOn}/> Male </label>
+                    </div>
 
             <h1>Your BMR is: {cal}</h1>
             {/* <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button> */}
