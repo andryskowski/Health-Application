@@ -49,9 +49,10 @@ const App = () => {
     let apiRes = null;
     try {
       apiRes = await Axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${searchIngredientName}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-      setActualCaloriesPer100G(apiRes.data.parsed[0].food.nutrients.ENERC_KCAL);
+      const caloriesPer100G = apiRes.data.parsed[0].food.nutrients.ENERC_KCAL;
+      setActualCaloriesPer100G(caloriesPer100G);
       setActualIngredientName(searchIngredientName);
-      setActualIngredientCalories(actualCaloriesPer100G / 100 * actualIngredientWeight);
+      setActualIngredientCalories(caloriesPer100G / 100 * actualIngredientWeight);
       if (apiRes.data.parsed[0].food.image) {
         setActualIngredientPhoto(apiRes.data.parsed[0].food.image);
       }
@@ -108,6 +109,7 @@ const App = () => {
     let h = e.target.value;
     setActualIngredientName(h);
     setActualIngredientPhoto(defaultIngredientPhoto);
+    setActualCaloriesPer100G('');
   };
 
   const handleNameDish = e => {
@@ -118,7 +120,9 @@ const App = () => {
   const handleWeightIngredient = e => {
     let h = e.target.value;
     setActualIngredientWeight(h);
-    setActualIngredientCalories(actualCaloriesPer100G / 100 * h);
+    if(actualCaloriesPer100G != ''){
+      setActualIngredientCalories(actualCaloriesPer100G / 100 * h);
+    }
   };
 
   const handleCaloriesIngredient = e => {
