@@ -4,7 +4,7 @@ class AddTask extends Component {
     minDate = new Date().toISOString().slice(0, 10);
     state = {
         text: 'Activity',
-        checked: false,
+        isFoodOrSport: false,
         date: this.minDate,
         calories: 'Calories'
     }
@@ -33,10 +33,10 @@ class AddTask extends Component {
         })
     }
 
-    handleCheckbox = (e) => {
+    handleRadio = (e) => {
         console.log(e);
         this.setState({
-            checked: e.target.checked
+            isFoodOrSport: e.target.value === "Sport"?  true : false
         })
     }
 
@@ -47,13 +47,13 @@ class AddTask extends Component {
     }
 
     handleClick = (e) => {
-        const { text, checked, date, calories } = this.state;
+        const { text, isFoodOrSport, date, calories } = this.state;
         if (text.length) {
-            const add = this.props.add(text, date, checked, calories);
+            const add = this.props.add(text, date, isFoodOrSport, calories);
             if (add) {
                 this.setState({
                     text: 'Activity',
-                    checked: false,
+                    isFoodOrSport: false,
                     date: this.minDate,
                     calories: 'Calories'
                 })
@@ -74,11 +74,13 @@ class AddTask extends Component {
                 
                 <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
                 <label htmlFor="name2" className="form__label"></label>
-
-                <div class="custom-control custom-switch">
-                <input id="c1" type="checkbox" checked={this.state.checked} id="important" onChange={this.handleCheckbox} className="custom-control-input"/>
-                <label htmlFor="c1" htmlFor="important" className="custom-control-label" >{!this.state.checked ? `Food` : `Sport`}</label>
-                </div>
+        <form>
+        <div className="radio">
+            <input type="radio" value="Food" checked={!this.state.isFoodOrSport} onChange={this.handleRadio}/>Food
+        <div className="radio"></div>
+            <input type="radio" value="Sport" checked={this.state.isFoodOrSport} onChange={this.handleRadio}/>Sport
+        </div>
+        </form>
                 
                 <label id="date" htmlFor="date"className="form-label">Date</label>
                 <input type="date" className="form-control m-2" value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
