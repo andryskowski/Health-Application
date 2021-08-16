@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import './sass/App.sass';
+import './sass/App.css';
 import { motion } from 'framer-motion';
 import Dishes from './Dishes';
 import { Card } from '@material-ui/core';

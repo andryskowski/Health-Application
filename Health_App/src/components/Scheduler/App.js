@@ -10,7 +10,7 @@ import {
   TodayButton,
   Resources
 } from '@devexpress/dx-react-scheduler-material-ui';
-import './sass/App.sass';
+import './sass/App.css';
 import { motion } from 'framer-motion';
 // import { appointments } from '../../../demo-data/month-appointments';
 

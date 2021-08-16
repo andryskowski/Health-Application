@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import "./sass/App.sass";
+import "./sass/App.css";
 import { motion } from "framer-motion";
+import bikeImg from './img/indoor_bike.png';
 
 function App() {
   const [height, setHeight] = useState(0);
@@ -57,19 +58,29 @@ function App() {
         <h1 className="header">BMI</h1>
         <h1 className="h1-bmi">BMI Calculator</h1>
         <div class="form-group">
-          <label>Your height</label>
-          <input
-            type="number"
-            className="form-control w-25"
-            onChange={handleHeight}
-          ></input>
-          <label>Your weight</label>
-          <input
-            type="number"
-            className="form-control w-25"
-            onChange={handleWeight}
-          ></input>
-          <h2 className="mt-2">Your BMI is: {bmi}</h2>
+          <div class="input-row">
+            <div class="input-container">
+              <label>Your height</label>
+              <input
+                type="number"
+                className="form-control w-50"
+                onChange={handleHeight}
+              ></input>
+              <label>Your weight</label>
+              <input
+                type="number"
+                className="form-control w-50"
+                onChange={handleWeight}
+              ></input>
+            </div>
+            <div>
+              <img class="image" src={bikeImg}></img>
+            </div>
+            
+            
+          </div>
+          
+          <h4 className="mt-2">Your BMI is: {bmi}</h4>
           {bmi != 0 ? (
             <h4>
               It means <span style={{ color: `${resultColor}` }}>{result}</span>

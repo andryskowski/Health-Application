@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import './sass/App.sass';
+import './sass/App.css';
 
 const DishIdeaWidget = () => {
     const APP_ID = "8bf2417a";
