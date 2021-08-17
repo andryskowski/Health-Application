@@ -60,18 +60,10 @@ function App() {
         <div class="form-group">
           <div class="input-row">
             <div class="input-container">
-              <label>Your height</label>
-              <input
-                type="number"
-                className="form-control w-50"
-                onChange={handleHeight}
-              ></input>
-              <label>Your weight</label>
-              <input
-                type="number"
-                className="form-control w-50"
-                onChange={handleWeight}
-              ></input>
+              <label>Your height:</label>
+              <input type="number" className="form-control w-50" onChange={handleHeight}></input>
+              <label>Your weight:</label>
+              <input type="number" className="form-control w-50" onChange={handleWeight}></input>
             </div>
             <div>
               <img class="image" src={bikeImg}></img>
