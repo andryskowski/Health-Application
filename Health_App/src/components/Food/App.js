@@ -83,7 +83,7 @@ const App = () => {
             , ingredientWeight: actualIngredientWeight
           }],
 
-          caloriesDish: prevState.caloriesDish + actualIngredientCalories
+          caloriesDish: 0.0 + prevState.caloriesDish * 1.0 + actualIngredientCalories * 1.0
         };
       });
     }
@@ -119,6 +119,7 @@ const App = () => {
 
   const handleWeightIngredient = e => {
     let h = e.target.value;
+    if(h.charAt(0) == "-" || h.charAt(0) == "0") h="";
     setActualIngredientWeight(h);
     if(actualCaloriesPer100G != ''){
       setActualIngredientCalories(actualCaloriesPer100G / 100 * h);
@@ -127,8 +128,8 @@ const App = () => {
 
   const handleCaloriesIngredient = e => {
     let h = e.target.value;
+    if(h.charAt(0) == "-" || h.charAt(0) == "0") h="";
     setActualIngredientCalories(h);
-    
   };
 
   const handleSearchIngredientName = e => {

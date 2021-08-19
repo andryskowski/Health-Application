@@ -28,9 +28,10 @@ class AddTask extends Component {
     }
 
     handleCalories = (e) => {
-        this.setState({
-            calories: e.target.value
-        })
+        const re = /^[1-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            this.setState({calories: e.target.value})
+         }
     }
 
     handleRadio = (e) => {
