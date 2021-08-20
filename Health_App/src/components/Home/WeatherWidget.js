@@ -52,7 +52,7 @@ const WeatherWidget = () => {
           <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
           <img class="weather-icon" src={WEATHER_ICON}></img>
         </div>
-        <h3>
+        <h3 class="weather-location">
           {WEATHER_LOCATION}, {WEATHER_DESCRIPTION}
         </h3>
       </div>

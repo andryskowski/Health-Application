@@ -79,16 +79,18 @@ const AddictionWidget = () => {
 
     return (
             <div className="addiction-widget widget">
-            <h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
-            <button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary">Reset</button>
-            <h5 className="change-btn" onClick={showListOfAddictions}>Change</h5>
-                <select style={{display: "none"}} class="form-select form-select-addiction ml-2" aria-label="Default select example" onChange={changeActualAddiction}>
-                    <option selected>addiction</option>
-                    <option value="cigarettes">cigarettes</option>
-                    <option value="alcohol">alcohol</option>
-                    <option value="drugs">drugs</option>
-                </select>
-            <img src={ADDICTION_IMG} width="100" height="100"></img>
+                <h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
+                <div class="buttons-add">
+                    <button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary reset-btn">Reset</button>
+                    <h5 className="change-btn" onClick={showListOfAddictions} className="btn btn-outline-secondary change-add-btn">Change</h5>
+                        <select style={{display: "none"}} class="form-select form-select-addiction ml-3 addictions" aria-label="Default select example" onChange={changeActualAddiction}>
+                            <option class="addictions" selected>Addiction</option>
+                            <option class="addictions" value="cigarettes">Cigarettes</option>
+                            <option class="addictions" value="alcohol">Alcohol</option>
+                            <option class="addictions" value="drugs">Drugs</option>
+                        </select>
+                </div>
+                <img src={ADDICTION_IMG} width="100" height="100"></img>
             
             </div>
     );
