@@ -28,7 +28,7 @@ class AddTask extends Component {
     }
 
     handleCalories = (e) => {
-        const re = /^[1-9\b]+$/;
+        const re = /^[0-9\b]+$/;
         if (e.target.value === '' || re.test(e.target.value)) {
             this.setState({calories: e.target.value})
          }

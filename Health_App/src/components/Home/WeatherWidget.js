@@ -47,8 +47,8 @@ const WeatherWidget = () => {
 
   return (
     <>
-      <div className="weather-widget widget first-widget">
-        <div class="first-row">
+      <div className="widget b-card">
+        <div>
           <h1 class="weather-temperature">{ACTUAL_TEMPERATURE}&#176;C</h1>
           <img class="weather-icon" src={WEATHER_ICON}></img>
         </div>

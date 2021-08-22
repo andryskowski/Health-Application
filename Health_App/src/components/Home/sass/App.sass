@@ -1,26 +1,32 @@
 .content
     display: flex
-    flex-direction: column
-    align-items: center
-    align-content: space-between
+    flex-wrap: wrap
+    padding-left: 180px
+    width: 100%
+    justify-content: center
+    vertical-align: middle
+    margin-top: 7%
+    // flex-direction: column
+    // align-items: center
+    // align-content: space-between
+
+.content .b-card
+    width: 500px !important
+    height: 300px !important
+    margin: 20px
+
+    text-align: center
+    padding-top: 20px !important
+    padding: 0
 
 .widget
     display: block
-    width: 50%
-    position: relative
     color: black
-    display: inline-block
     background-color: lighten(#5ABBD6, 25%)
     border-radius: 5px
-    color: black
-    text-align: center
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.3), 
-    0px -2px 8px rgba(255,255,255,0.3)
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3), 0px -2px 8px rgba(255,255,255,0.3)
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
     box-shadow: 5px 10px 12px grey
-    padding: 10px
-    margin-bottom: 10px
-    margin-top: 10px
     
 .weather-temperature
     font-weight: bold
@@ -33,8 +39,9 @@
     font-size: 2.5rem
 
 .weather-icon
-    width: auto
-    height: auto
+    display: inline
+    width: 100px
+    height: 100px
 
 .dish-recipe
     font-family: Gill Sans MT Condensed
@@ -96,5 +103,5 @@
 .link:hover
     text-decoration: none
 
-.first-widget
-    margin-top: 100px
+.navbar
+    top: 10px

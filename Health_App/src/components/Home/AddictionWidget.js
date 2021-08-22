@@ -78,7 +78,7 @@ const AddictionWidget = () => {
     });
 
     return (
-            <div className="addiction-widget widget">
+            <div className="addiction-widget widget b-card">
                 <h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
                 <div class="buttons-add">
                     <button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary reset-btn">Reset</button>
