@@ -79,12 +79,12 @@ const AddictionWidget = () => {
 
     return (
             <div className="addiction-widget widget b-card">
-                <h2>It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
+                <h2 class="days-without-addiction">It's your {dayWithoutAddiction} day without {ACTUAL_ADDICTION}!</h2>
                 <div class="buttons-add">
                     <button onClick={resetDayWithoutAddiction} className="btn btn-outline-secondary reset-btn">Reset</button>
                     <h5 className="change-btn" onClick={showListOfAddictions} className="btn btn-outline-secondary change-add-btn">Change</h5>
                         <select style={{display: "none"}} class="form-select form-select-addiction ml-3 addictions" aria-label="Default select example" onChange={changeActualAddiction}>
-                            <option class="addictions" selected>Addiction</option>
+                            <option class="addictions" value="addiction">Addiction</option>
                             <option class="addictions" value="cigarettes">Cigarettes</option>
                             <option class="addictions" value="alcohol">Alcohol</option>
                             <option class="addictions" value="drugs">Drugs</option>
