@@ -150,72 +150,68 @@ const App = () => {
     <motion.div initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-      <h1 className="header">Food</h1>
+      {/* <h1 className="header">Food</h1> */}
      
       <div className="App dish-container">
         
-        <h1>It's place where you can organize your dishes.</h1>
-        <p>At first, type name of product (for example 'apple'), add ingredient, 
+        <h1 class="dishes-header">It's a place where you can organize your dishes</h1>
+        <p class="dishes-info">At first, type name of product (for example 'apple'), add ingredient, 
           click 'Search' buttom to find caloric value 
           and add your dish to your collection!  </p>
 
-        <h5 className="text-secondary">&bull; New Dish</h5>
+        <h5 className="text-secondary dishes-steps">&bull; New Dish</h5>
         <div class="form-inline">
           <div >
-            <input type="text" placeholder="Dish name" autoComplete="off" className="form-control" onChange={handleNameDish} />
-            <input type="submit" value="ChangeName" className="btn btn-outline-secondary  ml-2" onClick={setActualDishName} />
+            <input type="text" placeholder="Dish name" autoComplete="off" className="form-control text-dishes" onChange={handleNameDish} />
+            <input type="submit" value="Change Name" className="btn btn-outline-secondary ml-2 dishes-buttons" onClick={setActualDishName} />
           </div>
         </div>
 
-        <h5 className="text-secondary">&bull; Find ingredient</h5>
+        <h5 className="text-secondary dishes-steps">&bull; Find ingredient</h5>
         <div class="form-inline">
           <div >
-            <input type="text" placeholder="Ingredient name" autoComplete="off" className="form-control" onChange={handleSearchIngredientName} />
-            <input type="submit" value="Search" className="btn btn-outline-secondary  ml-2" onClick={getData} />
+            <input type="text" placeholder="Ingredient name" autoComplete="off" className="form-control text-dishes" onChange={handleSearchIngredientName} />
+            <input type="submit" value="Search" className="btn btn-outline-secondary ml-2 dishes-buttons" onClick={getData} />
           </div>
         </div>
 
-        <h5 className="text-secondary">&bull; Add ingredient</h5>
-        <div class="form-inline">
+        <h5 className="text-secondary dishes-steps">&bull; Add ingredient</h5>
+        <div class="form-inline add-ingredients">
           <div>
-            <h6>Ingredient name:</h6>
             <input type="text" placeholder="Ingredient name" autoComplete="off"
-              className="form-control" value={actualIngredientName} onChange={handleActualIngredientName} />
+              className="form-control text-dishes" value={actualIngredientName} onChange={handleActualIngredientName} />
           </div>
           <div>
-            <h6>Ingredient weight [g]:</h6>
             <input type="number" min="0" placeholder="Ingredient weight [g]" autoComplete="off"
-              className="form-control" value={actualIngredientWeight} onChange={handleWeightIngredient} />
+              className="form-control text-dishes" value={actualIngredientWeight} onChange={handleWeightIngredient} />
           </div>
           <div>
-            <h6>Calories:</h6>
             <input type="number" min="0" placeholder="Calories" autoComplete="off"
-              className="form-control" value={actualIngredientCalories} onChange={handleCaloriesIngredient} />
+              className="form-control text-dishes" value={actualIngredientCalories} onChange={handleCaloriesIngredient} />
           </div>
           <div>
-            <img src={actualIngredientPhoto} className="photo center mt-4" alt='Logo'></img>
+            <img src={actualIngredientPhoto} className="photo center mt-2" alt='Logo'></img>
           </div>
           <div>
-            <h6 className="invisible">Submit:</h6>
-            <input type="submit" value="Add to dish" className="btn btn-outline-secondary" onClick={setActualDish} />
+            <input type="submit" value="Add to dish" className="btn btn-outline-secondary dishes-buttons" onClick={setActualDish} />
           </div>
         </div>
-        <output  class="h5" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output>
-        <h5>Your actual dish:</h5>
-        <div className="card " style={{ width: '18rem' }}>
-          <div onClick={resetActualDish} className="x-button-dish">X Reset</div>
-          <div class="card-header bg-info text-light">
+        {/* <output  class="h5 calories-dish-ingr" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output> */}
+        <h5 class="calories-dish-ingr">Your actual dish:</h5>
+        <div className="card your-dish" style={{ width: '18rem' }}>
+          <div onClick={resetActualDish} className="reset-button-dish">Reset</div>
+          <div class="card-header bg-info text-light new-dish">
             {dish.name}
           </div>
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush dish-table-info">
             {ingredientsToDisplay}
-            <li class="list-group-item"><b>{dish.caloriesDish} calories</b> </li>
+            <li class="list-group-item"><b>Summary: {dish.caloriesDish} calories</b> </li>
           </ul>
         </div>
 
-        <button className="btn btn-outline-secondary  ml-2" onClick={postDish}>Add to dishes</button>
+        <button className="btn btn-outline-secondary ml-2 dishes-buttons" onClick={postDish}>Add to dishes</button>
         
-        <h5>Collection of yours dishes:</h5>
+        <h5 class="collection-dish">Collection of yours dishes:</h5>
         <Dishes></Dishes>
         
       </div>
