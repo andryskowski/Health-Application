@@ -94,7 +94,7 @@ export default class Demo extends React.PureComponent {
           // mainResourceName={mainResourceName}
           />
         </Scheduler>
-        <h5>food - <span style={{color: "#BC243C"}}>red</span>, sport - <span style={{color: "blue"}}>blue</span></h5>
+        <h5 class="color-activity-info">Food - <span class="color-activity-info-value" style={{color: "#BC243C"}}>red</span>Sport - <span class="color-activity-info-value" style={{color: "blue"}}>blue</span></h5>
       </Paper>
       </motion.div>
     );
