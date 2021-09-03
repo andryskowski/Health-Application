@@ -5,25 +5,29 @@
 .div-dishes
     display: grid
     grid-template-columns: 1fr 1fr 1fr 1fr
+    justify-items: center
 
 .card
     margin: 5px
+
+.card-body
+    background-color: #53545515
 
 .pagination
     display: flex
     justify-content: center
 
-.reset-button-dish
+.x-button-dish
     position: absolute
     right: 5px
     cursor: pointer
     color: white
     font-size: 1.2rem
 
-.reset-button-dish:active
+.x-button-dish:active
     color: blue
 
-.reset-button-dish:focus
+.x-button-dish:focus
     color: blue 
 
 .pagination-number
@@ -39,14 +43,13 @@
     font-size: 55px
     font-weight: bold
     padding-top: 1%
-    padding-bottom: 5px
+    padding-bottom: 15px
     text-shadow: #c5bdbd 10px 7px 7px
 
 .dishes-info
-    padding: 3px 0
     margin-bottom: 10px
     padding-left: 10px
-    width: 60%
+    width: 61%
     font-family: Gill Sans MT Condensed
     color: black
     font-size: 1.5rem !important
@@ -76,11 +79,25 @@
     margin-bottom: 10px
 
 .collection-dish
-    font-size: 1.5rem
-    margin-top: 15px
+    margin-top: 30px
+    margin-bottom: 15px
+    padding-left: 10px
+    width: 15%
+    font-family: Gill Sans MT Condensed
+    font-size: 2rem !important
+    border-left: solid 8px
+    border-color: #5ABBD6
+    background-color: #5abbd663
 
 .card-header.bg-info.text-light.new-dish
     font-size: 1.3rem
 
 .list-group.list-group-flush.dish-table-info
+    font-size: 1.3rem
+
+.bg-primary.text-light
+    background-color: #17a2b8!important
+    font-size: 1.3rem
+
+.list-group-item
     font-size: 1.3rem

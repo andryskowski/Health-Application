@@ -199,7 +199,7 @@ const App = () => {
         {/* <output  class="h5 calories-dish-ingr" type="text" >{actualIngredientCalories} cal/{actualIngredientWeight}g</output> */}
         <h5 class="calories-dish-ingr">Your actual dish:</h5>
         <div className="card your-dish" style={{ width: '18rem' }}>
-          <div onClick={resetActualDish} className="reset-button-dish">Reset</div>
+          <div onClick={resetActualDish} className="x-button-dish">Reset</div>
           <div class="card-header bg-info text-light new-dish">
             {dish.name}
           </div>
@@ -211,7 +211,7 @@ const App = () => {
 
         <button className="btn btn-outline-secondary ml-2 dishes-buttons" onClick={postDish}>Add to dishes</button>
         
-        <h5 class="collection-dish">Collection of yours dishes:</h5>
+        <p class="collection-dish">Collection of yours dishes</p>
         <Dishes></Dishes>
         
       </div>
