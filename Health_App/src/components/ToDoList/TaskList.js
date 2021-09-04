@@ -22,14 +22,23 @@ const TaskList = props => {
     return (
         <>
             <div className="active">
-                <h2>Tasks to do</h2>
-                {activeTasks.length > 0 ? activeTasks : <p>Nothing to do</p>}
+                <h2 className="tasks-to-do">Tasks to do</h2>
+                <div className="task-list-headers">
+                    <span className="task-activity-header"> Activity </span>
+                    <span className="task-activity-header"> Date </span>
+                    <span className="task-activity-header"> Calories </span>
+                </div>
+                {activeTasks.length > 0 ? activeTasks : <span className="nth-to-do">Nothing to do</span>}
 
             </div>
 
             <div className="done">
-                <h2>Done tasks <em>({done.length})</em></h2>
-                
+                <h2 className="tasks-to-do">Done tasks: {done.length}</h2>
+                <div className="task-list-headers">
+                    <span className="task-activity-header"> Activity </span>
+                    <span className="task-activity-header"> Date </span>
+                    <span className="task-activity-header"> Calories </span>
+                </div>
                 {doneTasks}
             </div>
         </>

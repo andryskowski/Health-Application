@@ -102,8 +102,8 @@ class App extends Component {
         <h1 className="header">Activities</h1>
           <AddTask add={this.addTask} />
           <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
-          <h2>Your actual BMR is = {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
-          <button className="btn btn-outline-secondary" onClick={this.resetActualBMR}>Reset Actual BMR</button>
+          <h2 className="tasks-to-do">Your actual BMR is {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
+          <button className="btn btn-outline-secondary reset-bmr-btn" onClick={this.resetActualBMR}>Reset Actual BMR</button>
         </div>
       </motion.div>
     );
