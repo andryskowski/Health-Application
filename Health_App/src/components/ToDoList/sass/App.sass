@@ -20,13 +20,89 @@
     background-color: inherit
     @include button-reset
     font-size: $font-size*0.75
-    color: darken(#FF4136, 20) 
+    color: black
 
 .checked-button
     font-size: $font-size*0.75
     @include button-reset
-    color: mix(#2ECC40, #01FF70, 0.5)
+    color: black
 
 *
     margin: 5px
+    margin-left: 0px
     font-family: Gill Sans MT Condensed
+
+.tasks-to-do 
+    font-family: Gill Sans MT Condensed !important
+    font-size: 1.4rem
+    border-left: solid 6px
+    border-color: white
+    background-color: #343A40
+    border-radius: 3rem
+    text-align: center
+    color: white !important
+    padding-left: 40px !important
+    padding-right: 40px !important
+    padding-top: 15px
+    padding-bottom: 15px
+    width: 100%
+
+.datepicker 
+    width: 800px
+
+.active
+    width: 50%
+    margin-top: 50px
+
+.done
+    width: 50%
+    margin-top: 30px
+
+.actual-bmr
+    width: 50%
+    margin-top: 30px
+
+#active-table
+    text-align: center
+    border-collapse: collapse
+    border: 3px solid #ddd
+    width: 100%
+
+#active-table td, #active-table th 
+    border: 1px solid #ddd
+    padding: 8px
+    width: 20%
+
+#active-table tr:nth-child(even) 
+    background-color: #f2f2f2
+
+#active-table th 
+    padding-top: 12px
+    padding-bottom: 12px
+    text-align: center
+    background-color: #343A40
+    color: white
+
+.task-list
+    width: 100%
+
+#done-table
+    text-align: center
+    border-collapse: collapse
+    border: 3px solid #ddd
+    width: 100%
+
+#done-table td, #done-table th 
+    border: 1px solid #ddd
+    padding: 8px
+    width: 25%
+
+#done-table tr:nth-child(even) 
+    background-color: #f2f2f2
+
+#done-table th 
+    padding-top: 12px
+    padding-bottom: 12px
+    text-align: center
+    background-color: #343A40
+    color: white

@@ -1,6 +1,6 @@
 import React from 'react';
 import Task from './Task'
-
+import './sass/App.sass'
 
 const TaskList = props => {
     // const tasks = props.tasks.map(task => <Task key={task.id} task={task} remove={props.remove} change={props.change}/>)
@@ -16,30 +16,49 @@ const TaskList = props => {
     const activeTasks = active.map(task => <Task key={task.id}
         task={task} remove={props.remove} change={props.change} />);
     const doneTasks = done.map(task => <Task key={task.id} task={task}
-        remove={props.remove} change={props.change} />);
+        remove={props.unDone} />);
     console.log(active, done);
 
     return (
         <>
             <div className="active">
-                <h2 className="tasks-to-do">Tasks to do</h2>
-                <div className="task-list-headers">
-                    <span className="task-activity-header"> Activity </span>
-                    <span className="task-activity-header"> Date </span>
-                    <span className="task-activity-header"> Calories </span>
-                </div>
-                {activeTasks.length > 0 ? activeTasks : <span className="nth-to-do">Nothing to do</span>}
+                <h2 className="tasks-to-do">Tasks to do: {active.length}</h2>
+                {activeTasks.length > 0 ? 
+                    <div>
+            <table id='active-table'>
+               <tbody>
+               <tr>
+                    <th>Activity</th>
+                    <th>Date</th>
+                    <th>Calories</th>
+                    <th>Done</th>
+                    <th>Delete</th>
+               </tr>
+                  {activeTasks}
+               </tbody>
+            </table>
+         </div>
+                     : <span ></span>}
 
             </div>
 
             <div className="done">
-                <h2 className="tasks-to-do">Done tasks: {done.length}</h2>
-                <div className="task-list-headers">
-                    <span className="task-activity-header"> Activity </span>
-                    <span className="task-activity-header"> Date </span>
-                    <span className="task-activity-header"> Calories </span>
-                </div>
-                {doneTasks}
+            {doneTasks.length > 0 ?
+                <div>
+                <h2 className="tasks-to-do">Tasks done: {done.length}</h2>
+                <table id='done-table'>
+               <tbody>
+               <tr>
+                    <th>Activity</th>
+                    <th>Date</th>
+                    <th>Calories</th>
+                    <th>Delete</th>
+               </tr>
+                  {doneTasks}
+               </tbody>
+            </table>
+            </div>
+            : <div></div>}
             </div>
         </>
     );

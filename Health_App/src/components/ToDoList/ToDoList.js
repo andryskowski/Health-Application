@@ -26,10 +26,19 @@ class App extends Component {
     this.changeActualBMR(calories, isFoodOrSport, IS_ADD_OR_REMOVE);
   }
 
+  removeTaskFromDone = (id) => {
+    const tasks = [...this.state.tasks];
+    const index = tasks.findIndex(task => task.id === id);
+    tasks[index].active = true;
+    this.setState({ tasks });
+    window.localStorage.setItem('Tasks', JSON.stringify(tasks));
+  }
+
   changeTaskStatus = (id) => {
     const tasks = Array.from(this.state.tasks);
     tasks.forEach(task => { if (task.id === id) { task.active = false; task.finishDate = new Date().getTime() } });
     this.setState({ tasks })
+    window.localStorage.setItem('Tasks', JSON.stringify(tasks));
   }
 
   changeActualBMR = (calories, isFoodOrSport, IS_ADD_OR_REMOVE) => {
@@ -101,10 +110,12 @@ class App extends Component {
         <div className="content-application">
         <h1 className="header">Activities</h1>
           <AddTask add={this.addTask} />
-          <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} />
-          <h2 className="tasks-to-do">Your actual BMR is {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
-          <button className="btn btn-outline-secondary reset-bmr-btn" onClick={this.resetActualBMR}>Reset Actual BMR</button>
-        </div>
+          <TaskList tasks={this.state.tasks} change={this.changeTaskStatus} remove={this.removeTask} unDone={this.removeTaskFromDone}/>
+          <div className='actual-bmr'>
+            <h2 className="tasks-to-do">Your actual BMR is {this.state.ActualBMR}/{localStorage.getItem('BMR')}</h2>
+            <button style={{width: '100%'}} className="btn btn-outline-secondary reset-bmr-btn" onClick={this.resetActualBMR}>Reset Actual BMR</button>
+          </div>
+          </div>
       </motion.div>
     );
   }

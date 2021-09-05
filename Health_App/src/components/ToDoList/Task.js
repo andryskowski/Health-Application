@@ -1,41 +1,47 @@
 import React from 'react';
+import './sass/App.sass';
 
 const Task = props => {
     const { text, date, id, calories} = props.task;
-    return (
+    if (props.task.isFoodOrSport && props.task.active) return (
         
-        <div className="task-list">
-            
-            {props.task.isFoodOrSport ?
+        <tr key={id} style={{ backgroundColor: "#96b9d0" }}>
+               <td>{text}</td>
+               <td>{date}</td>
+               <td>{calories}</td>
+               <td><button className="checked-button task-activity-button" onClick={() => props.change(id)}>&#10003;</button></td>
+               <td><button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button></td>
+            </tr>
 
-                <p style={{ color: "blue" }} >
-                    
-                    <span className="task-activity"> {props.task.text} </span>
-                    <span className="task-activity"> {props.task.date} </span>
-                    <span className="task-activity"> {props.task.calories} {'calories'} </span>
-                    <button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button>
-                    <button className="checked-button task-activity-button" onClick={() => props.change(id)}>&#10003;</button>
-                </p>
-                :
-                <p style={{ color: "#BC243C" }}>  
-                    <span className="task-activity"> {props.task.text} </span>
-                    <span className="task-activity"> {props.task.date} </span>
-                    <span className="task-activity"> {props.task.calories} {'calories'} </span>
-                 <button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button>
-                <button className="checked-button task-activity-button" onClick={() => props.change(id)}>&#10003;</button>
-                 </p>
-                 
-            }
 
-            {/* {props.task.text} / 
-                 {props.task.date} / 
-                 {props.task.calories} {'calories'} */}
-
-                 {/* <button className="x-button" onClick={() => props.remove(id)}>X</button>
-                <button className="checked-button" onClick={() => props.change(id)}>&#10003;</button> */}
-
-        </div>
     );
+    else if (props.task.active) return (
+<tr key={id} style={{ backgroundColor: "#e27978" }}>
+               <td>{text}</td>
+               <td>{date}</td>
+               <td>{calories}</td>
+               <td><button className="checked-button" onClick={() => props.change(id)}>&#10003;</button></td>
+               <td><button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button></td>
+               </tr>
+    );
+
+    else if (!props.task.active && props.task.isFoodOrSport) return (
+        <tr key={id} style={{ backgroundColor: "#96b9d0" }}>
+                       <td>{text}</td>
+                       <td>{date}</td>
+                       <td>{calories}</td>
+                       <td><button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button></td>
+                       </tr>
+    );
+
+    else return (
+        <tr key={id} style={{ backgroundColor: "#e27978" }}>
+                       <td>{text}</td>
+                       <td>{date}</td>
+                       <td>{calories}</td>
+                       <td><button className="x-button task-activity-button" onClick={() => props.remove(id)}>X</button></td>
+                       </tr>
+            );
 };
 
 
