@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './sass/App.css';
+import './sass/App.sass';
 import Addiction from './icons/workaholic.svg';
 import Drugs from './icons/capsules.svg';
 import Alcohol from './icons/beer.svg';

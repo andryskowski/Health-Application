@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./sass/App.css";
+import "./sass/App.sass";
 import { motion } from "framer-motion";
 import bikeImg from './img/indoor_bike.png';
 

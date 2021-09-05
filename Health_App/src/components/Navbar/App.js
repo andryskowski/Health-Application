@@ -1,5 +1,5 @@
 import react from 'react';
-import './sass/App.css';
+import './sass/App.sass';
 import { Link } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion"
 const App = () => {

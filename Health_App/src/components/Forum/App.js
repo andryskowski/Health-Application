@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './sass/App.css';
+import './sass/App.sass';
 import { useAuth } from "../../contexts/AuthContext";
 import { motion } from 'framer-motion';
 

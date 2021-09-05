@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './sass/App.css';
+import './sass/App.sass';
 import { useSelector } from 'react-redux';
 import WeatherWidget from './WeatherWidget';
 import DishIdeaWidget from './DishIdeaWidget';

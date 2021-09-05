@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
-import './sass/App.css';
+import './sass/App.sass';
 import dietImg from './img/diet.png';
 import { addBMRInformation } from '../../actions/appActions';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './sass/App.css';
+import './sass/App.sass';
 import { motion } from 'framer-motion';
 import Pagination from './Pagination';
 import { Card } from "react-bootstrap"

@@ -1,4 +1,4 @@
-import './sass/App.css';
+import './sass/App.sass';
 import React, { Component } from 'react';
 import AddTask from './AddTask'
 import TaskList from './TaskList'
