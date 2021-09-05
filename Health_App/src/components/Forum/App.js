@@ -19,10 +19,13 @@ const App = () => {
             .then(response => {
                 // response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 response.map(resp =>
-                    setPosts(prevState => [...prevState, <li><b>{'email: ' + resp.email }</b>
-                    {' title: ' + resp.title + ', ' + 
-                    'date: ' + resp.date + ', ' + 
-                    'content: ' + resp.content}</li>]));
+                    setPosts(prevState => [...prevState, 
+                        <li>
+                        <p>{'USER    ' + resp.email }</p>
+                        <p>{'DATE    ' + resp.date}</p>
+                        <p>{'TITLE   ' + resp.title }</p>
+                        <p>{'MESSAGE ' + resp.content}</p>
+                        </li>]));
 
                 console.log(posts);
             })
