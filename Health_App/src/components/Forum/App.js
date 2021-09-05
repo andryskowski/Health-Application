@@ -78,12 +78,15 @@ const App = () => {
     }
 
     return (
+        <div>
+        <h1 className='header'>Forum</h1>
+        <div className='parent'>
+            <h2 className='title'>Posts</h2>
+        </div>
         <motion.div initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}>
         <div className="App">
-            <h1>Posts</h1>
-            
             <div className="window-posts">
                 <ul className="ul-posts" style={{}}>{posts}
                 </ul>
@@ -94,20 +97,22 @@ const App = () => {
 
             {/* <button onClick={showPostsInState}>show posts in state</button> */}
             <br></br>
-            <form onSubmit={postForumPost}>
-                <label>
-                    Title:
-                <input type="text" onChange={handleOnChangeTitle} name="newPost" />
-                Content:
-                <input type="text" onChange={handleOnChangeContent} name="newPost" />
-                </label>
+            <form className='form-personalised' onSubmit={postForumPost}>
+                <div className='form-item'>
+                    <label className='label-personalised'>Title:</label>
+                    <input className='input' type="text" onChange={handleOnChangeTitle} name="newPost" />
+                </div>
+                <div className='form-item'>
+                    <label className='label-personalised'>Message:</label>
+                    <input className='input' type="text" onChange={handleOnChangeContent} name="newPost" />
+                </div>
                 {/* <input type="submit" value="Wyślij" onClick={postForumPost}/> */}
-                <button className="btn btn-outline-secondary">Submit</button>
+                <button className="btn btn-outline-secondary form-item">Submit</button>
                 {/* <input type="submit" value="Wyślij" /> */}
             </form>
-
         </div>
         </motion.div>
+        </div>
     );
 };
 

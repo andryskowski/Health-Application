@@ -153,6 +153,7 @@ const App = () => {
       {/* <h1 className="header">Food</h1> */}
      
       <div className="App dish-container">
+        <h1 className='header'>Dishes</h1>
         
         <h1 class="dishes-header">It's a place where you can organize your dishes</h1>
         <p class="dishes-info">At first, type name of product (for example 'apple'), add ingredient, 
