@@ -21,10 +21,9 @@ const App = () => {
                 response.map(resp =>
                     setPosts(prevState => [...prevState, 
                         <li>
-                        <p>{'USER    ' + resp.email }</p>
-                        <p>{'DATE    ' + resp.date}</p>
-                        <p>{'TITLE   ' + resp.title }</p>
-                        <p>{'MESSAGE ' + resp.content}</p>
+                        <p className='forum-text' style={{paddingTop: '0px'}}>{resp.email + ' on ' + resp.date + ' said: '}</p>
+                        <h3 className='forum-text' style={{fontWeight: 'bold', fontSize: '27px'}}>{resp.title }</h3>
+                        <p className='forum-text' style={{paddingBottom: '0px'}}>{resp.content}</p>
                         </li>]));
 
                 console.log(posts);
