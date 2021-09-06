@@ -102,14 +102,14 @@ const App = () => {
             <form className='form-personalised' onSubmit={postForumPost}>
                 <div className='form-item'>
                     <label className='label-personalised'>Title:</label>
-                    <input className='input' type="text" onChange={handleOnChangeTitle} name="newPost" />
+                    <input className='input-title' type="text" onChange={handleOnChangeTitle} name="newPost" />
                 </div>
                 <div className='form-item'>
                     <label className='label-personalised'>Message:</label>
-                    <input className='input' type="text" onChange={handleOnChangeContent} name="newPost" />
                 </div>
+                <input className='input-message' type="text" onChange={handleOnChangeContent} name="newPost" />
                 {/* <input type="submit" value="Wyślij" onClick={postForumPost}/> */}
-                <button className="btn btn-outline-secondary form-item">Submit</button>
+                <button className="btn btn-outline-secondary submit-btn">Submit</button>
                 {/* <input type="submit" value="Wyślij" /> */}
             </form>
         </div>

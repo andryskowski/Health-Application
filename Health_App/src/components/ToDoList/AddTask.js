@@ -71,22 +71,19 @@ class AddTask extends Component {
         maxDate = maxDate + "-12-32" //2020-12-31
         return (
             <div className="form form__group form-inline row justify-content-right">
-                <input type="text" placeholder="dodaj zadanie" value={this.state.text} className="form__field text-to-write" id='name' required onClick={this.onClickText} onChange={this.handleText} />
+                <input type="text" placeholder="dodaj zadanie" value={this.state.text} className="form__field text-to-write add-activity" id='name' required onClick={this.onClickText} onChange={this.handleText} />
                 <label htmlFor="name" className="form__label"></label>
                 
-                <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field text-to-write" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
+                <input type="text" placeholder="Kalorie" value={this.state.calories} className="form__field text-to-write add-activity" id='name2' required onClick={this.onClickCalories} onChange={this.handleCalories} />
                 <label htmlFor="name2" className="form__label"></label>
                 <div className="radio radio-value">
                     <input type="radio" value="Food" checked={!this.state.isFoodOrSport} onChange={this.handleRadio}/>Food
                     <div className="radio"></div>
                     <input type="radio" value="Sport" checked={this.state.isFoodOrSport} onChange={this.handleRadio}/>Activity
                 </div>
-                <div style={{marginLeft: 'auto', width: '80%'}}>
-                    <input type="date" className="form-control m-2" style={{width: '100%'}} value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
-                </div>
-
-                <div style={{width: '100%', marginLeft: 'auto', marginRight: 'auto'}}>
-                    <button style={{width: '100%'}} onClick={this.handleClick} className="btn btn-outline-secondary ">Add</button>
+                <div style={{marginLeft: 'auto', width: '80%'}} className="add-activity-container">
+                    <input type="date" className="form-control m-2 date-todo" style={{width: '100%'}} value={this.state.date} min={this.minDate} max={maxDate} onChange={this.handleDate} />
+                    <button style={{width: '100%'}} onClick={this.handleClick} className="btn btn-outline-secondary date-todo">Add</button>
                 </div>
               </div>
         );
