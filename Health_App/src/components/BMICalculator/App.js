@@ -85,7 +85,7 @@ function App() {
               BMI takes into account natural variations in body shape, giving a
               healthy weight range for a particular height. As well as measuring
               your BMI, healthcare professionals may take other factors into
-              account when assessing if you're a healthy weight.0 Muscle is much
+              account when assessing if you're a healthy weight. 0 Muscle is much
               denser than fat, so very muscular people, such as heavyweight
               boxers, weight trainers and athletes, may be a healthy weight even
               though their BMI is classed as obese. Your ethnic group can also
