@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import './sass/App.sass';
-import {addBMRInformation} from '../../actions/appActions';
+import dietImg from './img/diet.png';
+import { addBMRInformation } from '../../actions/appActions';
 
 import store from '../../store/store';
 import { useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ function App() {
     const [BMRInfo, setBMRInfo] = useState(0);
     const BMRInformations = useSelector(store => store.BMRInformations);
     const bmrbmr = JSON.stringify(BMRInformations);
-    
+
     const BMRObject = {
         height: 10,
         weight: 12,
@@ -26,20 +27,20 @@ function App() {
     }
 
     function setHeightOn(e) {
-        if(e.target.value<0) e.target.value=0;
+        if (e.target.value < 0) e.target.value = 0;
         setHeight(e.target.value);
     }
     function setWeightOn(e) {
-        if(e.target.value<0) e.target.value=0;
+        if (e.target.value < 0) e.target.value = 0;
         setWeight(e.target.value);
     }
     function setAgeOn(e) {
-        if(e.target.value<0) e.target.value=0;
+        if (e.target.value < 0) e.target.value = 0;
         setAge(e.target.value);
     }
     function setGenderOn(e) {
         console.log(gender, e.target.value);
-        setGender(e.target.value === "Male"?  true : false);
+        setGender(e.target.value === "Male" ? true : false);
     }
     function setBonusOn(e) {
         setBonus(e.target.value);
@@ -59,55 +60,60 @@ function App() {
                 setCal(BMR);
                 localStorage.setItem('BMR', BMR);
             }
-        } 
+        }
     });
 
     const dispatch = useDispatch();
-    
-  const handleOnSubmit = event => {
-    const actualHeight = Number(height);
-    const actualWeight = Number(weight);
-    const actualBMR = cal;
 
-    const BMRObject = {
-        height: actualHeight,
-        weight: actualWeight,
-        BMR: actualBMR
-    };
+    const handleOnSubmit = event => {
+        const actualHeight = Number(height);
+        const actualWeight = Number(weight);
+        const actualBMR = cal;
 
-    dispatch(addBMRInformation(BMRObject));
+        const BMRObject = {
+            height: actualHeight,
+            weight: actualWeight,
+            BMR: actualBMR
+        };
 
-    console.log(BMRInformations);
-  }
+        dispatch(addBMRInformation(BMRObject));
+
+        console.log(BMRInformations);
+    }
 
     return (
         // <Provider store={store}>
         <motion.div initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="App form-group">
-            <h1 className="header">BMR</h1>
-            <h1 className="h1-bmi">BMR Calculator</h1>
-                Your height <input type="number" onChange={setHeightOn} className="form-control w-25"></input>
-                Your weight <input type="number" onChange={setWeightOn} className="form-control w-25"></input>
-                Your age <input type="number" onChange={setAgeOn} className="form-control w-25"></input>
-                 
-                <label htmlFor="bonus">Calories burned today</label>
-                <input id="bonus" type="number" onChange={setBonusOn} className="form-control w-25"></input>
-                
-                    <div className="form-inline" className="radio">
-                        <label><input type="radio" value="Female" checked={!gender} onChange={setGenderOn}/> Female </label>
-                        <label><input type="radio" value="Male" checked={gender} onChange={setGenderOn}/> Male </label>
+        >
+            <div className="App form-group">
+                <h1 className="header">BMR</h1>
+                <h1 className="h1-bmr">BMR Calculator</h1>
+                <div className="form-inline" className="radio">
+                    <label class="bmr-label"><input type="radio" value="Female" checked={!gender} onChange={setGenderOn} /> Female </label>
+                    <label class="bmr-label"><input type="radio" value="Male" checked={gender} onChange={setGenderOn} /> Male </label>
+                </div>
+                <div class="form-group bmr-form">
+                    <div class="input-container-bmr">
+                        <label class="bmr-label">Your height:</label> <input type="number" onChange={setHeightOn} className="form-control w-50 bmr-form-control"></input>
+                        <label class="bmr-label">Your weight:</label> <input type="number" onChange={setWeightOn} className="form-control w-50 bmr-form-control"></input>
+                        <label class="bmr-label">Your age:</label> <input type="number" onChange={setAgeOn} className="form-control w-50 bmr-form-control"></input>
+                        <label class="bmr-label" htmlFor="bonus">Calories burned today:</label>
+                        <input id="bonus" type="number" onChange={setBonusOn} className="form-control w-50 bmr-form-control"></input>
                     </div>
-
-            <h1>Your BMR is: {cal}</h1>
-            {/* <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button> */}
-            {/* <div>{bmrbmr}</div> */}
-            <div className="bmr-info">
+                    <div class="diet-img-wrapper">
+                        <img class="dietimage" src={dietImg}></img>
+                    </div>
+                </div>
+                <h4 className="mt-4">Your BMR is: {cal}</h4>
+                {/* <button type="submit" onClick={handleOnSubmit}>SUBMIT //I am testing here sth</button> */}
+                {/* <div>{bmrbmr}</div> */}
+                <div className="bmr-info">
                     <h2>What is the Basal Metabolic Rate?(BMR)?</h2>
                     <p>Basal metabolic rate (BMR) is the total number of calories that your body needs to perform basic, life-sustaining functions. These basal functions include circulation, breathing, cell production, nutrient processing, protein synthesis, and ion transport. You can calculate the basal metabolic rate using a mathematical formula. </p>
+                </div>
             </div>
-
         </motion.div>
         // {/* </Provider> */}
     );

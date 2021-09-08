@@ -1,43 +1,126 @@
 .content
     display: flex
-    flex-direction: column
-    align-items: center
-    align-content: space-between
+    flex-wrap: wrap
+    padding-left: 180px
+    width: 100%
+    justify-content: center
+    vertical-align: middle
+    margin-top: 7%
+
+.content .b-card
+    width: 500px !important
+    height: 300px !important
+    margin: 20px
+
+    text-align: center
+    padding-top: 20px !important
+    padding: 0
 
 .widget
     display: block
-    width: 50%
-    position: relative
     color: black
-    display: inline-block
-    background-color: lighten(#3f80ea, 25%)
+    background-color: lighten(#5ABBD6, 25%)
     border-radius: 5px
-    color: white
-    text-align: center
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.3), 
-    0px -2px 8px rgba(255,255,255,0.3)
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3), 0px -2px 8px rgba(255,255,255,0.3)
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
-    padding: 10px
-    margin-bottom: 10px
-    margin-top: 10px
+    box-shadow: 5px 10px 12px grey
+    border: solid 3px
+    border-color: black
     
 .weather-temperature
     font-weight: bold
+    font-size: 3rem
     text-align: center
+    font-family: Gill Sans MT Condensed 
+ 
+.weather-location
+    font-family: Gill Sans MT Condensed 
+    font-size: 2.5rem
 
-//.first-row
-//    display: flex
-//   flex-direction: row
-    
-h3
-    color: 
+.weather-icon
+    display: inline
+    width: 100px
+    height: 100px
+    margin: 12px 0px
+
+.dish-recipe
+    font-family: Gill Sans MT Condensed
+    border: solid 2px
+    border-color: black
+    border-radius: .7rem
+    background-color: #f8f0f062
+    margin: 0px 100px
+    margin-bottom: 15px
+
+.dish-icon
+    box-shadow: 5px 10px 12px grey
+
+.recipe-info
+    font-size: 2rem !important
+    color: #0f2fe4
 
 .addiction-widget
     text-align: center
     margin-bottom: 100px
 
+.bmr-bmi-value
+    font-family: Gill Sans MT Condensed
+    font-size: 5rem !important
+    margin: 0px 100px
+    margin-top: 30px
+    color: black
+
+.your-bmr-bmi
+    border: solid 2px
+    border-color: black
+    border-radius: .7rem
+    background-color: #f8f0f062
+    margin: 0px 100px
+
+.tasks-for-today
+    border: solid 2px
+    border-color: black
+    border-radius: .7rem
+    background-color: #f8f0f062
+    margin: 0px 100px
+    margin-bottom: 5px
+
+.btn-outline-secondary
+    color: black !important
+
+.btn-outline-secondary:hover
+    color: white !important
+
+.change-add-btn
+    font-family: Gill Sans MT Condensed
+    font-size: 1.5rem !important
+    margin: 0
+
+.reset-btn
+    margin-right: 20px
+    font-family: Gill Sans MT Condensed
+    font-size: 1.5rem !important
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3)
+
+.buttons-add
+    margin-top: 20px
+    margin-bottom: 20px
+    padding: 5px
+
+.addictions
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+    padding: .6rem .75rem;
+    font-weight: 400;
+    font-family: Gill Sans MT Condensed
+    font-size: 1.5rem
+    background-color: transparent
+    border-radius: .25rem;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3)
+
 .change-btn
+    margin-right: 20px
     cursor: pointer
 
 .dish-widget
@@ -46,5 +129,5 @@ h3
 .link:hover
     text-decoration: none
 
-.first-widget
-    margin-top: 100px
+.navbar
+    top: 10px

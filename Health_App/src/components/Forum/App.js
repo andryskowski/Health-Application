@@ -19,10 +19,12 @@ const App = () => {
             .then(response => {
                 // response.map(resp => setPosts(prevState => prevState + 'title:' + resp.title + 'content:' + resp.content + '  '));
                 response.map(resp =>
-                    setPosts(prevState => [...prevState, <li><b>{'email: ' + resp.email }</b>
-                    {' title: ' + resp.title + ', ' + 
-                    'date: ' + resp.date + ', ' + 
-                    'content: ' + resp.content}</li>]));
+                    setPosts(prevState => [...prevState, 
+                        <li>
+                        <p className='forum-text' style={{paddingTop: '0px'}}>{resp.email + ' on ' + resp.date + ' said: '}</p>
+                        <h3 className='forum-text' style={{fontWeight: 'bold', fontSize: '27px'}}>{resp.title }</h3>
+                        <p className='forum-text' style={{paddingBottom: '0px'}}>{resp.content}</p>
+                        </li>]));
 
                 console.log(posts);
             })
@@ -78,12 +80,15 @@ const App = () => {
     }
 
     return (
+        <div>
+        <h1 className='header'>Forum</h1>
+        <div className='parent'>
+            <h2 className='title'>Posts</h2>
+        </div>
         <motion.div initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}>
         <div className="App">
-            <h1>Posts</h1>
-            
             <div className="window-posts">
                 <ul className="ul-posts" style={{}}>{posts}
                 </ul>
@@ -94,20 +99,22 @@ const App = () => {
 
             {/* <button onClick={showPostsInState}>show posts in state</button> */}
             <br></br>
-            <form onSubmit={postForumPost}>
-                <label>
-                    Title:
-                <input type="text" onChange={handleOnChangeTitle} name="newPost" />
-                Content:
-                <input type="text" onChange={handleOnChangeContent} name="newPost" />
-                </label>
+            <form className='form-personalised' onSubmit={postForumPost}>
+                <div className='form-item'>
+                    <label className='label-personalised'>Title:</label>
+                    <input className='input-title' type="text" onChange={handleOnChangeTitle} name="newPost" />
+                </div>
+                <div className='form-item'>
+                    <label className='label-personalised'>Message:</label>
+                </div>
+                <input className='input-message' type="text" onChange={handleOnChangeContent} name="newPost" />
                 {/* <input type="submit" value="Wyślij" onClick={postForumPost}/> */}
-                <button className="btn btn-outline-secondary">Submit</button>
+                <button className="btn btn-outline-secondary submit-btn">Submit</button>
                 {/* <input type="submit" value="Wyślij" /> */}
             </form>
-
         </div>
         </motion.div>
+        </div>
     );
 };
 

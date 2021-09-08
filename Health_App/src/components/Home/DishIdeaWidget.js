@@ -36,11 +36,11 @@ const DishIdeaWidget = () => {
 
     return (
         <>
-            <div className="dish-widget widget">
-                <h1>Recipe of the Day:</h1>
+            <div className="dish-widget widget b-card">
+                <h1 class="dish-recipe">Recipe of the day</h1>
                 {/* <h4 href={dishIdeaLink}>{dishIdeaName}</h4> */}
-                <h4><a href={dishIdeaLink} target="_blank" class="stretched-link link">{dishIdeaName}</a></h4>
-                <img width="100" height="100" src={dishIdeaImg}></img>
+                <h4><a href={dishIdeaLink} target="_blank" class="link recipe-info">{dishIdeaName}</a></h4>
+                <img class="dish-icon" width="100" height="100" src={dishIdeaImg}></img>
             </div>
         </>
 

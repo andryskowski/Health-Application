@@ -1,6 +1,6 @@
 import React from 'react';
 import Task from './Task'
-
+import './sass/App.sass'
 
 const TaskList = props => {
     // const tasks = props.tasks.map(task => <Task key={task.id} task={task} remove={props.remove} change={props.change}/>)
@@ -16,21 +16,49 @@ const TaskList = props => {
     const activeTasks = active.map(task => <Task key={task.id}
         task={task} remove={props.remove} change={props.change} />);
     const doneTasks = done.map(task => <Task key={task.id} task={task}
-        remove={props.remove} change={props.change} />);
+        remove={props.unDone} />);
     console.log(active, done);
 
     return (
         <>
             <div className="active">
-                <h2>Tasks to do</h2>
-                {activeTasks.length > 0 ? activeTasks : <p>Nothing to do</p>}
+                <h2 className="tasks-to-do">Tasks to do: {active.length}</h2>
+                {activeTasks.length > 0 ? 
+                    <div>
+            <table id='active-table'>
+               <tbody>
+               <tr>
+                    <th>Activity</th>
+                    <th>Date</th>
+                    <th>Calories</th>
+                    <th>Done</th>
+                    <th>Delete</th>
+               </tr>
+                  {activeTasks}
+               </tbody>
+            </table>
+         </div>
+                     : <span ></span>}
 
             </div>
 
             <div className="done">
-                <h2>Done tasks <em>({done.length})</em></h2>
-                
-                {doneTasks}
+            {doneTasks.length > 0 ?
+                <div>
+                <h2 className="tasks-to-do">Tasks done: {done.length}</h2>
+                <table id='done-table'>
+               <tbody>
+               <tr>
+                    <th>Activity</th>
+                    <th>Date</th>
+                    <th>Calories</th>
+                    <th>Delete</th>
+               </tr>
+                  {doneTasks}
+               </tbody>
+            </table>
+            </div>
+            : <div></div>}
             </div>
         </>
     );
