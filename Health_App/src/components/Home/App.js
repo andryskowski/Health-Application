@@ -55,7 +55,7 @@ const App = () => {
                     <p class="bmr-bmi-value">{JSON.parse(window.localStorage.getItem('BMI'))}</p></div>
                 <div className="to-do-list-widget widget b-card">
                     <h2 class="tasks-for-today">Tasks for today {window.localStorage.getItem('Tasks') != null ? "" : "nothing to do"}</h2>
-                    {getTasksForToday().split(', ').map(el => <h4>{el}</h4>)}
+                    {(getTasksForToday() + '').split(', ').map(el => <h4>{el}</h4>)}
                 </div>
             </div>
         </motion.div>
