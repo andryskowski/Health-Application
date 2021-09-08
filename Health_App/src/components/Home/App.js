@@ -25,12 +25,16 @@ const App = () => {
         const TASKS_FOR_TODAY = ALL_TASKS.map(task => {
             if (task.date === TODAY_DATE) {
                 ARRAY_FOR_TEXTS_TASKS_TODAY.push(task.text);
+                ARRAY_FOR_TEXTS_TASKS_TODAY.push(', ');
+                ARRAY_FOR_TEXTS_TASKS_TODAY.push(task.calories);
+                ARRAY_FOR_TEXTS_TASKS_TODAY.push(' calories');
+                ARRAY_FOR_TEXTS_TASKS_TODAY.push(<br/>);
                 // setTasksToday(task.text);
             }
         }
         );
 
-        return ARRAY_FOR_TEXTS_TASKS_TODAY.join(", ");
+        return ARRAY_FOR_TEXTS_TASKS_TODAY;
 
     }
 
